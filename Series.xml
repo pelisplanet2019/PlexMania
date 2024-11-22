@@ -24,3 +24,48 @@
     </series_item>
   </series_list>
 </series>
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<channels>
+    <info>[COLOR gold]Plex Mania pretende ser un add-on en el que podras disfrutar del mejor cine, y las mejores Series en la mejor calidad[/COLOR]</info>
+    <channels_info>
+        <title>[COLOR blue]plugin.video.PlexMania[/COLOR]</title>
+        <genre>ONLINE</genre>
+        <thumbnail>https://i.ibb.co/2NH1rDq/PELIS-PLANET.jpg</thumbnail>
+        <fanart>https://i.ibb.co/2NH1rDq/PELIS-PLANET.jpg</fanart>
+        <date>Mayo de 2020</date>
+        <credits>Gracias a plugin.video.PlexMania por darnos el mejor contenido en HD y UHD.</credits>
+    </channels_info>
+</channels>
+
+
+<channels>
+   <channel>
+      <name>[COLOR orange]Grimm[/COLOR]</name>
+      <description></description>
+      <thumbnail>https://i.ibb.co/6B3cVyT/transcode-5.jpg</thumbnail>
+      <fanart>https://i.ibb.co/BGrj1Fs/grimm.jpg</fanart>
+      <externallink>https://raw.githubusercontent.com/pelisplanet2019/peliadictos/master/Accion.xml</externallink>
+   </channel>
+</channels>
+
+<channels>
+   <channel>
+    <name>[COLOR red]El Mentalista[/COLOR]</name>
+    <description></description>
+      <thumbnail>https://i.ibb.co/FYQTK3r/transcode-4.jpg</thumbnail>
+      <fanart>https://i.ibb.co/jZQXNSR/mentalista.jpg</fanart>
+    <externallink></externallink>
+   </channel>
+</channels>
+
+<channels>
+   <channel>
+    <name>[COLOR red]The BlackList[/COLOR]</name>
+    <description></description>
+      <thumbnail>https://i.ibb.co/FYQTK3r/transcode-4.jpg</thumbnail>
+      <fanart>https://i.ibb.co/jZQXNSR/mentalista.jpg</fanart>
+    <externallink></externallink>
+   </channel>
+</channels>
