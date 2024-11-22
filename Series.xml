@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<series>
+  <info>[COLOR gold]Disfruta de tus series favoritas con nuestro catálogo organizado.[/COLOR]</info>
+  <series_list>
+    <series_item>
+      <title>Grimm</title>
+      <thumbnail>https://example.com/breakingbad_thumbnail.jpg</thumbnail>
+      <fanart>https://example.com/breakingbad_fanart.jpg</fanart>
+      <link>https://raw.githubusercontent.com/tu_usuario/repositorio/master/breakingbad.xml</link>
+    </series_item>
+
+    <series_item>
+      <title>El Mentalista</title>
+      <thumbnail>https://example.com/gameofthrones_thumbnail.jpg</thumbnail>
+      <fanart>https://example.com/gameofthrones_fanart.jpg</fanart>
+      <link>https://raw.githubusercontent.com/tu_usuario/repositorio/master/gameofthrones.xml</link>
+    </series_item>
+
+    <series_item>
+      <title>Blacklist</title>
+      <thumbnail>https://example.com/strangerthings_thumbnail.jpg</thumbnail>
+      <fanart>https://example.com/strangerthings_fanart.jpg</fanart>
+      <link>https://raw.githubusercontent.com/tu_usuario/repositorio/master/strangerthings.xml</link>
+    </series_item>
+  </series_list>
+</series>
