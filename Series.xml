@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<channels>
+  <info>PelisPlanet2020: Disfruta del mejor cine y series</info>
+  <channel>
+    <name>Series</name>
+    <description>Un lugar donde disfruar, de increibes maratones de Series.</description>
+    <thumbnail>https://example.com/images/series.png</thumbnail>
+    <fanart>https://example.com/images/fanart-series.jpg</fanart>
+    <link>https://streamtape.com/get_video?id=zzzzz&token=wwwww</link>
+  </channel>
+</channels>
