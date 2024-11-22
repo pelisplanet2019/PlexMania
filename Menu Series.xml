@@ -1,11 +1,36 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+ 
 <channels>
-  <info>PlexMania: Disfruta de las mejores series</info>
+		<info>[COLOR gold]Plex Mania pretende ser un add-on en el que podras disfrutar del mejor Cine y Series.[/COLOR]</info>
+	<channels_info>
+		<title>[COLOR blue]plex Mania[/COLOR]</title>
+		<genre>ONLINE</genre>
+		<thumbnail>https://i.ibb.co/nfZzqLH/icon.png</thumbnail>
+		<fanart>https://i.ibb.co/nfZzqLH/icon.png</fanart>
+		<date>Octubre de 2021</date>
+		<credits>Gracias a plugin.video.PlexMania</credits>
+	</channels_info>
+<channels>
+ 
+ 
+<channels>
+    <channel>
+        <name>[COLOR blue]Plex Mania[/COLOR] [COLOR gold]update:Noviembre de 2024[/COLOR]</name>
+        <description>[COLOR gold]Plex Mania pretende ser un add-on en el que podras disfrutar del mejor Cine y Series.[/COLOR]</description>
+        <thumbnail></thumbnail>
+        <fanart></fanart>
+        <externallink>http://pastebin.com</externallink>
+    </channel>
+</channels>
+
+
+ <channels>
   <channel>
-    <name>Series</name>
-    <description>Un lugar donde disfruar, de increibes maratones de Series.</description>
-    <thumbnail>https://i.ibb.co/VHMh02R/png-clipart-video-formats-icon-tv-series-thumbnail.png</thumbnail>
-    <fanart>https://i.ibb.co/VHMh02R/png-clipart-video-formats-icon-tv-series-thumbnail.png</fanart>
-    <link>https://raw.githubusercontent.com/pelisplanet2019/PlexMania/refs/heads/main/Series.xml</link>
-  </channel>
+    <name>[COLOR #418DE4]M. SERIES HD[/COLOR]</name>
+    <info>[COLOR blue]En este espacio podras disfrutar de M. SERIES HD.[/COLOR]</info>
+    <description>[COLOR blue]En este espacio podras disfrutar de peliculas.[/COLOR]</description>
+    <thumbnail>http://imgfz.com/i/6UWLHkD.png</thumbnail>
+    <fanart></fanart>
+    <externallink></externallink>
+</channel>
 </channels>
