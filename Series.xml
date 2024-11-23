@@ -1,31 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<series>
-  <info>[COLOR gold]Disfruta de tus series favoritas con nuestro catálogo organizado.[/COLOR]</info>
-  <series_list>
-    <series_item>
-      <title>BlackList</title>
-      <thumbnail>https://i.ibb.co/x56SvrR/Cartel-Blacklist-1.jpg</thumbnail>
-      <fanart>https://i.ibb.co/ysmN0jd/Cartel-Blacklist.jpg</fanart>
-      <link>https://raw.githubusercontent.com/tu_usuario/repositorio/master/breakingbad.xml</link>
-    </series_item>
-
-    <series_item>
-      <title>Grimm</title>
-      <thumbnail>https://i.ibb.co/6B3cVyT/transcode-5.jpg</thumbnail>
-      <fanart>https://i.ibb.co/BGrj1Fs/grimm.jpg</fanart>
-      <link>https://raw.githubusercontent.com/pelisplanet2019/PlexMania/refs/heads/main/Grimm.xml</link>
-    </series_item>
-
-    <series_item>
-      <title>El Mentalista</title>
-      <thumbnail>https://i.ibb.co/FYQTK3r/transcode-4.jpg</thumbnail>
-      <fanart>https://i.ibb.co/jZQXNSR/mentalista.jpg</fanart>
-      <link>https://raw.githubusercontent.com/tu_usuario/repositorio/master/strangerthings.xml</link>
-    </series_item>
-  </series_list>
-</series>
-
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 
 <channels>
     <info>[COLOR gold]Plex Mania pretende ser un add-on en el que podras disfrutar del mejor cine, y las mejores Series en la mejor calidad[/COLOR]</info>
