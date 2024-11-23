@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lista de Series</title>
+  <title>Menú Principal - Series</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -23,20 +23,27 @@
       border-bottom: 1px solid #ddd;
       padding: 10px 0;
     }
-    .item h2 {
-      font-size: 18px;
-      color: #333;
-      margin: 0 0 5px;
-    }
-    .item p {
-      font-size: 14px;
-      color: #555;
-      margin: 0 0 10px;
-    }
     .item img {
       max-width: 100%;
       height: auto;
       border-radius: 5px;
+    }
+    .item h2 {
+      font-size: 18px;
+      color: #333;
+      margin: 10px 0;
+    }
+    .item a {
+      text-decoration: none;
+      color: #007BFF;
+    }
+    .item a:hover {
+      text-decoration: underline;
+    }
+    .item p {
+      font-size: 14px;
+      color: #555;
+      margin: 5px 0 10px;
     }
   </style>
 </head>
@@ -47,8 +54,8 @@
 
   <script>
     async function cargarSeries() {
-      const proxy = "https://cors-anywhere.herokuapp.com/"; // Proxy para evitar problemas de CORS
-      const url = "https://raw.githubusercontent.com/pelisplanet2019/PlexMania/refs/heads/main/Menu%20Series.xml"; // Cambia este enlace al correcto
+      const proxy = "https://cors-anywhere.herokuapp.com/";
+      const url = "https://raw.githubusercontent.com/pelisplanet2019/PlexMania/refs/heads/main/Menu%20Series.xml";
 
       try {
         const response = await fetch(proxy + url);
@@ -56,23 +63,26 @@
         const parser = new DOMParser();
         const xmlDoc = parser.parseFromString(xml, "application/xml");
 
-        const channels = xmlDoc.getElementsByTagName("channel");
+        const channels = xmlDoc.getElementsByTagName("series_item");
         const container = document.getElementById("seriesContainer");
         container.innerHTML = ""; // Limpia el mensaje de carga inicial
 
         for (let i = 0; i < channels.length; i++) {
           const channel = channels[i];
-          const name = channel.getElementsByTagName("name")[0].textContent;
+          const title = channel.getElementsByTagName("title")[0].textContent;
           const description = channel.getElementsByTagName("description")[0]?.textContent || "Sin descripción";
           const thumbnail = channel.getElementsByTagName("thumbnail")[0]?.textContent || "";
+          const link = channel.getElementsByTagName("link")[0]?.textContent || "#";
 
           const itemDiv = document.createElement("div");
           itemDiv.classList.add("item");
 
           itemDiv.innerHTML = `
-            <h2>${name}</h2>
+            <a href="${link}" target="_blank">
+              <img src="${thumbnail}" alt="${title}" />
+            </a>
+            <h2><a href="${link}" target="_blank">${title}</a></h2>
             <p>${description}</p>
-            <img src="${thumbnail}" alt="${name}" />
           `;
 
           container.appendChild(itemDiv);
@@ -83,7 +93,6 @@
       }
     }
 
-    // Llama a la función al cargar la página
     document.addEventListener("DOMContentLoaded", cargarSeries);
   </script>
 </body>
