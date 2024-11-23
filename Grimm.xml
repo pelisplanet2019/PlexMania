@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <series>
-  <title>Breaking Bad</title>
+  <title>Grimm</title>
   <info>Temporadas y episodios de Breaking Bad.</info>
+  <fanart>http://fina.dyndns.tv/Series/Grimm/01x01.mkv</fanart>
   <seasons>
     <season number="1">
       <title>Temporada 1</title>
       <episodes>
         <episode>
           <title>Piloto</title>
-          <thumbnail>https://example.com/images/breakingbad_s1e1.jpg</thumbnail>
-          <link>https://streamtape.com/get_video?id=XXXXXX</link>
+          <thumbnail>https://i.ibb.co/6B3cVyT/transcode-5.jpg</thumbnail>
+          <link>http://fina.dyndns.tv/Series/Grimm/01x01.mkv</link>
         </episode>
       </episodes>
     </season>
