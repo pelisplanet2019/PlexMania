@@ -55,18 +55,33 @@
     .episode h3 {
       font-size: 18px;
       color: #333;
+      margin: 0;
+    }
+    .btn {
+      display: inline-block;
+      padding: 10px 15px;
+      margin-left: 15px;
+      background: #007BFF;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      font-size: 16px;
+    }
+    .btn:hover {
+      background: #0056b3;
+    }
+    .video-container {
+      display: none; /* Oculto por defecto */
+      margin-top: 10px;
     }
     video {
       width: 100%;
       height: auto;
-      margin-top: 10px;
       border-radius: 5px;
       background: #000;
-    }
-    .error {
-      color: red;
-      text-align: center;
-      margin-top: 20px;
     }
   </style>
 </head>
@@ -117,15 +132,18 @@
             const episodeDiv = document.createElement("div");
             episodeDiv.classList.add("episode");
 
-            // Aquí se genera dinámicamente el reproductor o iframe para cada episodio
+            // Genera el botón y el contenedor del video
             episodeDiv.innerHTML = `
               <img src="${thumbnail}" alt="${episodeTitle}" />
               <div>
                 <h3>${episodeTitle}</h3>
-                <video controls preload="metadata">
-                  <source src="${link}" type="video/mp4">
-                  Tu navegador no soporta la reproducción de este video.
-                </video>
+                <button class="btn" onclick="verVideo('${link}', this)">Ver ahora</button>
+                <div class="video-container">
+                  <video controls preload="metadata">
+                    <source src="${link}" type="video/mp4">
+                    Tu navegador no soporta la reproducción de este video.
+                  </video>
+                </div>
               </div>
             `;
             seasonDiv.appendChild(episodeDiv);
@@ -137,6 +155,12 @@
           <p>Error al cargar temporadas y episodios.</p>
         `;
       }
+    }
+
+    function verVideo(link, button) {
+      const videoContainer = button.nextElementSibling; // Encuentra el contenedor de video asociado
+      videoContainer.style.display = "block"; // Muestra el reproductor
+      button.style.display = "none"; // Oculta el botón
     }
 
     document.addEventListener("DOMContentLoaded", cargarTemporadas);
