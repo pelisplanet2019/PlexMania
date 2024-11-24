@@ -83,27 +83,26 @@
           seasonDiv.innerHTML = `<h2>${seasonTitle}</h2>`;
           container.appendChild(seasonDiv);
 
-          const episodes = season.getElementsByTagName("episode");
-          for (let j = 0; j < episodes.length; j++) {
-            const episode = episodes[j];
-            const episodeTitle = episode.getElementsByTagName("title")[0]?.textContent || `Episodio ${j + 1}`;
-            const thumbnail = episode.getElementsByTagName("thumbnail")[0]?.textContent || "";
-            const link = episode.getElementsByTagName("link")[0]?.textContent || "#";
+const episodes = season.getElementsByTagName("episode");
+for (let j = 0; j < episodes.length; j++) {
+  const episode = episodes[j];
+  const episodeTitle = episode.getElementsByTagName("title")[0]?.textContent || `Episodio ${j + 1}`;
+  const thumbnail = episode.getElementsByTagName("thumbnail")[0]?.textContent || "https://via.placeholder.com/100";
+  const link = episode.getElementsByTagName("link")[0]?.textContent || "#";
 
-            const episodeDiv = document.createElement("div");
-            episodeDiv.classList.add("episode");
+  const episodeDiv = document.createElement("div");
+  episodeDiv.classList.add("episode");
 
-            // Aquí se inserta el reproductor para el video
-            episodeDiv.innerHTML = `
-              <h3>${episodeTitle}</h3>
-              <video controls preload="metadata">
-                <source src="${link}" type="video/mp4">
-                Tu navegador no soporta la reproducción de video.
-              </video>
-            `;
-            seasonDiv.appendChild(episodeDiv);
-          }
-        }
+  // Generar dinámicamente el reproductor basado en el <link> del XML
+  episodeDiv.innerHTML = `
+    <h3>${episodeTitle}</h3>
+    <video controls preload="metadata">
+      <source src="${link}" type="video/mp4">
+      Tu navegador no soporta la reproducción de video.
+    </video>
+  `;
+  seasonDiv.appendChild(episodeDiv);
+}
       } catch (error) {
         console.error("Error al cargar el XML:", error);
         document.getElementById("temporadasContainer").innerHTML = `
