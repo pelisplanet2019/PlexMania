@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App de Películas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+        .container {
+            width: 90%;
+            max-width: 600px;
+            margin: 20px auto;
+            text-align: center;
+        }
+        .logo {
+            max-width: 150px;
+            margin: 20px auto;
+        }
+        .search-bar {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .categories {
+            text-align: left;
+        }
+        .category {
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #eaeaea;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .category:hover {
+            background-color: #dcdcdc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Logo -->
+        <img src="logo.png" alt="Logo" class="logo">
+
+        <!-- Barra de búsqueda -->
+        <input type="text" class="search-bar" placeholder="Buscar películas...">
+
+        <!-- Categorías -->
+        <div class="categories">
+            <h2>Categorías</h2>
+            <div class="category">Acción</div>
+            <div class="category">Comedia</div>
+            <div class="category">Drama</div>
+            <div class="category">Terror</div>
+            <!-- Más categorías -->
+        </div>
+    </div>
+</body>
+</html>
