@@ -37,8 +37,8 @@
             android:layout_gravity="center">
 
             <ImageView
-                android:layout_width="360dp"
-                android:layout_height="450dp"
+                android:layout_width="260dp"
+                android:layout_height="360dp"
                 android:src="@drawable/placeholder_image"
                 android:scaleType="centerCrop" />
 
@@ -61,8 +61,8 @@
             android:layout_gravity="center">
 
             <ImageView
-                android:layout_width="360dp"
-                android:layout_height="450dp"
+                android:layout_width="260dp"
+                android:layout_height="360dp"
                 android:src="@drawable/placeholder_image"
                 android:scaleType="centerCrop" />
 
@@ -74,3 +74,8 @@
                 android:gravity="center"
                 android:padding="8dp" />
         </LinearLayout>
+
+        <!-- Repite las tarjetas para las demás películas -->
+
+    </GridLayout>
+</LinearLayout>
