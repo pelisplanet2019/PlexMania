@@ -5,62 +5,101 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>App de Películas</title>
     <style>
+        /* General */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f8f8f8;
+            background-color: #1a1a1a; /* Color de fondo tipo Plex */
+            color: #f5f5f5; /* Texto en gris claro */
         }
+
+        h1 {
+            color: #ffa31a; /* Color anaranjado Plex */
+            text-align: center;
+            padding: 20px 0;
+        }
+
         .container {
             width: 90%;
-            max-width: 600px;
-            margin: 20px auto;
-            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px; /* Espacio entre las cajas */
+            justify-content: center;
         }
-        .logo {
-            max-width: 150px;
-            margin: 20px auto;
+
+        .movie-card {
+            width: 360px; /* Ancho fijo de las columnas */
+            height: 450px; /* Altura fija */
+            background-color: #333333; /* Fondo de las tarjetas */
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .search-bar {
+
+        .movie-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .movie-card img {
             width: 100%;
+            height: 75%; /* La imagen ocupa el 75% del card */
+            object-fit: cover; /* Asegura que la imagen se ajuste correctamente */
+        }
+
+        .movie-card .movie-title {
             padding: 10px;
-            font-size: 16px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            text-align: center;
+            font-size: 18px;
+            color: #ffa31a; /* Texto anaranjado para los títulos */
         }
-        .categories {
-            text-align: left;
+
+        /* Ajustes para pantallas pequeñas */
+        @media (max-width: 768px) {
+            .movie-card {
+                width: 45%; /* Dos columnas en pantallas medianas */
+            }
         }
-        .category {
-            padding: 10px;
-            margin-bottom: 10px;
-            background-color: #eaeaea;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .category:hover {
-            background-color: #dcdcdc;
+
+        @media (max-width: 480px) {
+            .movie-card {
+                width: 100%; /* Una columna en pantallas pequeñas */
+            }
         }
     </style>
 </head>
 <body>
+    <h1>Explora Nuestras Películas</h1>
     <div class="container">
-        <!-- Logo -->
-        <img src="logo.png" alt="Logo" class="logo">
-
-        <!-- Barra de búsqueda -->
-        <input type="text" class="search-bar" placeholder="Buscar películas...">
-
-        <!-- Categorías -->
-        <div class="categories">
-            <h2>Categorías</h2>
-            <div class="category">Acción</div>
-            <div class="category">Comedia</div>
-            <div class="category">Drama</div>
-            <div class="category">Terror</div>
-            <!-- Más categorías -->
+        <!-- Película 1 -->
+        <div class="movie-card">
+            <img src="https://via.placeholder.com/360x450" alt="Película 1">
+            <div class="movie-title">Película 1</div>
         </div>
+
+        <!-- Película 2 -->
+        <div class="movie-card">
+            <img src="https://via.placeholder.com/360x450" alt="Película 2">
+            <div class="movie-title">Película 2</div>
+        </div>
+
+        <!-- Película 3 -->
+        <div class="movie-card">
+            <img src="https://via.placeholder.com/360x450" alt="Película 3">
+            <div class="movie-title">Película 3</div>
+        </div>
+
+        <!-- Película 4 -->
+        <div class="movie-card">
+            <img src="https://via.placeholder.com/360x450" alt="Película 4">
+            <div class="movie-title">Película 4</div>
+        </div>
+
+        <!-- Puedes agregar más tarjetas según sea necesario -->
     </div>
 </body>
 </html>
