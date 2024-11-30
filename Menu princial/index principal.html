@@ -1,168 +1,205 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Principal</title>
+    <title>Página Principal - App de Películas</title>
     <style>
-        /* Estilo General */
+        /* General */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #0f0f0f; /* Fondo oscuro al estilo Plex */
-            color: #ffffff;
+            background-color: #1a1a1a;
+            color: #f5f5f5;
         }
 
-        /* Menú Superior */
+        /* Menú superior */
         .menu {
-            background-color: #1a1a1a; /* Fondo más claro para el menú */
-            padding: 10px 20px;
             display: flex;
-            justify-content: space-between;
+            justify-content: space-around;
             align-items: center;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            background-color: #333333;
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
-        .menu ul {
-            list-style: none;
-            display: flex;
-            margin: 0;
-            padding: 0;
-        }
-        .menu ul li {
-            margin: 0 15px;
-        }
-        .menu ul li a {
+
+        .menu a {
             text-decoration: none;
-            color: #b0b0b0;
-            font-size: 1.2rem;
-            transition: color 0.3s;
+            color: #ffa31a;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 8px 16px;
+            transition: background-color 0.3s;
         }
-        .menu ul li a:hover {
-            color: #007bff; /* Azul similar al destacado de Plex */
+
+        .menu a:hover {
+            background-color: #444444;
+            border-radius: 5px;
         }
 
         /* Carrusel */
-        .carrusel {
+        .carousel {
             position: relative;
+            width: 100%;
+            max-width: 1200px;
+            margin: 20px auto;
             overflow: hidden;
-            height: 300px;
-            margin-bottom: 20px;
+            border-radius: 10px;
         }
-        .carrusel-track {
+
+        .carousel-images {
             display: flex;
             transition: transform 0.5s ease-in-out;
         }
-        .carrusel img {
+
+        .carousel-images img {
             width: 100%;
-            flex-shrink: 0;
+            height: 400px;
+            object-fit: cover;
         }
 
-        /* Botones del Carrusel */
-        .carrusel-controls {
+        .carousel-buttons {
             position: absolute;
             top: 50%;
+            transform: translateY(-50%);
             width: 100%;
             display: flex;
             justify-content: space-between;
-            transform: translateY(-50%);
+            padding: 0 10px;
         }
-        .carrusel-controls button {
-            background: rgba(0, 0, 0, 0.7);
+
+        .carousel-button {
+            background-color: rgba(0, 0, 0, 0.5);
             border: none;
             color: #fff;
-            font-size: 2rem;
-            cursor: pointer;
+            font-size: 24px;
             padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: background-color 0.3s;
         }
 
-        /* Contenido */
-        .content {
-            padding: 20px;
-        }
-        .content h1 {
-            color: #00bcd4; /* Azul Plex */
-            text-align: center;
-            margin-bottom: 20px;
+        .carousel-button:hover {
+            background-color: #ffa31a;
         }
 
-        /* Cuadrícula */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
+        /* Sección de categorías */
+        .section {
+            margin: 20px 10px;
+        }
+
+        .section h2 {
+            color: #ffa31a;
+            margin-left: 20px;
+        }
+
+        .section .category-container {
+            display: flex;
+            flex-wrap: nowrap;
+            overflow-x: auto;
             gap: 15px;
+            padding: 10px 20px;
         }
-        .item {
-            border-radius: 10px;
+
+        .section .category-container .movie-card {
+            flex: 0 0 auto;
+            width: 180px;
+            height: 270px;
+            background-color: #333333;
+            border-radius: 8px;
             overflow: hidden;
-            background-color: #1a1a1a;
-            transition: transform 0.3s;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
         }
-        .item img {
-            width: 100%;
-            border-radius: 10px;
-        }
-        .item:hover {
+
+        .section .category-container .movie-card:hover {
             transform: scale(1.05);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+        }
+
+        .section .category-container img {
+            width: 100%;
+            height: 75%;
+            object-fit: cover;
+        }
+
+        .section .category-container .movie-title {
+            text-align: center;
+            font-size: 14px;
+            color: #ffa31a;
+            padding: 8px;
         }
     </style>
 </head>
 <body>
-    <!-- Menú Superior -->
-    <header class="menu">
-        <ul>
-            <li><a href="#peliculas">Películas</a></li>
-            <li><a href="#series">Series</a></li>
-            <li><a href="#anime">Anime</a></li>
-        </ul>
-    </header>
+    <!-- Menú superior -->
+    <div class="menu">
+        <a href="#">Películas</a>
+        <a href="#">Series</a>
+        <a href="#">Anime</a>
+    </div>
 
     <!-- Carrusel -->
-    <section class="carrusel">
-        <div class="carrusel-track">
-            <img src="images/carrusel1.jpg" alt="Carrusel 1">
-            <img src="images/carrusel2.jpg" alt="Carrusel 2">
-            <img src="images/carrusel3.jpg" alt="Carrusel 3">
+    <div class="carousel">
+        <div class="carousel-images">
+            <img src="https://via.placeholder.com/1200x400/333333/ffffff?text=Original+1" alt="Original 1">
+            <img src="https://via.placeholder.com/1200x400/333333/ffffff?text=Original+2" alt="Original 2">
+            <img src="https://via.placeholder.com/1200x400/333333/ffffff?text=Original+3" alt="Original 3">
         </div>
-        <div class="carrusel-controls">
-            <button class="prev">&lt;</button>
-            <button class="next">&gt;</button>
+        <div class="carousel-buttons">
+            <button class="carousel-button" id="prev">&lt;</button>
+            <button class="carousel-button" id="next">&gt;</button>
         </div>
-    </section>
+    </div>
 
-    <!-- Contenido Principal -->
-    <section class="content">
-        <h1>Novedades</h1>
-        <div class="grid">
-            <div class="item"><img src="images/pelicula1.jpg" alt="Película 1"></div>
-            <div class="item"><img src="images/pelicula2.jpg" alt="Película 2"></div>
-            <div class="item"><img src="images/pelicula3.jpg" alt="Película 3"></div>
-            <div class="item"><img src="images/pelicula4.jpg" alt="Película 4"></div>
+    <!-- Sección de categorías -->
+    <div class="section">
+        <h2>Últimas Películas</h2>
+        <div class="category-container">
+            <div class="movie-card">
+                <img src="https://via.placeholder.com/180x270" alt="Película 1">
+                <div class="movie-title">Película 1</div>
+            </div>
+            <div class="movie-card">
+                <img src="https://via.placeholder.com/180x270" alt="Película 2">
+                <div class="movie-title">Película 2</div>
+            </div>
+            <div class="movie-card">
+                <img src="https://via.placeholder.com/180x270" alt="Película 3">
+                <div class="movie-title">Película 3</div>
+            </div>
         </div>
-    </section>
+    </div>
 
     <script>
-        // Carrusel
-        const track = document.querySelector('.carrusel-track');
-        const slides = Array.from(track.children);
-        const nextButton = document.querySelector('.next');
-        const prevButton = document.querySelector('.prev');
-        let currentSlide = 0;
+        const carouselImages = document.querySelector('.carousel-images');
+        const images = document.querySelectorAll('.carousel-images img');
+        const prevButton = document.getElementById('prev');
+        const nextButton = document.getElementById('next');
+        let index = 0;
 
-        const updateSlide = (index) => {
-            track.style.transform = `translateX(-${index * 100}%)`;
-        };
-
-        nextButton.addEventListener('click', () => {
-            currentSlide = (currentSlide + 1) % slides.length;
-            updateSlide(currentSlide);
-        });
+        function updateCarousel() {
+            const width = images[0].clientWidth;
+            carouselImages.style.transform = `translateX(${-index * width}px)`;
+        }
 
         prevButton.addEventListener('click', () => {
-            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-            updateSlide(currentSlide);
+            index = (index > 0) ? index - 1 : images.length - 1;
+            updateCarousel();
         });
+
+        nextButton.addEventListener('click', () => {
+            index = (index < images.length - 1) ? index + 1 : 0;
+            updateCarousel();
+        });
+
+        // Autoplay (opcional)
+        setInterval(() => {
+            nextButton.click();
+        }, 5000);
     </script>
 </body>
 </html>
