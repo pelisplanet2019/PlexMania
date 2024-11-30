@@ -1,0 +1,89 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #1f1f1f;
+    color: #e0e0e0;
+}
+
+/* Header Menu */
+.menu {
+    background-color: #2c2c2c;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+.menu ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    padding: 0;
+    margin: 0;
+}
+.menu ul li {
+    display: inline;
+}
+.menu ul li a {
+    text-decoration: none;
+    color: #e0e0e0;
+    font-size: 1.2rem;
+    transition: color 0.3s;
+}
+.menu ul li a:hover {
+    color: #00bcd4;
+}
+
+/* Carrusel */
+.carrusel {
+    position: relative;
+    overflow: hidden;
+    height: 400px;
+    margin: 20px 0;
+}
+.carrusel-track {
+    display: flex;
+    animation: scroll 10s linear infinite;
+}
+.carrusel img {
+    width: 100%;
+    flex-shrink: 0;
+}
+
+/* Animación del Carrusel */
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* Grid de Novedades */
+.content {
+    text-align: center;
+    padding: 20px;
+}
+.content h1 {
+    margin-bottom: 20px;
+    color: #00bcd4;
+}
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+.item {
+    overflow: hidden;
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+.item img {
+    width: 100%;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-radius: 10px;
+}
+.item:hover img {
+    transform: scale(1.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+}
