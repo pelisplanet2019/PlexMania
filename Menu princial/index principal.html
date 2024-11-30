@@ -110,4 +110,56 @@
     <header class="menu">
         <ul>
             <li><a href="#peliculas">Películas</a></li>
-            <li><a href="#series">Series</
+            <li><a href="#series">Series</a></li>
+            <li><a href="#anime">Anime</a></li>
+        </ul>
+    </header>
+
+    <!-- Carrusel -->
+    <section class="carrusel">
+        <div class="carrusel-track">
+            <img src="images/carrusel1.jpg" alt="Carrusel 1">
+            <img src="images/carrusel2.jpg" alt="Carrusel 2">
+            <img src="images/carrusel3.jpg" alt="Carrusel 3">
+        </div>
+        <div class="carrusel-controls">
+            <button class="prev">&lt;</button>
+            <button class="next">&gt;</button>
+        </div>
+    </section>
+
+    <!-- Contenido Principal -->
+    <section class="content">
+        <h1>Novedades</h1>
+        <div class="grid">
+            <div class="item"><img src="images/pelicula1.jpg" alt="Película 1"></div>
+            <div class="item"><img src="images/pelicula2.jpg" alt="Película 2"></div>
+            <div class="item"><img src="images/pelicula3.jpg" alt="Película 3"></div>
+            <div class="item"><img src="images/pelicula4.jpg" alt="Película 4"></div>
+        </div>
+    </section>
+
+    <script>
+        // Carrusel
+        const track = document.querySelector('.carrusel-track');
+        const slides = Array.from(track.children);
+        const nextButton = document.querySelector('.next');
+        const prevButton = document.querySelector('.prev');
+        let currentSlide = 0;
+
+        const updateSlide = (index) => {
+            track.style.transform = `translateX(-${index * 100}%)`;
+        };
+
+        nextButton.addEventListener('click', () => {
+            currentSlide = (currentSlide + 1) % slides.length;
+            updateSlide(currentSlide);
+        });
+
+        prevButton.addEventListener('click', () => {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            updateSlide(currentSlide);
+        });
+    </script>
+</body>
+</html>
