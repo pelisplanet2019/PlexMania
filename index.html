@@ -10,12 +10,12 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #1a1a1a; /* Color de fondo tipo Plex */
-            color: #f5f5f5; /* Texto en gris claro */
+            background-color: #1a1a1a; /* Fondo oscuro tipo Plex */
+            color: #f5f5f5;
         }
 
         h1 {
-            color: #ffa31a; /* Color anaranjado Plex */
+            color: #ffa31a;
             text-align: center;
             padding: 20px 0;
         }
@@ -26,18 +26,18 @@
             margin: 0 auto;
             display: flex;
             flex-wrap: wrap;
-            gap: 20px; /* Espacio entre las cajas */
+            gap: 15px; /* Espacio entre las tarjetas */
             justify-content: center;
         }
 
         .movie-card {
-            width: 260px; /* Ancho fijo de las columnas */
-            height: 360px; /* Altura fija */
+            width: 180px; /* Ancho fijo compacto */
+            height: 270px; /* Altura fija compacta */
             background-color: #333333; /* Fondo de las tarjetas */
-            border-radius: 10px;
+            border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
         .movie-card:hover {
@@ -47,21 +47,21 @@
 
         .movie-card img {
             width: 100%;
-            height: 75%; /* La imagen ocupa el 75% del card */
-            object-fit: cover; /* Asegura que la imagen se ajuste correctamente */
+            height: 75%; /* Imagen ocupa 75% del card */
+            object-fit: cover;
         }
 
         .movie-card .movie-title {
-            padding: 10px;
+            padding: 8px;
             text-align: center;
-            font-size: 16px;
-            color: #ffa31a; /* Texto anaranjado para los títulos */
+            font-size: 14px; /* Tamaño más compacto */
+            color: #ffa31a;
         }
 
         /* Ajustes para pantallas pequeñas */
         @media (max-width: 768px) {
             .movie-card {
-                width: 45%; /* Dos columnas en pantallas medianas */
+                width: 40%; /* Dos columnas en pantallas medianas */
             }
         }
 
@@ -77,29 +77,29 @@
     <div class="container">
         <!-- Película 1 -->
         <div class="movie-card">
-            <img src="https://via.placeholder.com/260x360" alt="Película 1">
+            <img src="https://via.placeholder.com/180x270" alt="Película 1">
             <div class="movie-title">Película 1</div>
         </div>
 
         <!-- Película 2 -->
         <div class="movie-card">
-            <img src="https://via.placeholder.com/260x360" alt="Película 2">
+            <img src="https://via.placeholder.com/180x270" alt="Película 2">
             <div class="movie-title">Película 2</div>
         </div>
 
         <!-- Película 3 -->
         <div class="movie-card">
-            <img src="https://via.placeholder.com/260x360" alt="Película 3">
+            <img src="https://via.placeholder.com/180x270" alt="Película 3">
             <div class="movie-title">Película 3</div>
         </div>
 
         <!-- Película 4 -->
         <div class="movie-card">
-            <img src="https://via.placeholder.com/260x360" alt="Película 4">
+            <img src="https://via.placeholder.com/180x270" alt="Película 4">
             <div class="movie-title">Película 4</div>
         </div>
 
-        <!-- Puedes agregar más tarjetas según sea necesario -->
+        <!-- Agrega más tarjetas según sea necesario -->
     </div>
 </body>
 </html>
