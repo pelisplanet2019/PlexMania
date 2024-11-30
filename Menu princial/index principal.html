@@ -10,13 +10,13 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #1a1a1a;
-            color: #e0e0e0;
+            background-color: #0f0f0f; /* Fondo oscuro al estilo Plex */
+            color: #ffffff;
         }
 
         /* Menú Superior */
         .menu {
-            background-color: #2b2b2b;
+            background-color: #1a1a1a; /* Fondo más claro para el menú */
             padding: 10px 20px;
             display: flex;
             justify-content: space-between;
@@ -34,19 +34,20 @@
         }
         .menu ul li a {
             text-decoration: none;
-            color: #e0e0e0;
+            color: #b0b0b0;
             font-size: 1.2rem;
             transition: color 0.3s;
         }
         .menu ul li a:hover {
-            color: #00bcd4;
+            color: #007bff; /* Azul similar al destacado de Plex */
         }
 
         /* Carrusel */
         .carrusel {
             position: relative;
             overflow: hidden;
-            height: 400px;
+            height: 300px;
+            margin-bottom: 20px;
         }
         .carrusel-track {
             display: flex;
@@ -67,7 +68,7 @@
             transform: translateY(-50%);
         }
         .carrusel-controls button {
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.7);
             border: none;
             color: #fff;
             font-size: 2rem;
@@ -77,30 +78,32 @@
 
         /* Contenido */
         .content {
-            text-align: center;
             padding: 20px;
         }
         .content h1 {
+            color: #00bcd4; /* Azul Plex */
+            text-align: center;
             margin-bottom: 20px;
-            color: #00bcd4;
         }
+
+        /* Cuadrícula */
         .grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 15px;
         }
         .item {
-            overflow: hidden;
             border-radius: 10px;
+            overflow: hidden;
+            background-color: #1a1a1a;
             transition: transform 0.3s;
         }
         .item img {
             width: 100%;
-            transition: transform 0.3s, box-shadow 0.3s;
             border-radius: 10px;
         }
-        .item:hover img {
-            transform: scale(1.1);
+        .item:hover {
+            transform: scale(1.05);
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
         }
     </style>
