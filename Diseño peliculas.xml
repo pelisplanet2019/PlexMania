@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:text="Explora Nuestras Películas"
         android:textColor="#ffa31a"
-        android:textSize="24sp"
+        android:textSize="20sp"
         android:layout_gravity="center_horizontal"
         android:padding="16dp"
         android:textStyle="bold" />
@@ -37,8 +37,8 @@
             android:layout_gravity="center">
 
             <ImageView
-                android:layout_width="260dp"
-                android:layout_height="360dp"
+                android:layout_width="180dp"
+                android:layout_height="270dp"
                 android:src="@drawable/placeholder_image"
                 android:scaleType="centerCrop" />
 
@@ -48,31 +48,8 @@
                 android:text="Película 1"
                 android:textColor="#ffa31a"
                 android:gravity="center"
-                android:padding="8dp" />
-        </LinearLayout>
-
-        <!-- Ejemplo de Tarjeta 2 -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_margin="8dp"
-            android:background="#333333"
-            android:layout_gravity="center">
-
-            <ImageView
-                android:layout_width="260dp"
-                android:layout_height="360dp"
-                android:src="@drawable/placeholder_image"
-                android:scaleType="centerCrop" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Película 2"
-                android:textColor="#ffa31a"
-                android:gravity="center"
-                android:padding="8dp" />
+                android:padding="8dp"
+                android:textSize="12sp" />
         </LinearLayout>
 
         <!-- Repite las tarjetas para las demás películas -->
