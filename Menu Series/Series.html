@@ -16,23 +16,24 @@
 
         h1 {
             color: #ffa31a;
-            text-align: center;
+            text-align: left;
+            margin-left: 20px;
             padding: 20px 0;
         }
 
         .container {
-            width: 90%;
+            width: 100%; /* Aprovecha todo el ancho */
             max-width: 1200px;
             margin: 0 auto;
-            display: flex;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
             gap: 15px;
-            justify-content: center;
+            padding: 10px 20px; /* Ajusta los márgenes */
         }
 
         .movie-card {
-            width: 180px;
-            height: 270px;
+            width: 160px; /* Ajustado al nuevo tamaño */
+            height: 260px;
             background-color: #333333;
             border-radius: 8px;
             overflow: hidden;
@@ -47,36 +48,44 @@
 
         .movie-card img {
             width: 100%;
-            height: 75%;
+            height: 80%; /* Las imágenes ocupan el 80% del card */
             object-fit: cover;
         }
 
         .movie-card .movie-title {
             padding: 8px;
             text-align: center;
-            font-size: 14px;
+            font-size: 12px; /* Ajustado al tamaño menor */
             color: #ffa31a;
         }
     </style>
 </head>
 <body>
-    <h1>Explora Nuestras Series</h1>
+    <!-- Menú superior -->
+    <div class="menu">
+        <a href="peliculas.html">Películas</a>
+        <a href="series.html">Series</a>
+        <a href="anime.html">Anime</a>
+    </div>
+
+    <!-- Contenido principal -->
+    <h1>Series Populares</h1>
     <div class="container">
         <!-- Serie 1 -->
         <div class="movie-card">
-            <img src="https://via.placeholder.com/180x270" alt="Serie 1">
+            <img src="https://via.placeholder.com/160x260" alt="Serie 1">
             <div class="movie-title">Serie 1</div>
         </div>
 
         <!-- Serie 2 -->
         <div class="movie-card">
-            <img src="https://via.placeholder.com/180x270" alt="Serie 2">
+            <img src="https://via.placeholder.com/160x260" alt="Serie 2">
             <div class="movie-title">Serie 2</div>
         </div>
 
         <!-- Serie 3 -->
         <div class="movie-card">
-            <img src="https://via.placeholder.com/180x270" alt="Serie 3">
+            <img src="https://via.placeholder.com/160x260" alt="Serie 3">
             <div class="movie-title">Serie 3</div>
         </div>
     </div>
