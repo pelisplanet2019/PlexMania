@@ -1,0 +1,30 @@
+<content>
+    <series>
+        <item>
+            <title>Serie 1</title>
+            <image>https://via.placeholder.com/180x270</image>
+        </item>
+        <item>
+            <title>Serie 2</title>
+            <image>https://via.placeholder.com/180x270</image>
+        </item>
+        <item>
+            <title>Serie 3</title>
+            <image>https://via.placeholder.com/180x270</image>
+        </item>
+    </series>
+    <anime>
+        <item>
+            <title>Anime 1</title>
+            <image>https://via.placeholder.com/180x270</image>
+        </item>
+        <item>
+            <title>Anime 2</title>
+            <image>https://via.placeholder.com/180x270</image>
+        </item>
+        <item>
+            <title>Anime 3</title>
+            <image>https://via.placeholder.com/180x270</image>
+        </item>
+    </anime>
+</content>
