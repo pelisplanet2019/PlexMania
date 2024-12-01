@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Series - App</title>
+    <title>Página Principal - App de Películas</title>
     <style>
         /* General */
         body {
@@ -41,47 +41,104 @@
             border-radius: 5px;
         }
 
-        /* Contenido principal */
-        h1 {
-            color: #ffa31a;
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); /* Flexibilidad */
-            gap: 10px; /* Menor espacio entre tarjetas */
-            width: 90%;
+        /* Carrusel */
+        .carousel {
+            position: relative;
+            width: 100%;
             max-width: 1200px;
-            margin: 0 auto;
-            padding: 10px;
+            margin: 20px auto;
+            overflow: hidden;
+            border-radius: 10px;
         }
 
-        .movie-card {
+        .carousel-images {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel h2 {
+            text-align: center;
+            color: #ffa31a;
+            margin-bottom: 20px;
+        }
+
+        .carousel-images img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .carousel-buttons {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 10px;
+        }
+
+        .carousel-button {
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: #fff;
+            font-size: 24px;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+
+        .carousel-button:hover {
+            background-color: #ffa31a;
+        }
+
+        /* Sección de categorías */
+        .section {
+            margin: 20px 10px;
+        }
+
+        .section h2 {
+            text-align: center;
+            color: #ffa31a;
+            margin-bottom: 20px;
+        }
+
+        .section .category-container {
+            display: flex;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            gap: 15px;
+            padding: 10px 20px;
+            margin-left: 20px; /* Añade este margen */
+        }
+
+        .section .category-container .movie-card {
+            flex: 0 0 auto;
+            width: 180px;
+            height: 270px;
             background-color: #333333;
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            transition: transform 0.3s ease;
         }
 
-        .movie-card:hover {
+        .section .category-container .movie-card:hover {
             transform: scale(1.05);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
         }
 
-        .movie-card img {
+        .section .category-container img {
             width: 100%;
-            height: 260px;
+            height: 75%;
             object-fit: cover;
         }
 
-        .movie-card .movie-title {
-            padding: 8px;
+        .section .category-container .movie-title {
             text-align: center;
             font-size: 14px;
             color: #ffa31a;
+            padding: 8px;
         }
     </style>
 </head>
@@ -93,26 +150,84 @@
         <a href="#">Anime</a>
     </div>
 
-    <!-- Contenido principal -->
-    <h1>Explora Nuestras Series</h1>
-    <div class="container">
-        <!-- Serie 1 -->
-        <div class="movie-card">
-            <img src="https://via.placeholder.com/160x260" alt="Serie 1">
-            <div class="movie-title">Serie 1</div>
+    <!-- Carrusel -->
+    <div class="carousel">
+        <h2>Estrenos</h2>
+        <div class="carousel-images">
+            <img src="https://via.placeholder.com/1200x400/333333/ffffff?text=Original+1" alt="Original 1">
+            <img src="https://via.placeholder.com/1200x400/333333/ffffff?text=Original+2" alt="Original 2">
+            <img src="https://via.placeholder.com/1200x400/333333/ffffff?text=Original+3" alt="Original 3">
         </div>
-
-        <!-- Serie 2 -->
-        <div class="movie-card">
-            <img src="https://via.placeholder.com/160x260" alt="Serie 2">
-            <div class="movie-title">Serie 2</div>
-        </div>
-
-        <!-- Serie 3 -->
-        <div class="movie-card">
-            <img src="https://via.placeholder.com/160x260" alt="Serie 3">
-            <div class="movie-title">Serie 3</div>
+        <div class="carousel-buttons">
+            <button class="carousel-button" id="prev">&lt;</button>
+            <button class="carousel-button" id="next">&gt;</button>
         </div>
     </div>
+
+    <!-- Sección Últimas Películas -->
+    <div class="section">
+        <h2>Últimas Películas</h2>
+        <div class="category-container">
+            <div class="movie-card">
+                <img src="https://via.placeholder.com/180x270" alt="Película 1">
+                <div class="movie-title">Película 1</div>
+            </div>
+            <div class="movie-card">
+                <img src="https://via.placeholder.com/180x270" alt="Película 2">
+                <div class="movie-title">Película 2</div>
+            </div>
+            <div class="movie-card">
+                <img src="https://via.placeholder.com/180x270" alt="Película 3">
+                <div class="movie-title">Película 3</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección Series Destacadas -->
+    <div class="section">
+        <h2>Series Destacadas</h2>
+        <div class="category-container">
+            <div class="movie-card">
+                <img src="https://via.placeholder.com/180x270" alt="Serie 1">
+                <div class="movie-title">Serie 1</div>
+            </div>
+            <div class="movie-card">
+                <img src="https://via.placeholder.com/180x270" alt="Serie 2">
+                <div class="movie-title">Serie 2</div>
+            </div>
+            <div class="movie-card">
+                <img src="https://via.placeholder.com/180x270" alt="Serie 3">
+                <div class="movie-title">Serie 3</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const carouselImages = document.querySelector('.carousel-images');
+        const images = document.querySelectorAll('.carousel-images img');
+        const prevButton = document.getElementById('prev');
+        const nextButton = document.getElementById('next');
+        let index = 0;
+
+        function updateCarousel() {
+            const width = images[0].clientWidth;
+            carouselImages.style.transform = `translateX(${-index * width}px)`;
+        }
+
+        prevButton.addEventListener('click', () => {
+            index = (index > 0) ? index - 1 : images.length - 1;
+            updateCarousel();
+        });
+
+        nextButton.addEventListener('click', () => {
+            index = (index < images.length - 1) ? index + 1 : 0;
+            updateCarousel();
+        });
+
+        // Autoplay (opcional)
+        setInterval(() => {
+            nextButton.click();
+        }, 5000);
+    </script>
 </body>
 </html>
