@@ -41,58 +41,6 @@
             border-radius: 5px;
         }
 
-        /* Carrusel */
-        .carousel {
-            position: relative;
-            width: 100%;
-            max-width: 1200px;
-            margin: 20px auto;
-            overflow: hidden;
-            border-radius: 10px;
-        }
-
-        .carousel-images {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-        }
-
-        .carousel h2 {
-            text-align: center;
-            color: #ffa31a;
-            margin-bottom: 20px;
-        }
-
-        .carousel-images img {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-        }
-
-        .carousel-buttons {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            padding: 0 10px;
-        }
-
-        .carousel-button {
-            background-color: rgba(0, 0, 0, 0.5);
-            border: none;
-            color: #fff;
-            font-size: 24px;
-            padding: 10px;
-            cursor: pointer;
-            border-radius: 50%;
-            transition: background-color 0.3s;
-        }
-
-        .carousel-button:hover {
-            background-color: #ffa31a;
-        }
-
         /* Sección de categorías */
         .section {
             margin: 20px 10px;
@@ -148,20 +96,6 @@
         <a href="#">Películas</a>
         <a href="#">Series</a>
         <a href="#">Anime</a>
-    </div>
-
-    <!-- Carrusel -->
-    <div class="carousel">
-        <h2>Estrenos</h2>
-        <div class="carousel-images">
-            <img src="https://via.placeholder.com/1200x400/333333/ffffff?text=Original+1" alt="Original 1">
-            <img src="https://via.placeholder.com/1200x400/333333/ffffff?text=Original+2" alt="Original 2">
-            <img src="https://via.placeholder.com/1200x400/333333/ffffff?text=Original+3" alt="Original 3">
-        </div>
-        <div class="carousel-buttons">
-            <button class="carousel-button" id="prev">&lt;</button>
-            <button class="carousel-button" id="next">&gt;</button>
-        </div>
     </div>
 
     <!-- Sección Últimas Películas -->
