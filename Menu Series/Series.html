@@ -14,26 +14,51 @@
             color: #f5f5f5;
         }
 
+        /* Menú superior */
+        .menu {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background-color: #333333;
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #ffa31a;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 8px 16px;
+            transition: background-color 0.3s;
+        }
+
+        .menu a:hover {
+            background-color: #444444;
+            border-radius: 5px;
+        }
+
+        /* Contenido principal */
         h1 {
             color: #ffa31a;
-            text-align: left;
-            margin-left: 20px;
-            padding: 20px 0;
+            text-align: center;
+            margin-top: 20px;
         }
 
         .container {
-            width: 100%; /* Aprovecha todo el ancho */
+            width: 90%;
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-            gap: 15px;
-            padding: 10px 20px; /* Ajusta los márgenes */
+            gap: 10px; /* Reducir el espacio entre las tarjetas */
+            padding: 20px 0;
         }
 
         .movie-card {
-            width: 160px; /* Ajustado al nuevo tamaño */
-            height: 260px;
             background-color: #333333;
             border-radius: 8px;
             overflow: hidden;
@@ -48,14 +73,14 @@
 
         .movie-card img {
             width: 100%;
-            height: 80%; /* Las imágenes ocupan el 80% del card */
+            height: 260px;
             object-fit: cover;
         }
 
         .movie-card .movie-title {
             padding: 8px;
             text-align: center;
-            font-size: 12px; /* Ajustado al tamaño menor */
+            font-size: 14px;
             color: #ffa31a;
         }
     </style>
@@ -69,7 +94,7 @@
     </div>
 
     <!-- Contenido principal -->
-    <h1>Series Populares</h1>
+    <h1>Explora Nuestras Series</h1>
     <div class="container">
         <!-- Serie 1 -->
         <div class="movie-card">
