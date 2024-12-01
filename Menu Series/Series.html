@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Series - App de Películas</title>
+    <style>
+        /* General */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1a1a1a;
+            color: #f5f5f5;
+        }
+
+        /* Menú superior */
+        .menu {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background-color: #333333;
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #ffa31a;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 8px 16px;
+            transition: background-color 0.3s;
+        }
+
+        .menu a:hover {
+            background-color: #444444;
+            border-radius: 5px;
+        }
+
+        /* Contenedor principal */
+        .content {
+            margin: 20px;
+        }
+
+        .content h2 {
+            text-align: left;
+            margin-left: 10px;
+            color: #ffa31a;
+        }
+
+        /* Cuadrícula */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            padding: 20px;
+        }
+
+        .grid-item {
+            background-color: #333333;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .grid-item:hover {
+            transform: scale(1.05);
+        }
+
+        .grid-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .grid-item .title {
+            text-align: center;
+            font-size: 14px;
+            color: #ffa31a;
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Menú superior -->
+    <div class="menu">
+        <a href="peliculas.html">Películas</a>
+        <a href="series.html">Series</a>
+        <a href="anime.html">Anime</a>
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="content">
+        <h2>Series Populares</h2>
+        <div class="grid">
+            <div class="grid-item">
+                <img src="https://via.placeholder.com/180x270" alt="Serie 1">
+                <div class="title">Serie 1</div>
+            </div>
+            <div class="grid-item">
+                <img src="https://via.placeholder.com/180x270" alt="Serie 2">
+                <div class="title">Serie 2</div>
+            </div>
+            <div class="grid-item">
+                <img src="https://via.placeholder.com/180x270" alt="Serie 3">
+                <div class="title">Serie 3</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
