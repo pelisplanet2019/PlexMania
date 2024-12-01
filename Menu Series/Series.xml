@@ -1,4 +1,14 @@
 <content>
+    <peliculas>
+        <item>
+            <title>Película 1</title>
+            <image>https://via.placeholder.com/180x270</image>
+        </item>
+        <item>
+            <title>Película 2</title>
+            <image>https://via.placeholder.com/180x270</image>
+        </item>
+    </peliculas>
     <series>
         <item>
             <title>Serie 1</title>
@@ -6,10 +16,6 @@
         </item>
         <item>
             <title>Serie 2</title>
-            <image>https://via.placeholder.com/180x270</image>
-        </item>
-        <item>
-            <title>Serie 3</title>
             <image>https://via.placeholder.com/180x270</image>
         </item>
     </series>
@@ -20,10 +26,6 @@
         </item>
         <item>
             <title>Anime 2</title>
-            <image>https://via.placeholder.com/180x270</image>
-        </item>
-        <item>
-            <title>Anime 3</title>
             <image>https://via.placeholder.com/180x270</image>
         </item>
     </anime>
