@@ -49,13 +49,13 @@
         }
 
         .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); /* Flexibilidad */
+            gap: 10px; /* Menor espacio entre tarjetas */
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-            gap: 10px; /* Reducir el espacio entre las tarjetas */
-            padding: 20px 0;
+            padding: 10px;
         }
 
         .movie-card {
