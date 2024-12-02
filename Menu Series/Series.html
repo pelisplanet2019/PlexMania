@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Series - App</title>
+    <title>Películas - App</title>
     <style>
         /* General */
         body {
@@ -41,15 +41,15 @@
             border-radius: 5px;
         }
 
-        /* Logo izquierdo en el menú */
+        /* Logo izquierdo */
         .menu img {
-            height: 60px; /* Aumentar tamaño del logo */
+            height: 60px;
         }
 
         /* Marco general */
         .content-wrapper {
-            margin: 20px 50px; /* Desplazar más hacia la derecha */
-            border: 4px solid #ffa31a; /* Marco amarillo */
+            margin: 20px 50px;
+            border: 4px solid #ffa31a;
             border-radius: 10px;
             padding: 20px;
         }
@@ -60,43 +60,35 @@
             margin-bottom: 20px;
         }
 
-        .section h2 img {
-            height: 50px; /* Aumentar tamaño del logo */
-            vertical-align: middle;
-        }
-
         /* Cuadrícula de portadas */
         .category-container {
             display: grid;
-            grid-template-columns: repeat(8, 1fr); /* 8 portadas por fila */
-            gap: 15px; /* Espacio entre portadas */
+            grid-template-columns: repeat(8, 1fr);
+            gap: 15px;
             padding: 10px;
         }
 
         .movie-card {
-            width: 100%; /* Ajusta automáticamente al espacio disponible */
-            height: 300px;
             background-color: #333333;
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
-            border: 4px solid transparent; /* Marco inicial transparente */
+            transition: transform 0.3s ease, border 0.3s ease;
+            border: 4px solid transparent;
         }
 
         .movie-card:hover {
             transform: scale(1.05);
-            border: 4px solid #ffa31a; /* Marco amarillo en hover */
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+            border: 4px solid #ffa31a;
         }
 
         .movie-card img {
             width: 100%;
-            height: 100%;
+            height: 300px;
             object-fit: cover;
         }
 
-        .movie-card .movie-title {
+        .movie-title {
             text-align: center;
             font-size: 14px;
             color: #ffa31a;
@@ -115,36 +107,36 @@
         </div>
     </div>
 
-    <!-- Marco general -->
+    <!-- Contenido -->
     <div class="content-wrapper">
         <div class="section">
-            <h2>Series Destacadas <img src="https://i.ibb.co/X2GzTm3/Movie2-37185.png" alt="Movie2"></h2>
-            <div class="category-container">
-                <!-- Serie 1 -->
-                <div class="movie-card">
-                    <img src="https://via.placeholder.com/200x300" alt="Serie 1">
-                    <div class="movie-title">Serie 1</div>
-                </div>
-                <!-- Serie 2 -->
-                <div class="movie-card">
-                    <img src="https://via.placeholder.com/200x300" alt="Serie 2">
-                    <div class="movie-title">Serie 2</div>
-                </div>
-                <!-- Serie 3 -->
-                <div class="movie-card">
-                    <img src="https://via.placeholder.com/200x300" alt="Serie 3">
-                    <div class="movie-title">Serie 3</div>
-                </div>
-                <div class="movie-card">
-                    <img src="https://via.placeholder.com/200x300" alt="Serie 3">
-                    <div class="movie-title">Serie 3</div>
-                </div>
-                <div class="movie-card">
-                    <img src="https://via.placeholder.com/200x300" alt="Serie 3">
-                    <div class="movie-title">Serie 3</div>
-                </div>
-            </div>
-        </div>
-    </div>
+            <h2>Películas Populares <img src="https://i.ibb.co/X2GzTm3/Movie2-37185.png" alt="Movie2"></h2>
+            <div class="category-container" id="series-container">
+    <!-- Las portadas se cargarán aquí dinámicamente -->
+</div>
+<script>
+    fetch('contenido.xml')
+        .then(response => response.text())
+        .then(xmlString => {
+            const parser = new DOMParser();
+            const xmlDoc = parser.parseFromString(xmlString, 'application/xml');
+            const series = xmlDoc.querySelectorAll('series > item');
+            const container = document.getElementById('series-container');
+
+            series.forEach(serie => {
+                const title = serie.querySelector('title').textContent;
+                const image = serie.querySelector('image').textContent;
+
+                const card = document.createElement('div');
+                card.classList.add('movie-card');
+                card.innerHTML = `
+                    <img src="${image}" alt="${title}">
+                    <div class="movie-title">${title}</div>
+                `;
+                container.appendChild(card);
+            });
+        })
+        .catch(error => console.error('Error cargando el XML:', error));
+</script>
 </body>
 </html>
