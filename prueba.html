@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Centro Multimedia</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+    .movie {
+      margin: 20px;
+      padding: 15px;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+    }
+    .movie img {
+      width: 150px;
+      float: left;
+      margin-right: 15px;
+    }
+    .movie h3 {
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="library"></div>
+
+  <script>
+    async function loadLibrary() {
+      const response = await fetch("https://mi-servidor.com/library.xml");
+      const text = await response.text();
+      const parser = new DOMParser();
+      const xml = parser.parseFromString(text, "application/xml");
+
+      const movies = xml.getElementsByTagName("movie");
+      const library = document.getElementById("library");
+
+      for (let i = 0; i < movies.length; i++) {
+        const movie = movies[i];
+        const title = movie.getElementsByTagName("title")[0].textContent;
+        const description = movie.getElementsByTagName("description")[0].textContent;
+        const thumbnail = movie.getElementsByTagName("thumbnail")[0].textContent;
+        const link = movie.getElementsByTagName("link")[0].textContent;
+
+        const div = document.createElement("div");
+        div.classList.add("movie");
+        div.innerHTML = `
+          <img src="${thumbnail}" alt="${title}">
+          <h3>${title}</h3>
+          <p>${description}</p>
+          <a href="${link}" target="_blank">Ver ahora</a>
+        `;
+        library.appendChild(div);
+      }
+    }
+
+    loadLibrary();
+  </script>
+</body>
+</html>
