@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<library>
-  <movie>
-    <title>Inception</title>
-    <description>Una película sobre sueños dentro de sueños.</description>
-    <thumbnail>https://example.com/inception.jpg</thumbnail>
-    <link>https://mi-servidor.com/videos/inception.mp4</link>
-  </movie>
-  <movie>
-    <title>The Matrix</title>
-    <description>La historia de un programador que descubre la verdad sobre su realidad.</description>
-    <thumbnail>https://example.com/matrix.jpg</thumbnail>
-    <link>https://mi-servidor.com/videos/matrix.mp4</link>
-  </movie>
-</library>
+<series>
+  <title>Breaking Bad</title>
+  <seasons>
+    <season number="1">
+      <title>Temporada 1</title>
+      <episodes>
+        <episode>
+          <title>Piloto</title>
+          <thumbnail>https://example.com/breakingbad_s1e1.jpg</thumbnail>
+          <link>https://streamtape.com/e/xxxxxx/01x01.mkv.mp4</link>
+        </episode>
+        <episode>
+          <title>El gato en la bolsa</title>
+          <thumbnail>https://example.com/breakingbad_s1e2.jpg</thumbnail>
+          <link>https://streamtape.com/e/yyyyyy/01x02.mkv.mp4</link>
+        </episode>
+      </episodes>
+    </season>
+  </seasons>
+</series>
