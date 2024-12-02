@@ -17,10 +17,10 @@
         /* Menú superior */
         .menu {
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between;
             align-items: center;
             background-color: #333333;
-            padding: 10px 0;
+            padding: 10px 20px;
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -41,6 +41,11 @@
             border-radius: 5px;
         }
 
+        /* Logo izquierdo en el menú */
+        .menu img {
+            height: 40px;
+        }
+
         /* Sección de categorías */
         .section {
             margin: 20px 10px;
@@ -49,20 +54,25 @@
         .section h2 {
             text-align: center;
             color: #ffa31a;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
+        }
+
+        .section h2 img {
+            height: 40px;
+            vertical-align: middle;
         }
 
         .section .category-container {
             display: flex;
             flex-wrap: wrap;
-            justify-content: flex-start; /* Alineación inicial */
+            justify-content: flex-start;
             gap: 15px;
-            padding: 10px 20px;
+            padding: 10px 40px; /* Desplazamiento hacia la derecha */
         }
 
         .section .category-container .movie-card {
             flex: 0 0 auto;
-            width: 160px; /* Ajustado al nuevo tamaño */
+            width: 160px;
             height: 260px;
             background-color: #333333;
             border-radius: 8px;
@@ -92,14 +102,17 @@
 <body>
     <!-- Menú superior -->
     <div class="menu">
-        <a href="#">Películas</a>
-        <a href="#">Series</a>
-        <a href="#">Anime</a>
+        <a href="#"><img src="https://i.ibb.co/k9rbDQQ/logo1.png" alt="logo1"></a>
+        <div>
+            <a href="peliculas.html">Películas</a>
+            <a href="series.html">Series</a>
+            <a href="anime.html">Anime</a>
+        </div>
     </div>
 
     <!-- Sección Series -->
     <div class="section">
-        <h2>Series Destacadas</h2>
+        <h2>Series Destacadas <img src="https://i.ibb.co/X2GzTm3/Movie2-37185.png" alt="Movie2"></h2>
         <div class="category-container">
             <!-- Serie 1 -->
             <div class="movie-card">
