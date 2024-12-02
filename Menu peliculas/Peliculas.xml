@@ -1,58 +1,21 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#1a1a1a"
-    android:padding="8dp">
-
-    <!-- Título -->
-    <TextView
-        android:id="@+id/app_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Explora Nuestras Películas"
-        android:textColor="#ffa31a"
-        android:textSize="20sp"
-        android:layout_gravity="center_horizontal"
-        android:padding="16dp"
-        android:textStyle="bold" />
-
-    <!-- Grid de películas -->
-    <GridLayout
-        android:id="@+id/movie_grid"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:columnCount="4"
-        android:rowCount="2"
-        android:padding="8dp">
-
-        <!-- Ejemplo de Tarjeta 1 -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_margin="8dp"
-            android:background="#333333"
-            android:layout_gravity="center">
-
-            <ImageView
-                android:layout_width="180dp"
-                android:layout_height="270dp"
-                android:src="@drawable/placeholder_image"
-                android:scaleType="centerCrop" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Película 1"
-                android:textColor="#ffa31a"
-                android:gravity="center"
-                android:padding="8dp"
-                android:textSize="12sp" />
-        </LinearLayout>
-
-        <!-- Repite las tarjetas para las demás películas -->
-
-    </GridLayout>
-</LinearLayout>
+<peliculas>
+  <pelicula_item>
+    <title>Inception</title>
+    <description>Un ladrón roba secretos a través de los sueños.</description>
+    <thumbnail>https://via.placeholder.com/200x300?text=Inception</thumbnail>
+    <link>https://example.com/inception.xml</link>
+  </pelicula_item>
+  <pelicula_item>
+    <title>The Dark Knight</title>
+    <description>Batman enfrenta a su mayor enemigo, el Joker.</description>
+    <thumbnail>https://via.placeholder.com/200x300?text=The+Dark+Knight</thumbnail>
+    <link>https://example.com/thedarkknight.xml</link>
+  </pelicula_item>
+  <pelicula_item>
+    <title>Interstellar</title>
+    <description>Una odisea espacial en busca de un nuevo hogar.</description>
+    <thumbnail>https://via.placeholder.com/200x300?text=Interstellar</thumbnail>
+    <link>https://example.com/interstellar.xml</link>
+  </pelicula_item>
+  <!-- Añadir más películas aquí -->
+</peliculas>
