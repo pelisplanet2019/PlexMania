@@ -1,77 +1,271 @@
-<div class="carousel">
-    <div class="carousel-images" id="carouselContainer">
-        <!-- Las imágenes del carrusel se generarán aquí -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Principal</title>
+    <style>
+        /* General */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1a1a1a;
+            color: #f5f5f5;
+        }
+
+        /* Menú superior */
+        .menu {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333333;
+            padding: 10px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #ffa31a;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 8px 16px;
+            transition: background-color 0.3s;
+        }
+
+        .menu a:hover {
+            background-color: #444444;
+            border-radius: 5px;
+        }
+
+        /* Carrusel */
+        .carousel {
+            position: relative;
+            max-width: 1200px;
+            margin: 20px auto;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .carousel-images {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-images img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .carousel-buttons {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 10px;
+        }
+
+        .carousel-button {
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: #fff;
+            font-size: 24px;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+
+        .carousel-button:hover {
+            background-color: #ffa31a;
+        }
+
+        /* Sección general */
+        .section {
+            margin: 20px;
+        }
+
+        .section h2 {
+            text-align: center;
+            color: #ffa31a;
+            margin-bottom: 20px;
+        }
+
+        .category-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 15px;
+            padding: 10px;
+        }
+
+        .movie-card {
+            background-color: #333333;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, border 0.3s ease;
+            border: 4px solid transparent;
+        }
+
+        .movie-card:hover {
+            transform: scale(1.05);
+            border: 4px solid #ffa31a;
+        }
+
+        .movie-card img {
+            width: 100%;
+            height: 270px;
+            object-fit: cover;
+        }
+
+        .movie-title {
+            text-align: center;
+            font-size: 14px;
+            color: #ffa31a;
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Menú superior -->
+    <div class="menu">
+        <a href="#">Películas</a>
+        <a href="#">Series</a>
+        <a href="#">Anime</a>
     </div>
-    <div class="carousel-buttons">
-        <button class="carousel-button" id="prev">&lt;</button>
-        <button class="carousel-button" id="next">&gt;</button>
+
+    <!-- Carrusel -->
+    <div class="carousel">
+        <div class="carousel-images" id="carouselContainer">
+            <!-- Las imágenes del carrusel se generarán dinámicamente -->
+        </div>
+        <div class="carousel-buttons">
+            <button class="carousel-button" id="prev">&lt;</button>
+            <button class="carousel-button" id="next">&gt;</button>
+        </div>
     </div>
-</div>
 
-<script>
-    async function cargarContenido() {
-        const url = "https://raw.githubusercontent.com/pelisplanet2019/PlexMania/refs/heads/main/Menu%20princial/menu%20principal.xml";
+    <!-- Sección Últimas Películas -->
+    <div class="section">
+        <h2>Últimas Películas</h2>
+        <div class="category-container" id="peliculasContainer">
+            <!-- Las películas se generarán dinámicamente -->
+        </div>
+    </div>
 
-        try {
-            const response = await fetch(url);
-            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+    <!-- Sección Series Destacadas -->
+    <div class="section">
+        <h2>Series Destacadas</h2>
+        <div class="category-container" id="seriesContainer">
+            <!-- Las series se generarán dinámicamente -->
+        </div>
+    </div>
 
-            const xmlText = await response.text();
-            const parser = new DOMParser();
-            const xmlDoc = parser.parseFromString(xmlText, "application/xml");
+    <script>
+        async function cargarContenido() {
+            const url = "https://raw.githubusercontent.com/pelisplanet2019/PlexMania/refs/heads/main/Menu%20princial/menu%20principal.xml";
 
-            // Cargar carrusel
-            const carruselItems = xmlDoc.querySelectorAll("carrusel > item");
-            const carouselContainer = document.getElementById("carouselContainer");
-            if (carruselItems.length === 0) {
-                console.warn("No se encontraron elementos para el carrusel.");
+            try {
+                const response = await fetch(url);
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+
+                const xmlText = await response.text();
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(xmlText, "application/xml");
+
+                // Cargar carrusel
+                const carruselItems = xmlDoc.querySelectorAll("carrusel > item");
+                const carouselContainer = document.getElementById("carouselContainer");
+                carruselItems.forEach(item => {
+                    const imagen = item.querySelector("imagen").textContent;
+                    const enlace = item.querySelector("enlace").textContent;
+                    const aElement = document.createElement("a");
+                    aElement.href = enlace;
+                    aElement.target = "_blank";
+                    aElement.innerHTML = `<img src="${imagen}" alt="Carrusel">`;
+                    carouselContainer.appendChild(aElement);
+                });
+
+                iniciarCarrusel();
+
+                // Cargar películas
+                const peliculas = xmlDoc.querySelectorAll("peliculas > pelicula");
+                const peliculasContainer = document.getElementById("peliculasContainer");
+                peliculas.forEach(pelicula => {
+                    const titulo = pelicula.querySelector("titulo").textContent;
+                    const imagen = pelicula.querySelector("imagen").textContent;
+                    const enlace = pelicula.querySelector("enlace").textContent;
+
+                    const card = document.createElement("div");
+                    card.classList.add("movie-card");
+                    card.innerHTML = `
+                        <a href="${enlace}" target="_blank">
+                            <img src="${imagen}" alt="${titulo}">
+                        </a>
+                        <div class="movie-title">${titulo}</div>
+                    `;
+                    peliculasContainer.appendChild(card);
+                });
+
+                // Cargar series
+                const series = xmlDoc.querySelectorAll("series > serie");
+                const seriesContainer = document.getElementById("seriesContainer");
+                series.forEach(serie => {
+                    const titulo = serie.querySelector("titulo").textContent;
+                    const imagen = serie.querySelector("imagen").textContent;
+                    const enlace = serie.querySelector("enlace").textContent;
+
+                    const card = document.createElement("div");
+                    card.classList.add("movie-card");
+                    card.innerHTML = `
+                        <a href="${enlace}" target="_blank">
+                            <img src="${imagen}" alt="${titulo}">
+                        </a>
+                        <div class="movie-title">${titulo}</div>
+                    `;
+                    seriesContainer.appendChild(card);
+                });
+
+            } catch (error) {
+                console.error("Error al cargar el contenido:", error);
             }
-            carruselItems.forEach(item => {
-                const imagen = item.querySelector("imagen").textContent;
-                const enlace = item.querySelector("enlace").textContent;
-                const aElement = document.createElement("a");
-                aElement.href = enlace;
-                aElement.target = "_blank";
-                aElement.innerHTML = `<img src="${imagen}" alt="Carrusel">`;
-                carouselContainer.appendChild(aElement);
+        }
+
+        function iniciarCarrusel() {
+            const carouselImages = document.querySelector('.carousel-images');
+            const images = carouselImages.querySelectorAll('img');
+            const prevButton = document.getElementById('prev');
+            const nextButton = document.getElementById('next');
+
+            let index = 0;
+
+            function updateCarousel() {
+                const width = images[0]?.clientWidth || 0;
+                carouselImages.style.transform = `translateX(${-index * width}px)`;
+            }
+
+            prevButton.addEventListener('click', () => {
+                index = (index > 0) ? index - 1 : images.length - 1;
+                updateCarousel();
             });
 
-            // Iniciar funcionalidad del carrusel
-            iniciarCarrusel();
+            nextButton.addEventListener('click', () => {
+                index = (index < images.length - 1) ? index + 1 : 0;
+                updateCarousel();
+            });
 
-        } catch (error) {
-            console.error("Error al cargar el contenido:", error);
-        }
-    }
-
-    function iniciarCarrusel() {
-        const carouselImages = document.querySelector('.carousel-images');
-        const images = carouselImages.querySelectorAll('img');
-        const prevButton = document.getElementById('prev');
-        const nextButton = document.getElementById('next');
-
-        let index = 0;
-
-        function updateCarousel() {
-            const width = images[0]?.clientWidth || 0;
-            carouselImages.style.transform = `translateX(${-index * width}px)`;
+            setInterval(() => {
+                nextButton.click();
+            }, 5000);
         }
 
-        prevButton.addEventListener('click', () => {
-            index = (index > 0) ? index - 1 : images.length - 1;
-            updateCarousel();
-        });
-
-        nextButton.addEventListener('click', () => {
-            index = (index < images.length - 1) ? index + 1 : 0;
-            updateCarousel();
-        });
-
-        // Actualizar automáticamente
-        setInterval(() => {
-            nextButton.click();
-        }, 5000);
-    }
-
-    document.addEventListener("DOMContentLoaded", cargarContenido);
-</script>
+        document.addEventListener("DOMContentLoaded", cargarContenido);
+    </script>
+</body>
+</html>
