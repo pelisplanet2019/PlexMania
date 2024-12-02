@@ -1,21 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <series>
-  <title>Breaking Bad</title>
-  <seasons>
-    <season number="1">
-      <title>Temporada 1</title>
-      <episodes>
-        <episode>
-          <title>Piloto</title>
-          <thumbnail>https://example.com/breakingbad_s1e1.jpg</thumbnail>
-          <link>https://streamtape.com/e/xxxxxx/01x01.mkv.mp4</link>
-        </episode>
-        <episode>
-          <title>El gato en la bolsa</title>
-          <thumbnail>https://example.com/breakingbad_s1e2.jpg</thumbnail>
-          <link>https://streamtape.com/e/yyyyyy/01x02.mkv.mp4</link>
-        </episode>
-      </episodes>
-    </season>
-  </seasons>
+  <series_item>
+    <title>Breaking Bad</title>
+    <description>Un profesor de química convertido en narcotraficante.</description>
+    <thumbnail>https://example.com/images/breakingbad.jpg</thumbnail>
+    <link>https://miusuario.github.io/detalle_serie.html?xml=https://raw.githubusercontent.com/miusuario/repositorio/main/breakingbad.xml</link>
+  </series_item>
+  <series_item>
+    <title>Game of Thrones</title>
+    <description>Una lucha por el trono de hierro llena de traiciones.</description>
+    <thumbnail>https://example.com/images/gameofthrones.jpg</thumbnail>
+    <link>https://miusuario.github.io/detalle_serie.html?xml=https://raw.githubusercontent.com/miusuario/repositorio/main/gameofthrones.xml</link>
+  </series_item>
 </series>
