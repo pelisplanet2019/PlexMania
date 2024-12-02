@@ -1,45 +1,16 @@
-<content>
-    <!-- Sección de Películas -->
-    <peliculas>
-        <item>
-            <title>Película 1</title>
-            <image>https://192-168-0-13.9b833f3128534cf9b6dd45fb91b8dda5.plex.direct:32400/photo/:/transcode?width=240&height=360&minSize=1&upscale=1&url=%2Flibrary%2Fmetadata%2F16770%2Fthumb%2F1731418936%3FX-Plex-Token%3Dmcg8qDyw4RsMeLTiV4yi&X-Plex-Token=mcg8qDyw4RsMeLTiV4yi</image>
-        </item>
-        <item>
-            <title>Película 2</title>
-            <image>https://via.placeholder.com/200x300?text=Película+2</image>
-        </item>
-        <item>
-            <title>Película 3</title>
-            <image>https://via.placeholder.com/200x300?text=Película+3</image>
-        </item>
-        <!-- Se generarán automáticamente más portadas -->
-        <!-- Total: 50 películas -->
-        <item>
-            <title>Película 50</title>
-            <image>https://via.placeholder.com/200x300?text=Película+50</image>
-        </item>
-    </peliculas>
-
-    <!-- Sección de Series -->
-    <series>
-        <item>
-            <title>Serie 1</title>
-            <image>https://via.placeholder.com/200x300?text=Serie+1</image>
-        </item>
-        <item>
-            <title>Serie 2</title>
-            <image>https://via.placeholder.com/200x300?text=Serie+2</image>
-        </item>
-        <item>
-            <title>Serie 3</title>
-            <image>https://via.placeholder.com/200x300?text=Serie+3</image>
-        </item>
-        <!-- Se generarán automáticamente más portadas -->
-        <!-- Total: 50 series -->
-        <item>
-            <title>Serie 50</title>
-            <image>https://via.placeholder.com/200x300?text=Serie+50</image>
-        </item>
-    </series>
-</content>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<series>
+  <series_item>
+    <title>Breaking Bad</title>
+    <description>Un profesor de química convertido en narcotraficante.</description>
+    <thumbnail>https://via.placeholder.com/200x300?text=Breaking+Bad</thumbnail>
+    <link>https://example.com/breakingbad.xml</link>
+  </series_item>
+  <series_item>
+    <title>Game of Thrones</title>
+    <description>Una lucha por el trono de hierro llena de traiciones.</description>
+    <thumbnail>https://via.placeholder.com/200x300?text=Game+of+Thrones</thumbnail>
+    <link>https://example.com/gameofthrones.xml</link>
+  </series_item>
+  <!-- Añadir más series aquí -->
+</series>
