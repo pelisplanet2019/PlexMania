@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Principal - App de Películas</title>
+    <title>Series - App de Películas</title>
     <style>
         /* General */
         body {
@@ -54,17 +54,16 @@
 
         .section .category-container {
             display: flex;
-            flex-wrap: nowrap;
-            overflow-x: auto;
+            flex-wrap: wrap;
+            justify-content: flex-start; /* Alineación inicial */
             gap: 15px;
             padding: 10px 20px;
-            margin-left: 20px; /* Añade este margen */
         }
 
         .section .category-container .movie-card {
             flex: 0 0 auto;
-            width: 180px;
-            height: 270px;
+            width: 160px; /* Ajustado al nuevo tamaño */
+            height: 260px;
             background-color: #333333;
             border-radius: 8px;
             overflow: hidden;
@@ -78,7 +77,7 @@
 
         .section .category-container img {
             width: 100%;
-            height: 75%;
+            height: 100%;
             object-fit: cover;
         }
 
@@ -98,70 +97,26 @@
         <a href="#">Anime</a>
     </div>
 
-    <!-- Sección Últimas Películas -->
-    <div class="section">
-        <h2>Últimas Películas</h2>
-        <div class="category-container">
-            <div class="movie-card">
-                <img src="https://via.placeholder.com/180x270" alt="Película 1">
-                <div class="movie-title">Película 1</div>
-            </div>
-            <div class="movie-card">
-                <img src="https://via.placeholder.com/180x270" alt="Película 2">
-                <div class="movie-title">Película 2</div>
-            </div>
-            <div class="movie-card">
-                <img src="https://via.placeholder.com/180x270" alt="Película 3">
-                <div class="movie-title">Película 3</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Sección Series Destacadas -->
+    <!-- Sección Series -->
     <div class="section">
         <h2>Series Destacadas</h2>
         <div class="category-container">
+            <!-- Serie 1 -->
             <div class="movie-card">
-                <img src="https://via.placeholder.com/180x270" alt="Serie 1">
+                <img src="https://via.placeholder.com/160x260" alt="Serie 1">
                 <div class="movie-title">Serie 1</div>
             </div>
+            <!-- Serie 2 -->
             <div class="movie-card">
-                <img src="https://via.placeholder.com/180x270" alt="Serie 2">
+                <img src="https://via.placeholder.com/160x260" alt="Serie 2">
                 <div class="movie-title">Serie 2</div>
             </div>
+            <!-- Serie 3 -->
             <div class="movie-card">
-                <img src="https://via.placeholder.com/180x270" alt="Serie 3">
+                <img src="https://via.placeholder.com/160x260" alt="Serie 3">
                 <div class="movie-title">Serie 3</div>
             </div>
         </div>
     </div>
-
-    <script>
-        const carouselImages = document.querySelector('.carousel-images');
-        const images = document.querySelectorAll('.carousel-images img');
-        const prevButton = document.getElementById('prev');
-        const nextButton = document.getElementById('next');
-        let index = 0;
-
-        function updateCarousel() {
-            const width = images[0].clientWidth;
-            carouselImages.style.transform = `translateX(${-index * width}px)`;
-        }
-
-        prevButton.addEventListener('click', () => {
-            index = (index > 0) ? index - 1 : images.length - 1;
-            updateCarousel();
-        });
-
-        nextButton.addEventListener('click', () => {
-            index = (index < images.length - 1) ? index + 1 : 0;
-            updateCarousel();
-        });
-
-        // Autoplay (opcional)
-        setInterval(() => {
-            nextButton.click();
-        }, 5000);
-    </script>
 </body>
 </html>
