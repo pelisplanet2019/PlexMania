@@ -5,56 +5,124 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lista de Series</title>
   <style>
+    /* General */
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f9f9f9;
+      background-color: #1a1a1a;
+      color: #f5f5f5;
     }
-    .container {
-      max-width: 800px;
-      margin: 20px auto;
-      padding: 20px;
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    /* Menú superior */
+    .menu {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #333333;
+      padding: 10px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
-    .item {
-      border-bottom: 1px solid #ddd;
-      padding: 10px 0;
+
+    .menu img {
+      height: 60px;
     }
-    .item img {
-      max-width: 100%;
-      height: auto;
+
+    .menu a {
+      text-decoration: none;
+      color: #ffa31a;
+      font-size: 18px;
+      font-weight: bold;
+      padding: 8px 16px;
+      transition: background-color 0.3s;
+    }
+
+    .menu a:hover {
+      background-color: #444444;
       border-radius: 5px;
     }
-    .item h2 {
-      font-size: 18px;
-      color: #333;
-      margin: 10px 0;
+
+    /* Título */
+    .section h2 {
+      text-align: center;
+      color: #ffa31a;
+      margin: 20px 0;
     }
-    .item a {
-      text-decoration: none;
-      color: #007BFF;
+
+    .section h2 img {
+      height: 50px;
+      vertical-align: middle;
     }
-    .item a:hover {
-      text-decoration: underline;
+
+    /* Contenedor principal */
+    .content-wrapper {
+      margin: 20px 50px;
+      border: 4px solid #ffa31a;
+      border-radius: 10px;
+      padding: 20px;
     }
-    .item p {
+
+    /* Cuadrícula de series */
+    .category-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 15px;
+    }
+
+    .movie-card {
+      background-color: #333333;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease, border 0.3s ease;
+      border: 4px solid transparent;
+    }
+
+    .movie-card:hover {
+      transform: scale(1.05);
+      border: 4px solid #ffa31a;
+    }
+
+    .movie-card img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+    }
+
+    .movie-title {
+      text-align: center;
       font-size: 14px;
-      color: #555;
-      margin: 5px 0 10px;
+      color: #ffa31a;
+      padding: 8px;
     }
   </style>
 </head>
 <body>
-  <div class="container" id="seriesContainer">
-    <p>Cargando series...</p>
+  <!-- Menú superior -->
+  <div class="menu">
+    <a href="#"><img src="https://i.ibb.co/k9rbDQQ/logo1.png" alt="logo1"></a>
+    <div>
+      <a href="peliculas.html">Películas</a>
+      <a href="series.html">Series</a>
+      <a href="anime.html">Anime</a>
+    </div>
+  </div>
+
+  <!-- Contenido -->
+  <div class="content-wrapper">
+    <div class="section">
+      <h2>Series Populares <img src="https://i.ibb.co/X2GzTm3/Movie2-37185.png" alt="Movie2"></h2>
+      <div class="category-container" id="seriesContainer">
+        <p>Cargando series...</p>
+      </div>
+    </div>
   </div>
 
   <script>
     async function cargarSeries() {
-      // Ruta del archivo XML en GitHub
       const url = "https://raw.githubusercontent.com/pelisplanet2019/PlexMania/refs/heads/main/Menu%20Series/Series.xml";
 
       try {
@@ -84,18 +152,17 @@
           const thumbnail = channel.getElementsByTagName("thumbnail")[0]?.textContent || "https://via.placeholder.com/200x300?text=Sin+imagen";
           const link = channel.getElementsByTagName("link")[0]?.textContent || "#";
 
-          const itemDiv = document.createElement("div");
-          itemDiv.classList.add("item");
+          const card = document.createElement("div");
+          card.classList.add("movie-card");
 
-          itemDiv.innerHTML = `
+          card.innerHTML = `
             <a href="${link}" target="_blank">
-              <img src="${thumbnail}" alt="${title}" />
+              <img src="${thumbnail}" alt="${title}">
             </a>
-            <h2><a href="${link}" target="_blank">${title}</a></h2>
-            <p>${description}</p>
+            <div class="movie-title">${title}</div>
           `;
 
-          container.appendChild(itemDiv);
+          container.appendChild(card);
         }
       } catch (error) {
         console.error("Error al cargar el XML:", error);
