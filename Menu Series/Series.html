@@ -1,142 +1,98 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Películas - App</title>
-    <style>
-        /* General */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #1a1a1a;
-            color: #f5f5f5;
-        }
-
-        /* Menú superior */
-        .menu {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #333333;
-            padding: 10px 20px;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        .menu a {
-            text-decoration: none;
-            color: #ffa31a;
-            font-size: 18px;
-            font-weight: bold;
-            padding: 8px 16px;
-            transition: background-color 0.3s;
-        }
-
-        .menu a:hover {
-            background-color: #444444;
-            border-radius: 5px;
-        }
-
-        /* Logo izquierdo */
-        .menu img {
-            height: 60px;
-        }
-
-        /* Marco general */
-        .content-wrapper {
-            margin: 20px 50px;
-            border: 4px solid #ffa31a;
-            border-radius: 10px;
-            padding: 20px;
-        }
-
-        .section h2 {
-            text-align: center;
-            color: #ffa31a;
-            margin-bottom: 20px;
-        }
-
-        /* Cuadrícula de portadas */
-        .category-container {
-            display: grid;
-            grid-template-columns: repeat(8, 1fr);
-            gap: 15px;
-            padding: 10px;
-        }
-
-        .movie-card {
-            background-color: #333333;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease, border 0.3s ease;
-            border: 4px solid transparent;
-        }
-
-        .movie-card:hover {
-            transform: scale(1.05);
-            border: 4px solid #ffa31a;
-        }
-
-        .movie-card img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-        }
-
-        .movie-title {
-            text-align: center;
-            font-size: 14px;
-            color: #ffa31a;
-            padding: 8px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Series</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .item {
+      border-bottom: 1px solid #ddd;
+      padding: 10px 0;
+    }
+    .item img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 5px;
+    }
+    .item h2 {
+      font-size: 18px;
+      color: #333;
+      margin: 10px 0;
+    }
+    .item a {
+      text-decoration: none;
+      color: #007BFF;
+    }
+    .item a:hover {
+      text-decoration: underline;
+    }
+    .item p {
+      font-size: 14px;
+      color: #555;
+      margin: 5px 0 10px;
+    }
+  </style>
 </head>
 <body>
-    <!-- Menú superior -->
-    <div class="menu">
-        <a href="#"><img src="https://i.ibb.co/k9rbDQQ/logo1.png" alt="logo1"></a>
-        <div>
-            <a href="peliculas.html">Películas</a>
-            <a href="series.html">Series</a>
-            <a href="anime.html">Anime</a>
-        </div>
-    </div>
+  <div class="container" id="seriesContainer">
+    <p>Cargando series...</p>
+  </div>
 
-    <!-- Contenido -->
-    <div class="content-wrapper">
-        <div class="section">
-            <h2>Películas Populares <img src="https://i.ibb.co/X2GzTm3/Movie2-37185.png" alt="Movie2"></h2>
-            <div class="category-container" id="series-container">
-    <!-- Las portadas se cargarán aquí dinámicamente -->
-</div>
-<script>
-    fetch('contenido.xml')
-        .then(response => response.text())
-        .then(xmlString => {
-            const parser = new DOMParser();
-            const xmlDoc = parser.parseFromString(xmlString, 'application/xml');
-            const series = xmlDoc.querySelectorAll('series > item');
-            const container = document.getElementById('series-container');
+  <script>
+    async function cargarSeries() {
+      const url = "menu_series.xml";
 
-            series.forEach(serie => {
-                const title = serie.querySelector('title').textContent;
-                const image = serie.querySelector('image').textContent;
+      try {
+        const response = await fetch(url);
+        const xml = await response.text();
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(xml, "application/xml");
 
-                const card = document.createElement('div');
-                card.classList.add('movie-card');
-                card.innerHTML = `
-                    <img src="${image}" alt="${title}">
-                    <div class="movie-title">${title}</div>
-                `;
-                container.appendChild(card);
-            });
-        })
-        .catch(error => console.error('Error cargando el XML:', error));
-</script>
+        const channels = xmlDoc.getElementsByTagName("series_item");
+        const container = document.getElementById("seriesContainer");
+        container.innerHTML = "";
+
+        for (let i = 0; i < channels.length; i++) {
+          const channel = channels[i];
+          const title = channel.getElementsByTagName("title")[0].textContent;
+          const description = channel.getElementsByTagName("description")[0]?.textContent || "Sin descripción";
+          const thumbnail = channel.getElementsByTagName("thumbnail")[0]?.textContent || "";
+          const link = channel.getElementsByTagName("link")[0]?.textContent || "#";
+
+          const itemDiv = document.createElement("div");
+          itemDiv.classList.add("item");
+
+          itemDiv.innerHTML = `
+            <a href="${link}" target="_blank">
+              <img src="${thumbnail}" alt="${title}" />
+            </a>
+            <h2><a href="${link}" target="_blank">${title}</a></h2>
+            <p>${description}</p>
+          `;
+
+          container.appendChild(itemDiv);
+        }
+      } catch (error) {
+        console.error("Error al cargar el XML:", error);
+        document.getElementById("seriesContainer").innerHTML = "Error al cargar la lista.";
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", cargarSeries);
+  </script>
 </body>
 </html>
