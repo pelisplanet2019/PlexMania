@@ -3,103 +3,136 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>App de Películas</title>
+    <title>Series - App</title>
     <style>
         /* General */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #1a1a1a; /* Fondo oscuro tipo Plex */
+            background-color: #1a1a1a;
             color: #f5f5f5;
         }
 
-        h1 {
-            color: #ffa31a;
-            text-align: center;
-            padding: 20px 0;
+        /* Menú superior */
+        .menu {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333333;
+            padding: 10px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
+        .menu a {
+            text-decoration: none;
+            color: #ffa31a;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 8px 16px;
+            transition: background-color 0.3s;
+        }
+
+        .menu a:hover {
+            background-color: #444444;
+            border-radius: 5px;
+        }
+
+        /* Logo izquierdo en el menú */
+        .menu img {
+            height: 40px;
+        }
+
+        /* Sección de categorías */
+        .section {
+            margin: 20px 10px;
+        }
+
+        .section h2 {
+            text-align: center;
+            color: #ffa31a;
+            margin-bottom: 10px;
+        }
+
+        .section h2 img {
+            height: 40px;
+            vertical-align: middle;
+        }
+
+        .section .category-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 15px; /* Espacio entre las tarjetas */
-            justify-content: center;
+            justify-content: flex-start;
+            gap: 20px; /* Espacio entre tarjetas */
+            padding: 10px 40px; /* Desplazamiento hacia la derecha */
         }
 
-        .movie-card {
-            width: 180px; /* Ancho fijo compacto */
-            height: 270px; /* Altura fija compacta */
-            background-color: #333333; /* Fondo de las tarjetas */
+        .section .category-container .movie-card {
+            flex: 0 0 auto;
+            width: 200px; /* Más grande */
+            height: 300px; /* Más grande */
+            background-color: #333333;
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+            border: 4px solid transparent; /* Marco inicial transparente */
         }
 
-        .movie-card:hover {
+        .section .category-container .movie-card:hover {
             transform: scale(1.05);
+            border: 4px solid #ffa31a; /* Marco amarillo en hover */
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
         }
 
-        .movie-card img {
+        .section .category-container img {
             width: 100%;
-            height: 75%; /* Imagen ocupa 75% del card */
+            height: 100%;
             object-fit: cover;
         }
 
-        .movie-card .movie-title {
-            padding: 8px;
+        .section .category-container .movie-title {
             text-align: center;
-            font-size: 14px; /* Tamaño más compacto */
+            font-size: 14px;
             color: #ffa31a;
-        }
-
-        /* Ajustes para pantallas pequeñas */
-        @media (max-width: 768px) {
-            .movie-card {
-                width: 40%; /* Dos columnas en pantallas medianas */
-            }
-        }
-
-        @media (max-width: 480px) {
-            .movie-card {
-                width: 100%; /* Una columna en pantallas pequeñas */
-            }
+            padding: 8px;
         }
     </style>
 </head>
 <body>
-    <h1>Explora Nuestras Películas</h1>
-    <div class="container">
-        <!-- Película 1 -->
-        <div class="movie-card">
-            <img src="https://via.placeholder.com/180x270" alt="Película 1">
-            <div class="movie-title">Película 1</div>
+    <!-- Menú superior -->
+    <div class="menu">
+        <a href="#"><img src="https://i.ibb.co/k9rbDQQ/logo1.png" alt="logo1"></a>
+        <div>
+            <a href="peliculas.html">Películas</a>
+            <a href="series.html">Series</a>
+            <a href="anime.html">Anime</a>
         </div>
+    </div>
 
-        <!-- Película 2 -->
-        <div class="movie-card">
-            <img src="https://via.placeholder.com/180x270" alt="Película 2">
-            <div class="movie-title">Película 2</div>
-        </div>
-
-        <!-- Película 3 -->
-        <div class="movie-card">
-            <img src="https://via.placeholder.com/180x270" alt="Película 3">
-            <div class="movie-title">Película 3</div>
-        </div>
-
-        <!-- Película 4 -->
-        <div class="movie-card">
-            <img src="https://via.placeholder.com/180x270" alt="Película 4">
-            <div class="movie-title">Película 4</div>
-        </div>
-
-        <!-- Agrega más tarjetas según sea necesario -->
+    <!-- Sección Series -->
+    <div class="section">
+<h2>Películas Populares <img src="https://i.ibb.co/X2GzTm3/Movie2-37185.png" alt="Movie2"></h2>
+<div class="category-container">
+    <!-- Película 1 -->
+    <div class="movie-card">
+        <img src="https://via.placeholder.com/200x300" alt="Película 1">
+        <div class="movie-title">Película 1</div>
+    </div>
+    <!-- Película 2 -->
+    <div class="movie-card">
+        <img src="https://via.placeholder.com/200x300" alt="Película 2">
+        <div class="movie-title">Película 2</div>
+    </div>
+    <!-- Película 3 -->
+    <div class="movie-card">
+        <img src="https://via.placeholder.com/200x300" alt="Película 3">
+        <div class="movie-title">Película 3</div>
+    </div>
+</div>
     </div>
 </body>
 </html>
