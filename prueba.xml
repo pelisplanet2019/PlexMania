@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library>
+  <movie>
+    <title>Inception</title>
+    <description>Una película sobre sueños dentro de sueños.</description>
+    <thumbnail>https://example.com/inception.jpg</thumbnail>
+    <link>https://mi-servidor.com/videos/inception.mp4</link>
+  </movie>
+  <movie>
+    <title>The Matrix</title>
+    <description>La historia de un programador que descubre la verdad sobre su realidad.</description>
+    <thumbnail>https://example.com/matrix.jpg</thumbnail>
+    <link>https://mi-servidor.com/videos/matrix.mp4</link>
+  </movie>
+</library>
