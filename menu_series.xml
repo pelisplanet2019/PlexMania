@@ -2,14 +2,20 @@
 <series>
   <series_item>
     <title>Breaking Bad</title>
-    <description>Una serie sobre un profesor de química convertido en narcotraficante.</description>
-    <thumbnail>https://example.com/breakingbad_thumbnail.jpg</thumbnail>
+    <description>Un profesor de química convertido en narcotraficante.</description>
+    <thumbnail>https://example.com/images/breakingbad.jpg</thumbnail>
     <link>https://raw.githubusercontent.com/tu_usuario/repositorio/main/breakingbad.xml</link>
   </series_item>
   <series_item>
     <title>Game of Thrones</title>
-    <description>Una épica historia de poder, dragones y traiciones.</description>
-    <thumbnail>https://example.com/got_thumbnail.jpg</thumbnail>
+    <description>Una lucha por el trono de hierro llena de traiciones.</description>
+    <thumbnail>https://example.com/images/gameofthrones.jpg</thumbnail>
     <link>https://raw.githubusercontent.com/tu_usuario/repositorio/main/gameofthrones.xml</link>
+  </series_item>
+  <series_item>
+    <title>Stranger Things</title>
+    <description>Un grupo de amigos se enfrenta a lo desconocido.</description>
+    <thumbnail>https://example.com/images/strangerthings.jpg</thumbnail>
+    <link>https://raw.githubusercontent.com/tu_usuario/repositorio/main/strangerthings.xml</link>
   </series_item>
 </series>
