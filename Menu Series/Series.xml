@@ -1,32 +1,45 @@
 <content>
+    <!-- Sección de Películas -->
     <peliculas>
         <item>
             <title>Película 1</title>
-            <image>https://via.placeholder.com/180x270</image>
+            <image>https://via.placeholder.com/200x300?text=Película+1</image>
         </item>
         <item>
             <title>Película 2</title>
-            <image>https://via.placeholder.com/180x270</image>
+            <image>https://via.placeholder.com/200x300?text=Película+2</image>
+        </item>
+        <item>
+            <title>Película 3</title>
+            <image>https://via.placeholder.com/200x300?text=Película+3</image>
+        </item>
+        <!-- Se generarán automáticamente más portadas -->
+        <!-- Total: 50 películas -->
+        <item>
+            <title>Película 50</title>
+            <image>https://via.placeholder.com/200x300?text=Película+50</image>
         </item>
     </peliculas>
+
+    <!-- Sección de Series -->
     <series>
         <item>
             <title>Serie 1</title>
-            <image>https://via.placeholder.com/180x270</image>
+            <image>https://via.placeholder.com/200x300?text=Serie+1</image>
         </item>
         <item>
             <title>Serie 2</title>
-            <image>https://via.placeholder.com/180x270</image>
+            <image>https://via.placeholder.com/200x300?text=Serie+2</image>
+        </item>
+        <item>
+            <title>Serie 3</title>
+            <image>https://via.placeholder.com/200x300?text=Serie+3</image>
+        </item>
+        <!-- Se generarán automáticamente más portadas -->
+        <!-- Total: 50 series -->
+        <item>
+            <title>Serie 50</title>
+            <image>https://via.placeholder.com/200x300?text=Serie+50</image>
         </item>
     </series>
-    <anime>
-        <item>
-            <title>Anime 1</title>
-            <image>https://via.placeholder.com/180x270</image>
-        </item>
-        <item>
-            <title>Anime 2</title>
-            <image>https://via.placeholder.com/180x270</image>
-        </item>
-    </anime>
 </content>
