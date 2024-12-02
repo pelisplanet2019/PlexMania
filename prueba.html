@@ -3,64 +3,116 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Centro Multimedia</title>
+  <title>Temporadas y Episodios</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
       margin: 0;
-      padding: 20px;
+      padding: 0;
+      background-color: #f4f4f4;
     }
-    .movie {
-      margin: 20px;
-      padding: 15px;
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
       background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .season {
+      margin: 20px 0;
+      padding: 10px;
       border: 1px solid #ddd;
       border-radius: 8px;
+      background: #f9f9f9;
     }
-    .movie img {
-      width: 150px;
-      float: left;
-      margin-right: 15px;
+    .episode {
+      margin: 10px 0;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background: #fff;
     }
-    .movie h3 {
-      margin: 0;
+    video {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+    .episode h3 {
+      font-size: 18px;
+      color: #333;
     }
   </style>
 </head>
 <body>
-  <div id="library"></div>
+  <div class="container" id="temporadasContainer">
+    <h1>Temporadas y Episodios</h1>
+    <p>Cargando contenido...</p>
+  </div>
 
   <script>
-    async function loadLibrary() {
-      const response = await fetch("https://mi-servidor.com/library.xml");
-      const text = await response.text();
-      const parser = new DOMParser();
-      const xml = parser.parseFromString(text, "application/xml");
+    async function cargarTemporadas() {
+      const params = new URLSearchParams(window.location.search);
+      const urlXML = params.get("xml");
 
-      const movies = xml.getElementsByTagName("movie");
-      const library = document.getElementById("library");
-
-      for (let i = 0; i < movies.length; i++) {
-        const movie = movies[i];
-        const title = movie.getElementsByTagName("title")[0].textContent;
-        const description = movie.getElementsByTagName("description")[0].textContent;
-        const thumbnail = movie.getElementsByTagName("thumbnail")[0].textContent;
-        const link = movie.getElementsByTagName("link")[0].textContent;
-
-        const div = document.createElement("div");
-        div.classList.add("movie");
-        div.innerHTML = `
-          <img src="${thumbnail}" alt="${title}">
-          <h3>${title}</h3>
-          <p>${description}</p>
-          <a href="${link}" target="_blank">Ver ahora</a>
+      if (!urlXML) {
+        document.getElementById("temporadasContainer").innerHTML = `
+          <p>Error: No se proporcionó un enlace válido.</p>
         `;
-        library.appendChild(div);
+        return;
+      }
+
+      try {
+        const response = await fetch(urlXML);
+        const xml = await response.text();
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(xml, "application/xml");
+
+        const seasons = xmlDoc.getElementsByTagName("season");
+        const container = document.getElementById("temporadasContainer");
+        container.innerHTML = ""; // Limpia el mensaje inicial
+
+        for (let i = 0; i < seasons.length; i++) {
+          const season = seasons[i];
+          const seasonTitle = season.getElementsByTagName("title")[0]?.textContent || `Temporada ${i + 1}`;
+
+          const seasonDiv = document.createElement("div");
+          seasonDiv.classList.add("season");
+          seasonDiv.innerHTML = `<h2>${seasonTitle}</h2>`;
+          container.appendChild(seasonDiv);
+
+          const episodes = season.getElementsByTagName("episode");
+          for (let j = 0; j < episodes.length; j++) {
+            const episode = episodes[j];
+            const episodeTitle = episode.getElementsByTagName("title")[0]?.textContent || `Episodio ${j + 1}`;
+            const thumbnail = episode.getElementsByTagName("thumbnail")[0]?.textContent || "";
+            const link = episode.getElementsByTagName("link")[0]?.textContent || "#";
+
+            const episodeDiv = document.createElement("div");
+            episodeDiv.classList.add("episode");
+
+            // Aquí se inserta el reproductor para el video
+            episodeDiv.innerHTML = `
+              <h3>${episodeTitle}</h3>
+              <video controls preload="metadata">
+                <source src="${link}" type="video/mp4">
+                Tu navegador no soporta la reproducción de video.
+              </video>
+            `;
+            seasonDiv.appendChild(episodeDiv);
+          }
+        }
+      } catch (error) {
+        console.error("Error al cargar el XML:", error);
+        document.getElementById("temporadasContainer").innerHTML = `
+          <p>Error al cargar temporadas y episodios.</p>
+        `;
       }
     }
 
-    loadLibrary();
+    document.addEventListener("DOMContentLoaded", cargarTemporadas);
   </script>
 </body>
 </html>
