@@ -1,37 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <series>
-  <title>Breaking Bad</title>
-  <info>Temporadas y episodios de Breaking Bad.</info>
-  <seasons>
-    <season number="1">
-      <title>Temporada 1</title>
-      <episodes>
-        <episode>
-          <title>Piloto</title>
-          <thumbnail>https://example.com/images/breakingbad_s1e1.jpg</thumbnail>
-          <link>https://streamtape.com/get_video?id=xxxxxx</link>
-        </episode>
-        <episode>
-          <title>El gato en la bolsa</title>
-          <thumbnail>https://example.com/images/breakingbad_s1e2.jpg</thumbnail>
-          <link>https://streamtape.com/get_video?id=yyyyyy</link>
-        </episode>
-      </episodes>
-    </season>
-    <season number="2">
-      <title>Temporada 2</title>
-      <episodes>
-        <episode>
-          <title>Siete treinta y siete</title>
-          <thumbnail>https://example.com/images/breakingbad_s2e1.jpg</thumbnail>
-          <link>https://streamtape.com/get_video?id=zzzzzz</link>
-        </episode>
-        <episode>
-          <title>Grilled</title>
-          <thumbnail>https://example.com/images/breakingbad_s2e2.jpg</thumbnail>
-          <link>https://streamtape.com/get_video?id=wwwwww</link>
-        </episode>
-      </episodes>
-    </season>
-  </seasons>
+  <series_item>
+    <title>Breaking Bad</title>
+    <description>Un profesor de química convertido en narcotraficante.</description>
+    <thumbnail>https://example.com/images/breakingbad.jpg</thumbnail>
+    <link>https://raw.githubusercontent.com/tu_usuario/repositorio/main/breakingbad.xml</link>
+  </series_item>
+  <series_item>
+    <title>Game of Thrones</title>
+    <description>Una lucha por el trono de hierro llena de traiciones.</description>
+    <thumbnail>https://example.com/images/gameofthrones.jpg</thumbnail>
+    <link>https://raw.githubusercontent.com/tu_usuario/repositorio/main/gameofthrones.xml</link>
+  </series_item>
+  <series_item>
+    <title>Stranger Things</title>
+    <description>Un grupo de amigos se enfrenta a lo desconocido.</description>
+    <thumbnail>https://example.com/images/strangerthings.jpg</thumbnail>
+    <link>https://raw.githubusercontent.com/tu_usuario/repositorio/main/strangerthings.xml</link>
+  </series_item>
 </series>
