@@ -54,10 +54,16 @@
 
   <script>
     async function cargarSeries() {
-      const url = "Series.xml";
+      // Ruta del archivo XML en GitHub
+      const url = "https://raw.githubusercontent.com/pelisplanet2019/PlexMania/refs/heads/main/Menu%20Series/Series.xml";
 
       try {
         const response = await fetch(url);
+
+        if (!response.ok) {
+          throw new Error(`No se pudo cargar el archivo XML. Código: ${response.status}`);
+        }
+
         const xml = await response.text();
         const parser = new DOMParser();
         const xmlDoc = parser.parseFromString(xml, "application/xml");
@@ -66,11 +72,16 @@
         const container = document.getElementById("seriesContainer");
         container.innerHTML = "";
 
+        if (channels.length === 0) {
+          container.innerHTML = "No se encontraron series en el archivo XML.";
+          return;
+        }
+
         for (let i = 0; i < channels.length; i++) {
           const channel = channels[i];
-          const title = channel.getElementsByTagName("title")[0].textContent;
+          const title = channel.getElementsByTagName("title")[0]?.textContent || "Sin título";
           const description = channel.getElementsByTagName("description")[0]?.textContent || "Sin descripción";
-          const thumbnail = channel.getElementsByTagName("thumbnail")[0]?.textContent || "";
+          const thumbnail = channel.getElementsByTagName("thumbnail")[0]?.textContent || "https://via.placeholder.com/200x300?text=Sin+imagen";
           const link = channel.getElementsByTagName("link")[0]?.textContent || "#";
 
           const itemDiv = document.createElement("div");
@@ -88,7 +99,7 @@
         }
       } catch (error) {
         console.error("Error al cargar el XML:", error);
-        document.getElementById("seriesContainer").innerHTML = "Error al cargar la lista.";
+        document.getElementById("seriesContainer").innerHTML = `Error: ${error.message}`;
       }
     }
 
