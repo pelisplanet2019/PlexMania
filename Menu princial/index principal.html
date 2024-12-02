@@ -1,106 +1,77 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Principal</title>
-    <style>
-        body { font-family: Arial, sans-serif; background-color: #1a1a1a; color: #f5f5f5; margin: 0; padding: 0; }
-        .menu { display: flex; justify-content: space-between; background-color: #333; padding: 10px 20px; }
-        .menu a { color: #ffa31a; text-decoration: none; font-size: 18px; padding: 5px 10px; }
-        .carousel { max-width: 1200px; margin: 20px auto; overflow: hidden; }
-        .carousel-images img { width: 100%; height: auto; }
-        .category-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 15px; padding: 10px; }
-        .movie-card { background-color: #333; border-radius: 8px; overflow: hidden; }
-        .movie-card img { width: 100%; height: 270px; object-fit: cover; }
-    </style>
-</head>
-<body>
-    <div class="menu">
-        <a href="#">Películas</a>
-        <a href="#">Series</a>
-        <a href="#">Anime</a>
+<div class="carousel">
+    <div class="carousel-images" id="carouselContainer">
+        <!-- Las imágenes del carrusel se generarán aquí -->
     </div>
-    <div class="carousel">
-        <div class="carousel-images" id="carouselContainer"></div>
+    <div class="carousel-buttons">
+        <button class="carousel-button" id="prev">&lt;</button>
+        <button class="carousel-button" id="next">&gt;</button>
     </div>
-    <div class="section">
-        <h2>Últimas Películas</h2>
-        <div class="category-container" id="peliculasContainer"></div>
-    </div>
-    <div class="section">
-        <h2>Series Destacadas</h2>
-        <div class="category-container" id="seriesContainer"></div>
-    </div>
+</div>
 
-    <script>
-        async function cargarContenido() {
-            const url = "https://raw.githubusercontent.com/pelisplanet2019/PlexMania/refs/heads/main/Menu%20princial/menu%20principal.xml"; // Cambiar con tu URL correcta
+<script>
+    async function cargarContenido() {
+        const url = "https://raw.githubusercontent.com/pelisplanet2019/PlexMania/refs/heads/main/Menu%20princial/menu%20principal.xml";
 
-            try {
-                const response = await fetch(url);
-                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        try {
+            const response = await fetch(url);
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
-                const xmlText = await response.text();
-                const parser = new DOMParser();
-                const xmlDoc = parser.parseFromString(xmlText, "application/xml");
+            const xmlText = await response.text();
+            const parser = new DOMParser();
+            const xmlDoc = parser.parseFromString(xmlText, "application/xml");
 
-                // Carrusel
-                const carruselItems = xmlDoc.querySelectorAll("carrusel > item");
-                const carouselContainer = document.getElementById("carouselContainer");
-                carruselItems.forEach(item => {
-                    const imagen = item.querySelector("imagen").textContent;
-                    const enlace = item.querySelector("enlace").textContent;
-                    const imgElement = document.createElement("a");
-                    imgElement.href = enlace;
-                    imgElement.target = "_blank";
-                    imgElement.innerHTML = `<img src="${imagen}" alt="Carrusel">`;
-                    carouselContainer.appendChild(imgElement);
-                });
-
-                // Películas
-                const peliculas = xmlDoc.querySelectorAll("peliculas > pelicula");
-                const peliculasContainer = document.getElementById("peliculasContainer");
-                peliculas.forEach(pelicula => {
-                    const titulo = pelicula.querySelector("titulo").textContent;
-                    const imagen = pelicula.querySelector("imagen").textContent;
-                    const enlace = pelicula.querySelector("enlace").textContent;
-
-                    const card = document.createElement("div");
-                    card.classList.add("movie-card");
-                    card.innerHTML = `
-                        <a href="${enlace}" target="_blank">
-                            <img src="${imagen}" alt="${titulo}">
-                        </a>
-                        <div>${titulo}</div>
-                    `;
-                    peliculasContainer.appendChild(card);
-                });
-
-                // Series
-                const series = xmlDoc.querySelectorAll("series > serie");
-                const seriesContainer = document.getElementById("seriesContainer");
-                series.forEach(serie => {
-                    const titulo = serie.querySelector("titulo").textContent;
-                    const imagen = serie.querySelector("imagen").textContent;
-                    const enlace = serie.querySelector("enlace").textContent;
-
-                    const card = document.createElement("div");
-                    card.classList.add("movie-card");
-                    card.innerHTML = `
-                        <a href="${enlace}" target="_blank">
-                            <img src="${imagen}" alt="${titulo}">
-                        </a>
-                        <div>${titulo}</div>
-                    `;
-                    seriesContainer.appendChild(card);
-                });
-            } catch (error) {
-                console.error("Error al cargar contenido:", error);
+            // Cargar carrusel
+            const carruselItems = xmlDoc.querySelectorAll("carrusel > item");
+            const carouselContainer = document.getElementById("carouselContainer");
+            if (carruselItems.length === 0) {
+                console.warn("No se encontraron elementos para el carrusel.");
             }
+            carruselItems.forEach(item => {
+                const imagen = item.querySelector("imagen").textContent;
+                const enlace = item.querySelector("enlace").textContent;
+                const aElement = document.createElement("a");
+                aElement.href = enlace;
+                aElement.target = "_blank";
+                aElement.innerHTML = `<img src="${imagen}" alt="Carrusel">`;
+                carouselContainer.appendChild(aElement);
+            });
+
+            // Iniciar funcionalidad del carrusel
+            iniciarCarrusel();
+
+        } catch (error) {
+            console.error("Error al cargar el contenido:", error);
+        }
+    }
+
+    function iniciarCarrusel() {
+        const carouselImages = document.querySelector('.carousel-images');
+        const images = carouselImages.querySelectorAll('img');
+        const prevButton = document.getElementById('prev');
+        const nextButton = document.getElementById('next');
+
+        let index = 0;
+
+        function updateCarousel() {
+            const width = images[0]?.clientWidth || 0;
+            carouselImages.style.transform = `translateX(${-index * width}px)`;
         }
 
-        document.addEventListener("DOMContentLoaded", cargarContenido);
-    </script>
-</body>
-</html>
+        prevButton.addEventListener('click', () => {
+            index = (index > 0) ? index - 1 : images.length - 1;
+            updateCarousel();
+        });
+
+        nextButton.addEventListener('click', () => {
+            index = (index < images.length - 1) ? index + 1 : 0;
+            updateCarousel();
+        });
+
+        // Actualizar automáticamente
+        setInterval(() => {
+            nextButton.click();
+        }, 5000);
+    }
+
+    document.addEventListener("DOMContentLoaded", cargarContenido);
+</script>
