@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <series>
   <series_item>
     <title>Breaking Bad</title>
@@ -12,5 +11,4 @@
     <thumbnail>https://via.placeholder.com/200x300?text=Game+of+Thrones</thumbnail>
     <link>https://example.com/gameofthrones.xml</link>
   </series_item>
-  <!-- Añadir más series aquí -->
 </series>
