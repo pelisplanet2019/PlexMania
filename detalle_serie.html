@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Temporadas y Episodios</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .season {
+      margin: 20px 0;
+    }
+    .episode {
+      margin: 10px 0;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background: #f9f9f9;
+    }
+    .episode img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 5px;
+    }
+    .episode h3 {
+      font-size: 16px;
+      color: #333;
+    }
+    .episode a {
+      text-decoration: none;
+      color: #007BFF;
+    }
+    .episode a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="temporadasContainer">
+    <p>Cargando temporadas y episodios...</p>
+  </div>
+
+  <script>
+    async function cargarTemporadas() {
+      const params = new URLSearchParams(window.location.search);
+      const urlXML = params.get("xml"); // Recibe el XML desde el enlace del menú principal
+
+      if (!urlXML) {
+        document.getElementById("temporadasContainer").innerHTML = "No se proporcionó un enlace válido.";
+        return;
+      }
+
+      try {
+        const response = await fetch(urlXML);
+        const xml = await response.text();
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(xml, "application/xml");
+
+        const seasons = xmlDoc.getElementsByTagName("season");
+        const container = document.getElementById("temporadasContainer");
+        container.innerHTML = ""; // Limpia el mensaje de carga inicial
+
+        for (let i = 0; i < seasons.length; i++) {
+          const season = seasons[i];
+          const seasonTitle = season.getElementsByTagName("title")[0]?.textContent || `Temporada ${i + 1}`;
+          const episodes = season.getElementsByTagName("episode");
+
+          const seasonDiv = document.createElement("div");
+          seasonDiv.classList.add("season");
+
+          seasonDiv.innerHTML = `<h2>${seasonTitle}</h2>`;
+          container.appendChild(seasonDiv);
+
+          for (let j = 0; j < episodes.length; j++) {
+            const episode = episodes[j];
+            const episodeTitle = episode.getElementsByTagName("title")[0]?.textContent || `Episodio ${j + 1}`;
+            const thumbnail = episode.getElementsByTagName("thumbnail")[0]?.textContent || "";
+            const link = episode.getElementsByTagName("link")[0]?.textContent || "#";
+
+            const episodeDiv = document.createElement("div");
+            episodeDiv.classList.add("episode");
+
+            episodeDiv.innerHTML = `
+              <img src="${thumbnail}" alt="${episodeTitle}" />
+              <h3>${episodeTitle}</h3>
+              <a href="${link}" target="_blank">Ver episodio</a>
+            `;
+            seasonDiv.appendChild(episodeDiv);
+          }
+        }
+      } catch (error) {
+        console.error("Error al cargar el XML:", error);
+        document.getElementById("temporadasContainer").innerHTML = "Error al cargar temporadas y episodios.";
+      }
+    }
+
+    // Carga el contenido al iniciar la página
+    document.addEventListener("DOMContentLoaded", cargarTemporadas);
+  </script>
+</body>
+</html>
