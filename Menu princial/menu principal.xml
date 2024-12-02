@@ -1,158 +1,45 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#1a1a1a">
-
-    <!-- Menú superior -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="#333333"
-        android:padding="10dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Películas"
-            android:textColor="#ffa31a"
-            android:padding="8dp"
-            android:textSize="16sp"
-            android:layout_marginEnd="10dp"
-            android:clickable="true"
-            android:focusable="true" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Series"
-            android:textColor="#ffa31a"
-            android:padding="8dp"
-            android:textSize="16sp"
-            android:layout_marginEnd="10dp"
-            android:clickable="true"
-            android:focusable="true" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Anime"
-            android:textColor="#ffa31a"
-            android:padding="8dp"
-            android:textSize="16sp"
-            android:clickable="true"
-            android:focusable="true" />
-    </LinearLayout>
-
+<contenido>
     <!-- Carrusel -->
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginTop="10dp">
+    <carrusel>
+        <item>
+            <imagen>https://via.placeholder.com/1200x400?text=Estreno+1</imagen>
+            <enlace>https://example.com/estreno1</enlace>
+        </item>
+        <item>
+            <imagen>https://via.placeholder.com/1200x400?text=Estreno+2</imagen>
+            <enlace>https://example.com/estreno2</enlace>
+        </item>
+        <item>
+            <imagen>https://via.placeholder.com/1200x400?text=Estreno+3</imagen>
+            <enlace>https://example.com/estreno3</enlace>
+        </item>
+    </carrusel>
 
-        <ViewFlipper
-            android:id="@+id/carrusel"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+    <!-- Últimas Películas -->
+    <peliculas>
+        <pelicula>
+            <titulo>Inception</titulo>
+            <imagen>https://via.placeholder.com/180x270?text=Inception</imagen>
+            <enlace>https://example.com/inception</enlace>
+        </pelicula>
+        <pelicula>
+            <titulo>The Dark Knight</titulo>
+            <imagen>https://via.placeholder.com/180x270?text=The+Dark+Knight</imagen>
+            <enlace>https://example.com/darkknight</enlace>
+        </pelicula>
+    </peliculas>
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                android:src="@drawable/placeholder_image1" />
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                android:src="@drawable/placeholder_image2" />
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                android:src="@drawable/placeholder_image3" />
-        </ViewFlipper>
-
-        <!-- Botón anterior -->
-        <Button
-            android:id="@+id/btn_prev"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center_vertical|start"
-            android:layout_marginStart="8dp"
-            android:background="#80000000"
-            android:textColor="#FFFFFF"
-            android:text="❮" />
-
-        <!-- Botón siguiente -->
-        <Button
-            android:id="@+id/btn_next"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center_vertical|end"
-            android:layout_marginEnd="8dp"
-            android:background="#80000000"
-            android:textColor="#FFFFFF"
-            android:text="❯" />
-    </FrameLayout>
-
-    <!-- Sección de Categorías -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="10dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Últimas Películas"
-            android:textColor="#ffa31a"
-            android:textSize="18sp"
-            android:paddingBottom="8dp" />
-
-        <HorizontalScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scrollbars="none">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="5dp">
-
-                <!-- Tarjeta de Película 1 -->
-                <LinearLayout
-                    android:layout_width="180dp"
-                    android:layout_height="270dp"
-                    android:orientation="vertical"
-                    android:background="#333333"
-                    android:layout_marginEnd="10dp"
-                    android:padding="5dp"
-                    android:elevation="4dp">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="200dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/placeholder_image" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Película 1"
-                        android:textColor="#ffa31a"
-                        android:gravity="center"
-                        android:paddingTop="8dp"
-                        android:textSize="14sp" />
-                </LinearLayout>
-
-                <!-- Repite para más películas -->
-            </LinearLayout>
-        </HorizontalScrollView>
-    </LinearLayout>
-</LinearLayout>
+    <!-- Series Destacadas -->
+    <series>
+        <serie>
+            <titulo>Breaking Bad</titulo>
+            <imagen>https://via.placeholder.com/180x270?text=Breaking+Bad</imagen>
+            <enlace>https://example.com/breakingbad</enlace>
+        </serie>
+        <serie>
+            <titulo>Game of Thrones</titulo>
+            <imagen>https://via.placeholder.com/180x270?text=Game+of+Thrones</imagen>
+            <enlace>https://example.com/gameofthrones</enlace>
+        </serie>
+    </series>
+</contenido>
