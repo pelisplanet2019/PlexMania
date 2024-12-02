@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Series - App de Películas</title>
+    <title>Series - App</title>
     <style>
         /* General */
         body {
@@ -43,7 +43,7 @@
 
         /* Logo izquierdo en el menú */
         .menu img {
-            height: 100px;
+            height: 40px;
         }
 
         /* Sección de categorías */
@@ -58,7 +58,7 @@
         }
 
         .section h2 img {
-            height: 100px;
+            height: 40px;
             vertical-align: middle;
         }
 
@@ -66,23 +66,26 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: flex-start;
-            gap: 15px;
+            gap: 20px; /* Espacio entre tarjetas */
             padding: 10px 40px; /* Desplazamiento hacia la derecha */
         }
 
         .section .category-container .movie-card {
             flex: 0 0 auto;
-            width: 160px;
-            height: 260px;
+            width: 200px; /* Más grande */
+            height: 300px; /* Más grande */
             background-color: #333333;
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+            border: 4px solid transparent; /* Marco inicial transparente */
         }
 
         .section .category-container .movie-card:hover {
             transform: scale(1.05);
+            border: 4px solid #ffa31a; /* Marco amarillo en hover */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
         }
 
         .section .category-container img {
@@ -116,20 +119,13 @@
         <div class="category-container">
             <!-- Serie 1 -->
             <div class="movie-card">
-                <img src="https://via.placeholder.com/160x260" alt="Serie 1">
+                <img src="https://via.placeholder.com/200x300" alt="Serie 1">
                 <div class="movie-title">Serie 1</div>
             </div>
             <!-- Serie 2 -->
             <div class="movie-card">
-                <img src="https://via.placeholder.com/160x260" alt="Serie 2">
+                <img src="https://via.placeholder.com/200x300" alt="Serie 2">
                 <div class="movie-title">Serie 2</div>
             </div>
             <!-- Serie 3 -->
-            <div class="movie-card">
-                <img src="https://via.placeholder.com/160x260" alt="Serie 3">
-                <div class="movie-title">Serie 3</div>
-            </div>
-        </div>
-    </div>
-</body>
-</html>
+           
