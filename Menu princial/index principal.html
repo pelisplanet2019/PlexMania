@@ -44,24 +44,26 @@
         /* Carrusel */
         .carousel {
             position: relative;
-            max-width: 1000px; /* Tamaño máximo del carrusel */
+            max-width: 1000px; /* Ancho del carrusel */
             margin: 20px auto;
             overflow: hidden;
             border-radius: 15px; /* Bordes redondeados */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra del marco */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra del carrusel */
             border: 5px solid #ffa31a; /* Marco amarillo */
         }
 
         .carousel-images {
             display: flex;
+            gap: 10px; /* Espaciado entre imágenes */
+            padding: 10px;
             transition: transform 0.5s ease-in-out;
         }
 
         .carousel-images img {
-            width: 100%; /* Ancho completo */
-            height: 300px; /* Reducir altura */
+            width: 90%; /* Las imágenes no ocupan todo el ancho */
+            height: 250px; /* Reducir altura */
             object-fit: cover; /* Mantener proporciones */
-            border-radius: 10px; /* Bordes redondeados de las imágenes */
+            border-radius: 10px; /* Bordes redondeados */
             transition: transform 0.3s ease, box-shadow 0.3s ease; /* Efectos hover */
         }
 
@@ -160,22 +162,6 @@
         </div>
     </div>
 
-    <!-- Sección Últimas Películas -->
-    <div class="section">
-        <h2>Últimas Películas</h2>
-        <div class="category-container" id="peliculasContainer">
-            <!-- Las películas se generarán dinámicamente -->
-        </div>
-    </div>
-
-    <!-- Sección Series Destacadas -->
-    <div class="section">
-        <h2>Series Destacadas</h2>
-        <div class="category-container" id="seriesContainer">
-            <!-- Las series se generarán dinámicamente -->
-        </div>
-    </div>
-
     <script>
         async function cargarContenido() {
             const url = "https://raw.githubusercontent.com/pelisplanet2019/PlexMania/refs/heads/main/Menu%20princial/menu%20principal.xml";
@@ -203,44 +189,6 @@
 
                 iniciarCarrusel();
 
-                // Cargar películas
-                const peliculas = xmlDoc.querySelectorAll("peliculas > pelicula");
-                const peliculasContainer = document.getElementById("peliculasContainer");
-                peliculas.forEach(pelicula => {
-                    const titulo = pelicula.querySelector("titulo").textContent;
-                    const imagen = pelicula.querySelector("imagen").textContent;
-                    const enlace = pelicula.querySelector("enlace").textContent;
-
-                    const card = document.createElement("div");
-                    card.classList.add("movie-card");
-                    card.innerHTML = `
-                        <a href="${enlace}" target="_blank">
-                            <img src="${imagen}" alt="${titulo}">
-                        </a>
-                        <div class="movie-title">${titulo}</div>
-                    `;
-                    peliculasContainer.appendChild(card);
-                });
-
-                // Cargar series
-                const series = xmlDoc.querySelectorAll("series > serie");
-                const seriesContainer = document.getElementById("seriesContainer");
-                series.forEach(serie => {
-                    const titulo = serie.querySelector("titulo").textContent;
-                    const imagen = serie.querySelector("imagen").textContent;
-                    const enlace = serie.querySelector("enlace").textContent;
-
-                    const card = document.createElement("div");
-                    card.classList.add("movie-card");
-                    card.innerHTML = `
-                        <a href="${enlace}" target="_blank">
-                            <img src="${imagen}" alt="${titulo}">
-                        </a>
-                        <div class="movie-title">${titulo}</div>
-                    `;
-                    seriesContainer.appendChild(card);
-                });
-
             } catch (error) {
                 console.error("Error al cargar el contenido:", error);
             }
@@ -256,7 +204,7 @@
 
             function updateCarousel() {
                 const width = images[0]?.clientWidth || 0;
-                carouselImages.style.transform = `translateX(${-index * width}px)`;
+                carouselImages.style.transform = `translateX(${-index * (width + 10)}px)`;
             }
 
             prevButton.addEventListener('click', () => {
