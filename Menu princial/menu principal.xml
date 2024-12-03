@@ -2,15 +2,19 @@
     <!-- Carrusel -->
     <carrusel>
     <item>
-        <imagen>https://via.placeholder.com/1200x400?text=Estreno+1</imagen>
+        <imagen>https://192-168-0-13.9b833f3128534cf9b6dd45fb91b8dda5.plex.direct:32400/photo/:/transcode?width=240&height=360&minSize=1&upscale=1&url=%2Flibrary%2Fmetadata%2F16336%2Fthumb%2F1731719452%3FX-Plex-Token%3Dmcg8qDyw4RsMeLTiV4yi&X-Plex-Token=mcg8qDyw4RsMeLTiV4yi</imagen>
         <enlace>https://example.com/estreno1</enlace>
     </item>
     <item>
-        <imagen>https://via.placeholder.com/1200x400?text=Estreno+2</imagen>
+        <imagen>https://192-168-0-13.9b833f3128534cf9b6dd45fb91b8dda5.plex.direct:32400/photo/:/transcode?width=240&height=360&minSize=1&upscale=1&url=%2Flibrary%2Fmetadata%2F16257%2Fthumb%2F1732238031%3FX-Plex-Token%3Dmcg8qDyw4RsMeLTiV4yi&X-Plex-Token=mcg8qDyw4RsMeLTiV4yi</imagen>
         <enlace>https://example.com/estreno2</enlace>
     </item>
     <item>
-        <imagen>https://via.placeholder.com/1200x400?text=Estreno+3</imagen>
+        <imagen>https://192-168-0-13.9b833f3128534cf9b6dd45fb91b8dda5.plex.direct:32400/photo/:/transcode?width=240&height=360&minSize=1&upscale=1&url=%2Flibrary%2Fmetadata%2F16255%2Fthumb%2F1732238026%3FX-Plex-Token%3Dmcg8qDyw4RsMeLTiV4yi&X-Plex-Token=mcg8qDyw4RsMeLTiV4yi</imagen>
+        <enlace>https://example.com/estreno3</enlace>
+    </item>
+        <item>
+        <imagen>https://192-168-0-13.9b833f3128534cf9b6dd45fb91b8dda5.plex.direct:32400/photo/:/transcode?width=240&height=360&minSize=1&upscale=1&url=%2Flibrary%2Fmetadata%2F16256%2Fthumb%2F1732238029%3FX-Plex-Token%3Dmcg8qDyw4RsMeLTiV4yi&X-Plex-Token=mcg8qDyw4RsMeLTiV4yi</imagen>
         <enlace>https://example.com/estreno3</enlace>
     </item>
 </carrusel>
