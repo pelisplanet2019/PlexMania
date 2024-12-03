@@ -72,30 +72,6 @@
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
         }
 
-        .carousel-buttons {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .carousel-button {
-            background-color: rgba(0, 0, 0, 0.5);
-            border: none;
-            color: #fff;
-            font-size: 24px;
-            padding: 10px;
-            cursor: pointer;
-            border-radius: 50%;
-            transition: background-color 0.3s;
-        }
-
-        .carousel-button:hover {
-            background-color: #ffa31a;
-        }
-
         /* Sección general */
         .section {
             margin: 20px;
@@ -132,6 +108,13 @@
             font-size: 14px;
             color: #ffa31a;
             padding: 8px;
+        }
+
+        .movie-description {
+            text-align: center;
+            font-size: 12px;
+            color: #cccccc;
+            margin-top: 5px;
         }
     </style>
 </head>
@@ -191,14 +174,17 @@
                 const peliculasContainer = document.getElementById("peliculasContainer");
                 peliculas.forEach(pelicula => {
                     const titulo = pelicula.querySelector("titulo").textContent;
+                    const descripcion = pelicula.querySelector("descripcion").textContent;
                     const imagen = pelicula.querySelector("imagen").textContent;
                     const enlace = pelicula.querySelector("enlace").textContent;
+
                     const card = `
                         <div class="movie-card">
                             <a href="${enlace}" target="_blank">
                                 <img src="${imagen}" alt="${titulo}">
                             </a>
                             <div class="movie-title">${titulo}</div>
+                            <div class="movie-description">${descripcion}</div>
                         </div>`;
                     peliculasContainer.innerHTML += card;
                 });
@@ -208,14 +194,17 @@
                 const seriesContainer = document.getElementById("seriesContainer");
                 series.forEach(serie => {
                     const titulo = serie.querySelector("titulo").textContent;
+                    const descripcion = serie.querySelector("descripcion").textContent;
                     const imagen = serie.querySelector("imagen").textContent;
                     const enlace = serie.querySelector("enlace").textContent;
+
                     const card = `
                         <div class="movie-card">
                             <a href="${enlace}" target="_blank">
                                 <img src="${imagen}" alt="${titulo}">
                             </a>
                             <div class="movie-title">${titulo}</div>
+                            <div class="movie-description">${descripcion}</div>
                         </div>`;
                     seriesContainer.innerHTML += card;
                 });
