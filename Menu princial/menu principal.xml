@@ -17,10 +17,6 @@
             <imagen>https://i.ibb.co/ws3dJpz/gn2q6-Hoo-Pd-Gf-Fa-OI2-U2nbjw3-BSZ.jpg</imagen>
             <enlace>https://example.com/estreno4</enlace>
         </item>
-        <item>
-            <imagen>https://via.placeholder.com/1200x400?text=Estreno+5</imagen>
-            <enlace>https://example.com/estreno5</enlace>
-        </item>
     </carrusel>
 
     <!-- Películas Destacadas -->
@@ -61,18 +57,6 @@
             <imagen>https://via.placeholder.com/180x270?text=Endgame</imagen>
             <enlace>https://example.com/endgame</enlace>
         </pelicula>
-        <pelicula>
-            <titulo>The Matrix</titulo>
-            <descripcion>Un hacker descubre la verdad detrás de la realidad.</descripcion>
-            <imagen>https://via.placeholder.com/180x270?text=The+Matrix</imagen>
-            <enlace>https://example.com/matrix</enlace>
-        </pelicula>
-        <pelicula>
-            <titulo>Parasite</titulo>
-            <descripcion>Una mirada irónica a la lucha de clases.</descripcion>
-            <imagen>https://via.placeholder.com/180x270?text=Parasite</imagen>
-            <enlace>https://example.com/parasite</enlace>
-        </pelicula>
     </peliculas>
 
     <!-- Series Destacadas -->
@@ -112,18 +96,6 @@
             <descripcion>Superhéroes corruptos enfrentados por un grupo de vigilantes.</descripcion>
             <imagen>https://via.placeholder.com/180x270?text=The+Boys</imagen>
             <enlace>https://example.com/theboys</enlace>
-        </serie>
-        <serie>
-            <titulo>Westworld</titulo>
-            <descripcion>Un parque temático lleno de robots y secretos oscuros.</descripcion>
-            <imagen>https://via.placeholder.com/180x270?text=Westworld</imagen>
-            <enlace>https://example.com/westworld</enlace>
-        </serie>
-        <serie>
-            <titulo>Dark</titulo>
-            <descripcion>Un thriller sobre viajes en el tiempo y realidades alternativas.</descripcion>
-            <imagen>https://via.placeholder.com/180x270?text=Dark</imagen>
-            <enlace>https://example.com/dark</enlace>
         </serie>
     </series>
 </contenido>
