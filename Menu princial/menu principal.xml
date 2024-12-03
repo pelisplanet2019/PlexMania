@@ -19,7 +19,7 @@
         </item>
     </carrusel>
 
-    <!-- Últimas Películas -->
+    <!-- Películas Destacadas -->
     <peliculas>
         <pelicula>
             <titulo>Inception</titulo>
@@ -30,6 +30,16 @@
             <titulo>The Dark Knight</titulo>
             <imagen>https://via.placeholder.com/180x270?text=The+Dark+Knight</imagen>
             <enlace>https://example.com/darkknight</enlace>
+        </pelicula>
+        <pelicula>
+            <titulo>Interstellar</titulo>
+            <imagen>https://via.placeholder.com/180x270?text=Interstellar</imagen>
+            <enlace>https://example.com/interstellar</enlace>
+        </pelicula>
+        <pelicula>
+            <titulo>Dune</titulo>
+            <imagen>https://via.placeholder.com/180x270?text=Dune</imagen>
+            <enlace>https://example.com/dune</enlace>
         </pelicula>
     </peliculas>
 
@@ -44,6 +54,16 @@
             <titulo>Game of Thrones</titulo>
             <imagen>https://via.placeholder.com/180x270?text=Game+of+Thrones</imagen>
             <enlace>https://example.com/gameofthrones</enlace>
+        </serie>
+        <serie>
+            <titulo>The Mandalorian</titulo>
+            <imagen>https://via.placeholder.com/180x270?text=The+Mandalorian</imagen>
+            <enlace>https://example.com/mandalorian</enlace>
+        </serie>
+        <serie>
+            <titulo>Stranger Things</titulo>
+            <imagen>https://via.placeholder.com/180x270?text=Stranger+Things</imagen>
+            <enlace>https://example.com/strangerthings</enlace>
         </serie>
     </series>
 </contenido>
