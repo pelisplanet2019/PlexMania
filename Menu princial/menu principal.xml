@@ -17,6 +17,10 @@
             <imagen>https://i.ibb.co/ws3dJpz/gn2q6-Hoo-Pd-Gf-Fa-OI2-U2nbjw3-BSZ.jpg</imagen>
             <enlace>https://example.com/estreno4</enlace>
         </item>
+        <item>
+            <imagen>https://i.ibb.co/ws3dJpz/gn2q6-Hoo-Pd-Gf-Fa-OI2-U2nbjw3-BSZ.jpg</imagen>
+            <enlace>https://example.com/estreno5</enlace>
+        </item>
     </carrusel>
 
     <!-- Películas Destacadas -->
@@ -57,6 +61,12 @@
             <imagen>https://via.placeholder.com/180x270?text=Endgame</imagen>
             <enlace>https://example.com/endgame</enlace>
         </pelicula>
+        <pelicula>
+            <titulo>Avengers: Endgame</titulo>
+            <descripcion>El enfrentamiento final contra Thanos.</descripcion>
+            <imagen>https://via.placeholder.com/180x270?text=Endgame</imagen>
+            <enlace>https://example.com/endgame</enlace>
+        </pelicula>
     </peliculas>
 
     <!-- Series Destacadas -->
@@ -90,6 +100,12 @@
             <descripcion>La historia de los Targaryen antes de Game of Thrones.</descripcion>
             <imagen>https://via.placeholder.com/180x270?text=House+of+the+Dragon</imagen>
             <enlace>https://example.com/houseofthedragon</enlace>
+        </serie>
+        <serie>
+            <titulo>The Boys</titulo>
+            <descripcion>Superhéroes corruptos enfrentados por un grupo de vigilantes.</descripcion>
+            <imagen>https://via.placeholder.com/180x270?text=The+Boys</imagen>
+            <enlace>https://example.com/theboys</enlace>
         </serie>
         <serie>
             <titulo>The Boys</titulo>
