@@ -55,21 +55,39 @@
         .carousel-images {
             display: flex;
             gap: 10px;
-            padding: 10px;
             transition: transform 0.5s ease-in-out;
         }
 
         .carousel-images img {
-            width: 90%;
+            width: 100%;
             height: 250px;
             object-fit: cover;
             border-radius: 10px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .carousel-images img:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        .carousel-buttons {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 10px;
+        }
+
+        .carousel-button {
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: #fff;
+            font-size: 24px;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+
+        .carousel-button:hover {
+            background-color: #ffa31a;
         }
 
         /* Sección general */
@@ -81,6 +99,13 @@
             text-align: center;
             color: #ffa31a;
             margin-bottom: 10px;
+        }
+
+        .section-description {
+            text-align: center;
+            font-size: 14px;
+            color: #cccccc;
+            margin-bottom: 20px;
         }
 
         .category-container {
@@ -138,18 +163,20 @@
     <!-- Sección Últimas Películas -->
     <div class="section">
         <h2>Últimas Películas</h2>
+        <p class="section-description">Descubre nuestras películas más recientes y populares.</p>
         <div class="category-container" id="peliculasContainer"></div>
     </div>
 
     <!-- Sección Series Destacadas -->
     <div class="section">
         <h2>Series Destacadas</h2>
+        <p class="section-description">Explora las series más destacadas con historias fascinantes.</p>
         <div class="category-container" id="seriesContainer"></div>
     </div>
 
     <script>
         async function cargarContenido() {
-            const url = "";
+            const url = "https://raw.githubusercontent.com/pelisplanet2019/PlexMania/refs/heads/main/Menu%20princial/menu%20principal.xml";
 
             try {
                 const response = await fetch(url);
@@ -168,6 +195,28 @@
                     const imgElement = `<a href="${enlace}" target="_blank"><img src="${imagen}" alt="Carrusel"></a>`;
                     carouselContainer.innerHTML += imgElement;
                 });
+
+                // Autoplay del carrusel
+                let index = 0;
+                const images = document.querySelectorAll(".carousel-images img");
+                const updateCarousel = () => {
+                    const width = images[0].clientWidth;
+                    document.querySelector(".carousel-images").style.transform = `translateX(${-index * width}px)`;
+                };
+
+                document.getElementById("next").addEventListener("click", () => {
+                    index = (index + 1) % images.length;
+                    updateCarousel();
+                });
+
+                document.getElementById("prev").addEventListener("click", () => {
+                    index = (index - 1 + images.length) % images.length;
+                    updateCarousel();
+                });
+
+                setInterval(() => {
+                    document.getElementById("next").click();
+                }, 5000);
 
                 // Cargar películas
                 const peliculas = xmlDoc.querySelectorAll("peliculas > pelicula");
