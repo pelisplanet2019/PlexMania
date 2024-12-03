@@ -72,7 +72,6 @@
             width: 100%;
             display: flex;
             justify-content: space-between;
-            padding: 0 10px;
         }
 
         .carousel-button {
@@ -92,7 +91,13 @@
 
         /* Sección general */
         .section {
-            margin: 20px;
+            margin: 20px auto;
+            max-width: 1000px;
+            background-color: #333333; /* Fondo gris */
+            border: 2px solid #ffa31a; /* Borde amarillo */
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
 
         .section h2 {
@@ -104,7 +109,7 @@
         .section-description {
             text-align: center;
             font-size: 14px;
-            color: #cccccc;
+            color: #ffa31a; /* Texto amarillo anaranjado */
             margin-bottom: 20px;
         }
 
@@ -112,11 +117,10 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
             gap: 15px;
-            padding: 10px;
         }
 
         .movie-card {
-            background-color: #333333;
+            background-color: #444444;
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
@@ -163,14 +167,14 @@
     <!-- Sección Últimas Películas -->
     <div class="section">
         <h2>Últimas Películas</h2>
-        <p class="section-description">Descubre nuestras películas más recientes y populares.</p>
+        <p class="section-description">Disfruta de las películas más recientes y populares.</p>
         <div class="category-container" id="peliculasContainer"></div>
     </div>
 
     <!-- Sección Series Destacadas -->
     <div class="section">
         <h2>Series Destacadas</h2>
-        <p class="section-description">Explora las series más destacadas con historias fascinantes.</p>
+        <p class="section-description">Explora nuestras series más destacadas llenas de emoción.</p>
         <div class="category-container" id="seriesContainer"></div>
     </div>
 
