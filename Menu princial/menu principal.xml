@@ -9,6 +9,18 @@
             <imagen>https://i.ibb.co/hLBD64S/Cartel-Blacklist-1.jpg</imagen>
             <enlace>https://example.com/estreno2</enlace>
         </item>
+        <item>
+            <imagen>https://i.ibb.co/qJzCchR/El-saeptimo-hijo-850488994-large.jpg</imagen>
+            <enlace>https://example.com/estreno3</enlace>
+        </item>
+        <item>
+            <imagen>https://i.ibb.co/ws3dJpz/gn2q6-Hoo-Pd-Gf-Fa-OI2-U2nbjw3-BSZ.jpg</imagen>
+            <enlace>https://example.com/estreno4</enlace>
+        </item>
+        <item>
+            <imagen>https://via.placeholder.com/1200x400?text=Estreno+5</imagen>
+            <enlace>https://example.com/estreno5</enlace>
+        </item>
     </carrusel>
 
     <!-- Películas Destacadas -->
@@ -25,6 +37,42 @@
             <imagen>https://via.placeholder.com/180x270?text=The+Dark+Knight</imagen>
             <enlace>https://example.com/darkknight</enlace>
         </pelicula>
+        <pelicula>
+            <titulo>Interstellar</titulo>
+            <descripcion>Una travesía por el espacio para salvar la humanidad.</descripcion>
+            <imagen>https://via.placeholder.com/180x270?text=Interstellar</imagen>
+            <enlace>https://example.com/interstellar</enlace>
+        </pelicula>
+        <pelicula>
+            <titulo>Dune</titulo>
+            <descripcion>Un joven destinado a liderar un planeta desértico.</descripcion>
+            <imagen>https://via.placeholder.com/180x270?text=Dune</imagen>
+            <enlace>https://example.com/dune</enlace>
+        </pelicula>
+        <pelicula>
+            <titulo>Avatar</titulo>
+            <descripcion>Un viaje a un mundo alienígena lleno de maravillas.</descripcion>
+            <imagen>https://via.placeholder.com/180x270?text=Avatar</imagen>
+            <enlace>https://example.com/avatar</enlace>
+        </pelicula>
+        <pelicula>
+            <titulo>Avengers: Endgame</titulo>
+            <descripcion>El enfrentamiento final contra Thanos.</descripcion>
+            <imagen>https://via.placeholder.com/180x270?text=Endgame</imagen>
+            <enlace>https://example.com/endgame</enlace>
+        </pelicula>
+        <pelicula>
+            <titulo>The Matrix</titulo>
+            <descripcion>Un hacker descubre la verdad detrás de la realidad.</descripcion>
+            <imagen>https://via.placeholder.com/180x270?text=The+Matrix</imagen>
+            <enlace>https://example.com/matrix</enlace>
+        </pelicula>
+        <pelicula>
+            <titulo>Parasite</titulo>
+            <descripcion>Una mirada irónica a la lucha de clases.</descripcion>
+            <imagen>https://via.placeholder.com/180x270?text=Parasite</imagen>
+            <enlace>https://example.com/parasite</enlace>
+        </pelicula>
     </peliculas>
 
     <!-- Series Destacadas -->
@@ -40,6 +88,42 @@
             <descripcion>Una lucha por el trono en un reino dividido.</descripcion>
             <imagen>https://via.placeholder.com/180x270?text=Game+of+Thrones</imagen>
             <enlace>https://example.com/gameofthrones</enlace>
+        </serie>
+        <serie>
+            <titulo>The Mandalorian</titulo>
+            <descripcion>Las aventuras de un cazarrecompensas en el universo Star Wars.</descripcion>
+            <imagen>https://via.placeholder.com/180x270?text=The+Mandalorian</imagen>
+            <enlace>https://example.com/mandalorian</enlace>
+        </serie>
+        <serie>
+            <titulo>Stranger Things</titulo>
+            <descripcion>Un grupo de amigos enfrenta misterios sobrenaturales.</descripcion>
+            <imagen>https://via.placeholder.com/180x270?text=Stranger+Things</imagen>
+            <enlace>https://example.com/strangerthings</enlace>
+        </serie>
+        <serie>
+            <titulo>House of the Dragon</titulo>
+            <descripcion>La historia de los Targaryen antes de Game of Thrones.</descripcion>
+            <imagen>https://via.placeholder.com/180x270?text=House+of+the+Dragon</imagen>
+            <enlace>https://example.com/houseofthedragon</enlace>
+        </serie>
+        <serie>
+            <titulo>The Boys</titulo>
+            <descripcion>Superhéroes corruptos enfrentados por un grupo de vigilantes.</descripcion>
+            <imagen>https://via.placeholder.com/180x270?text=The+Boys</imagen>
+            <enlace>https://example.com/theboys</enlace>
+        </serie>
+        <serie>
+            <titulo>Westworld</titulo>
+            <descripcion>Un parque temático lleno de robots y secretos oscuros.</descripcion>
+            <imagen>https://via.placeholder.com/180x270?text=Westworld</imagen>
+            <enlace>https://example.com/westworld</enlace>
+        </serie>
+        <serie>
+            <titulo>Dark</titulo>
+            <descripcion>Un thriller sobre viajes en el tiempo y realidades alternativas.</descripcion>
+            <imagen>https://via.placeholder.com/180x270?text=Dark</imagen>
+            <enlace>https://example.com/dark</enlace>
         </serie>
     </series>
 </contenido>
