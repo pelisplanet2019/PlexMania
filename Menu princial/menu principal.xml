@@ -9,37 +9,21 @@
             <imagen>https://i.ibb.co/hLBD64S/Cartel-Blacklist-1.jpg</imagen>
             <enlace>https://example.com/estreno2</enlace>
         </item>
-        <item>
-            <imagen>https://i.ibb.co/qJzCchR/El-saeptimo-hijo-850488994-large.jpg</imagen>
-            <enlace>https://example.com/estreno3</enlace>
-        </item>
-        <item>
-            <imagen>https://i.ibb.co/ws3dJpz/gn2q6-Hoo-Pd-Gf-Fa-OI2-U2nbjw3-BSZ.jpg</imagen>
-            <enlace>https://example.com/estreno4</enlace>
-        </item>
     </carrusel>
 
     <!-- Películas Destacadas -->
     <peliculas>
         <pelicula>
             <titulo>Inception</titulo>
+            <descripcion>Un ladrón que roba secretos a través de sueños.</descripcion>
             <imagen>https://via.placeholder.com/180x270?text=Inception</imagen>
             <enlace>https://example.com/inception</enlace>
         </pelicula>
         <pelicula>
             <titulo>The Dark Knight</titulo>
+            <descripcion>Batman enfrenta al Joker en una lucha épica.</descripcion>
             <imagen>https://via.placeholder.com/180x270?text=The+Dark+Knight</imagen>
             <enlace>https://example.com/darkknight</enlace>
-        </pelicula>
-        <pelicula>
-            <titulo>Interstellar</titulo>
-            <imagen>https://via.placeholder.com/180x270?text=Interstellar</imagen>
-            <enlace>https://example.com/interstellar</enlace>
-        </pelicula>
-        <pelicula>
-            <titulo>Dune</titulo>
-            <imagen>https://via.placeholder.com/180x270?text=Dune</imagen>
-            <enlace>https://example.com/dune</enlace>
         </pelicula>
     </peliculas>
 
@@ -47,23 +31,15 @@
     <series>
         <serie>
             <titulo>Breaking Bad</titulo>
+            <descripcion>Un profesor de química convertido en narcotraficante.</descripcion>
             <imagen>https://via.placeholder.com/180x270?text=Breaking+Bad</imagen>
             <enlace>https://example.com/breakingbad</enlace>
         </serie>
         <serie>
             <titulo>Game of Thrones</titulo>
+            <descripcion>Una lucha por el trono en un reino dividido.</descripcion>
             <imagen>https://via.placeholder.com/180x270?text=Game+of+Thrones</imagen>
             <enlace>https://example.com/gameofthrones</enlace>
-        </serie>
-        <serie>
-            <titulo>The Mandalorian</titulo>
-            <imagen>https://via.placeholder.com/180x270?text=The+Mandalorian</imagen>
-            <enlace>https://example.com/mandalorian</enlace>
-        </serie>
-        <serie>
-            <titulo>Stranger Things</titulo>
-            <imagen>https://via.placeholder.com/180x270?text=Stranger+Things</imagen>
-            <enlace>https://example.com/strangerthings</enlace>
         </serie>
     </series>
 </contenido>
