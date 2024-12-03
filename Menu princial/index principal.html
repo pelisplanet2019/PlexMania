@@ -17,10 +17,10 @@
         /* Menú superior */
         .menu {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            justify-content: center;
+            gap: 15px; /* Espacio reducido entre enlaces */
             background-color: #333333;
-            padding: 10px 20px;
+            padding: 10px 0; /* Reducir margen superior e inferior */
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -45,11 +45,24 @@
         .carousel {
             position: relative;
             max-width: 1000px; /* Ancho del carrusel */
-            margin: 20px auto;
+            margin: 40px auto; /* Mover hacia abajo */
             overflow: hidden;
             border-radius: 15px; /* Bordes redondeados */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra del carrusel */
             border: 5px solid #ffa31a; /* Marco amarillo */
+        }
+
+        .carousel-description {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #ffffff;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 16px;
+            z-index: 10;
         }
 
         .carousel-images {
@@ -105,6 +118,13 @@
         .section h2 {
             text-align: center;
             color: #ffa31a;
+            margin-bottom: 10px;
+        }
+
+        .section p {
+            text-align: center;
+            color: #cccccc;
+            font-size: 14px;
             margin-bottom: 20px;
         }
 
@@ -153,12 +173,31 @@
 
     <!-- Carrusel -->
     <div class="carousel">
+        <div class="carousel-description">Descubre las últimas novedades en nuestro catálogo</div>
         <div class="carousel-images" id="carouselContainer">
             <!-- Las imágenes del carrusel se generarán dinámicamente -->
         </div>
         <div class="carousel-buttons">
             <button class="carousel-button" id="prev">&lt;</button>
             <button class="carousel-button" id="next">&gt;</button>
+        </div>
+    </div>
+
+    <!-- Sección Últimas Películas -->
+    <div class="section">
+        <h2>Últimas Películas</h2>
+        <p>Explora nuestra colección de las películas más recientes y populares.</p>
+        <div class="category-container" id="peliculasContainer">
+            <!-- Las películas se generarán dinámicamente -->
+        </div>
+    </div>
+
+    <!-- Sección Series Destacadas -->
+    <div class="section">
+        <h2>Series Destacadas</h2>
+        <p>Sumérgete en historias fascinantes con nuestras series destacadas.</p>
+        <div class="category-container" id="seriesContainer">
+            <!-- Las series se generarán dinámicamente -->
         </div>
     </div>
 
@@ -188,6 +227,44 @@
                 });
 
                 iniciarCarrusel();
+
+                // Cargar películas
+                const peliculas = xmlDoc.querySelectorAll("peliculas > pelicula");
+                const peliculasContainer = document.getElementById("peliculasContainer");
+                peliculas.forEach(pelicula => {
+                    const titulo = pelicula.querySelector("titulo").textContent;
+                    const imagen = pelicula.querySelector("imagen").textContent;
+                    const enlace = pelicula.querySelector("enlace").textContent;
+
+                    const card = document.createElement("div");
+                    card.classList.add("movie-card");
+                    card.innerHTML = `
+                        <a href="${enlace}" target="_blank">
+                            <img src="${imagen}" alt="${titulo}">
+                        </a>
+                        <div class="movie-title">${titulo}</div>
+                    `;
+                    peliculasContainer.appendChild(card);
+                });
+
+                // Cargar series
+                const series = xmlDoc.querySelectorAll("series > serie");
+                const seriesContainer = document.getElementById("seriesContainer");
+                series.forEach(serie => {
+                    const titulo = serie.querySelector("titulo").textContent;
+                    const imagen = serie.querySelector("imagen").textContent;
+                    const enlace = serie.querySelector("enlace").textContent;
+
+                    const card = document.createElement("div");
+                    card.classList.add("movie-card");
+                    card.innerHTML = `
+                        <a href="${enlace}" target="_blank">
+                            <img src="${imagen}" alt="${titulo}">
+                        </a>
+                        <div class="movie-title">${titulo}</div>
+                    `;
+                    seriesContainer.appendChild(card);
+                });
 
             } catch (error) {
                 console.error("Error al cargar el contenido:", error);
