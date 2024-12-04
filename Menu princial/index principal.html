@@ -1,105 +1,176 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Películas y Series</title>
+    <title>Página Principal</title>
     <style>
+        /* General */
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
             margin: 0;
             padding: 0;
+            background-color: #1a1a1a;
+            color: #f5f5f5;
         }
-        header {
-            background-color: #333;
-            color: #ffa500;
-            padding: 15px;
-            text-align: center;
-            font-size: 18px;
+
+        /* Menú superior */
+        .menu {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            background-color: #333333;
+            padding: 10px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
-        header a {
-            color: #ffa500;
+
+        .menu a {
             text-decoration: none;
-            margin: 0 15px;
+            color: #ffa31a;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 8px 16px;
+            transition: background-color 0.3s;
         }
+
+        .menu a:hover {
+            background-color: #444444;
+            border-radius: 5px;
+        }
+
+        /* Carrusel */
         .carousel {
-            margin: 20px auto;
-            max-width: 80%;
+            position: relative;
+            max-width: 1000px;
+            margin: 40px auto;
             overflow: hidden;
-            border: 2px solid #333;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border: 5px solid #ffa31a;
+        }
+
+        .carousel-images {
+            display: flex;
+            gap: 10px;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-images img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
             border-radius: 10px;
         }
-        .carousel img {
+
+        .carousel-buttons {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
             width: 100%;
-            height: auto;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 10px;
         }
+
+        .carousel-button {
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: #fff;
+            font-size: 24px;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+
+        .carousel-button:hover {
+            background-color: #ffa31a;
+        }
+
+        /* Sección general */
         .section {
-            margin: 20px auto;
-            max-width: 90%;
-            padding: 15px;
-            background-color: #1a1a1a;
-            color: #ffa500;
-            border-radius: 5px;
+            margin: 20px;
         }
+
         .section h2 {
             text-align: center;
+            color: #ffa31a;
+            margin-bottom: 10px;
         }
-        .category-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            justify-content: center;
-        }
-        .category-container .item {
-            background-color: #333;
-            padding: 10px;
-            border-radius: 5px;
-            width: 150px;
+
+        .section-description {
             text-align: center;
-            color: #fff;
+            font-size: 14px;
+            color: #cccccc;
+            margin-bottom: 20px;
         }
-        .category-container .item img {
+
+        .category-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 15px;
+            padding: 10px;
+        }
+
+        .movie-card {
+            background-color: #333333;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .movie-card img {
             width: 100%;
-            height: auto;
+            height: 270px;
+            object-fit: cover;
         }
-        .category-container .item a {
-            color: #fff;
-            text-decoration: none;
+
+        .movie-title {
+            text-align: center;
+            font-size: 14px;
+            color: #ffa31a;
+            padding: 8px;
         }
-        .line-separator {
-            border: none;
-            height: 2px;
-            background-color: #ffa500;
-            margin: 20px 0;
+
+        .movie-description {
+            text-align: center;
+            font-size: 12px;
+            color: #cccccc;
+            margin-top: 5px;
         }
     </style>
 </head>
 <body>
-    <header>
+    <!-- Menú superior -->
+    <div class="menu">
         <a href="#">Películas</a>
         <a href="#">Series</a>
         <a href="#">Anime</a>
-    </header>
+    </div>
 
     <!-- Carrusel -->
-    <div class="carousel" id="carouselContainer"></div>
+    <div class="carousel">
+        <div class="carousel-images" id="carouselContainer"></div>
+        <div class="carousel-buttons">
+            <button class="carousel-button" id="prev">&lt;</button>
+            <button class="carousel-button" id="next">&gt;</button>
+        </div>
+    </div>
 
-    <!-- Películas Destacadas -->
+    <!-- Sección Últimas Películas -->
     <div class="section">
         <h2>Últimas Películas</h2>
+        <p class="section-description">Descubre nuestras películas más recientes y populares.</p>
         <div class="category-container" id="peliculasContainer"></div>
     </div>
 
-    <!-- Línea separadora -->
-    <div class="line-separator"></div>
-
-    <!-- Series Destacadas -->
+    <!-- Sección Series Destacadas -->
     <div class="section">
         <h2>Series Destacadas</h2>
+        <p class="section-description">Explora las series más destacadas con historias fascinantes.</p>
         <div class="category-container" id="seriesContainer"></div>
     </div>
 
@@ -125,44 +196,66 @@
                     carouselContainer.innerHTML += imgElement;
                 });
 
+                // Autoplay del carrusel
+                let index = 0;
+                const images = document.querySelectorAll(".carousel-images img");
+                const updateCarousel = () => {
+                    const width = images[0].clientWidth;
+                    document.querySelector(".carousel-images").style.transform = `translateX(${-index * width}px)`;
+                };
+
+                document.getElementById("next").addEventListener("click", () => {
+                    index = (index + 1) % images.length;
+                    updateCarousel();
+                });
+
+                document.getElementById("prev").addEventListener("click", () => {
+                    index = (index - 1 + images.length) % images.length;
+                    updateCarousel();
+                });
+
+                setInterval(() => {
+                    document.getElementById("next").click();
+                }, 5000);
+
                 // Cargar películas
-                const peliculasItems = xmlDoc.querySelectorAll("peliculas > peliculas_item");
+                const peliculas = xmlDoc.querySelectorAll("peliculas > pelicula");
                 const peliculasContainer = document.getElementById("peliculasContainer");
-                peliculasItems.forEach(item => {
-                    const titulo = item.querySelector("title").textContent;
-                    const imagen = item.querySelector("thumbnail").textContent;
-                    const enlace = item.querySelector("link").textContent;
-                    const descripcion = item.querySelector("description").textContent;
-                    const movieElement = `
-                        <div class="item">
+                peliculas.forEach(pelicula => {
+                    const titulo = pelicula.querySelector("titulo").textContent;
+                    const descripcion = pelicula.querySelector("descripcion").textContent;
+                    const imagen = pelicula.querySelector("imagen").textContent;
+                    const enlace = pelicula.querySelector("enlace").textContent;
+
+                    const card = `
+                        <div class="movie-card">
                             <a href="${enlace}" target="_blank">
                                 <img src="${imagen}" alt="${titulo}">
-                                <h3>${titulo}</h3>
                             </a>
-                            <p>${descripcion}</p>
-                        </div>
-                    `;
-                    peliculasContainer.innerHTML += movieElement;
+                            <div class="movie-title">${titulo}</div>
+                            <div class="movie-description">${descripcion}</div>
+                        </div>`;
+                    peliculasContainer.innerHTML += card;
                 });
 
                 // Cargar series
-                const seriesItems = xmlDoc.querySelectorAll("series > series_item");
+                const series = xmlDoc.querySelectorAll("series > serie");
                 const seriesContainer = document.getElementById("seriesContainer");
-                seriesItems.forEach(item => {
-                    const titulo = item.querySelector("title").textContent;
-                    const imagen = item.querySelector("thumbnail").textContent;
-                    const enlace = item.querySelector("link").textContent;
-                    const descripcion = item.querySelector("description").textContent;
-                    const seriesElement = `
-                        <div class="item">
+                series.forEach(serie => {
+                    const titulo = serie.querySelector("titulo").textContent;
+                    const descripcion = serie.querySelector("descripcion").textContent;
+                    const imagen = serie.querySelector("imagen").textContent;
+                    const enlace = serie.querySelector("enlace").textContent;
+
+                    const card = `
+                        <div class="movie-card">
                             <a href="${enlace}" target="_blank">
                                 <img src="${imagen}" alt="${titulo}">
-                                <h3>${titulo}</h3>
                             </a>
-                            <p>${descripcion}</p>
-                        </div>
-                    `;
-                    seriesContainer.innerHTML += seriesElement;
+                            <div class="movie-title">${titulo}</div>
+                            <div class="movie-description">${descripcion}</div>
+                        </div>`;
+                    seriesContainer.innerHTML += card;
                 });
 
             } catch (error) {
@@ -170,7 +263,7 @@
             }
         }
 
-        cargarContenido();
+        document.addEventListener("DOMContentLoaded", cargarContenido);
     </script>
 </body>
 </html>
