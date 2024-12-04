@@ -1,62 +1,99 @@
 <series>
-  <series_item>
-    <title>Breaking Bad</title>
-    <description>Un profesor de química convertido en narcotraficante.</description>
-    <thumbnail>https://via.placeholder.com/200x300?text=Breaking+Bad</thumbnail>
-    <link>https://example.com/breakingbad.xml</link>
-  </series_item>
-  <series_item>
-    <title>Game of Thrones</title>
-    <description>Una lucha por el trono de hierro llena de traiciones.</description>
-    <thumbnail>https://via.placeholder.com/200x300?text=Game+of+Thrones</thumbnail>
-    <link>https://example.com/gameofthrones.xml</link>
-  </series_item>
-    <series_item>
-    <title>Breaking Bad</title>
-    <description>Un profesor de química convertido en narcotraficante.</description>
-    <thumbnail>https://via.placeholder.com/200x300?text=Breaking+Bad</thumbnail>
-    <link>https://example.com/breakingbad.xml</link>
-  </series_item>
-  <series_item>
-    <title>Game of Thrones</title>
-    <description>Una lucha por el trono de hierro llena de traiciones.</description>
-    <thumbnail>https://via.placeholder.com/200x300?text=Game+of+Thrones</thumbnail>
-    <link>https://example.com/gameofthrones.xml</link>
-  </series_item>
-    <series_item>
-    <title>Breaking Bad</title>
-    <description>Un profesor de química convertido en narcotraficante.</description>
-    <thumbnail>https://via.placeholder.com/200x300?text=Breaking+Bad</thumbnail>
-    <link>https://example.com/breakingbad.xml</link>
-  </series_item>
-  <series_item>
-    <title>Game of Thrones</title>
-    <description>Una lucha por el trono de hierro llena de traiciones.</description>
-    <thumbnail>https://via.placeholder.com/200x300?text=Game+of+Thrones</thumbnail>
-    <link>https://example.com/gameofthrones.xml</link>
-  </series_item>
-    <series_item>
-    <title>Breaking Bad</title>
-    <description>Un profesor de química convertido en narcotraficante.</description>
-    <thumbnail>https://via.placeholder.com/200x300?text=Breaking+Bad</thumbnail>
-    <link>https://example.com/breakingbad.xml</link>
-  </series_item>
-  <series_item>
-    <title>Game of Thrones</title>
-    <description>Una lucha por el trono de hierro llena de traiciones.</description>
-    <thumbnail>https://via.placeholder.com/200x300?text=Game+of+Thrones</thumbnail>
-    <link>https://example.com/gameofthrones.xml</link>
-  </series_item>
-    <series_item>
-    <title>Breaking Bad</title>
-    <description>Un profesor de química convertido en narcotraficante.</description>
-    <thumbnail>https://via.placeholder.com/200x300?text=Breaking+Bad</thumbnail>
-    <link>https://example.com/breakingbad.xml</link>
-  </series_item>
-  <series_item>
-    <title>Game of Thrones</title>
-    <description>Una lucha por el trono de hierro llena de traiciones.</description>
-    <thumbnail>https://via.placeholder.com/200x300?text=Game+of+Thrones</thumbnail>
-    <link>https://example.com/gameofthrones.xml</link>
-  </series_item>
+    <serie>
+        <titulo>Serie 1</titulo>
+        <imagen>https://via.placeholder.com/180x270?text=Serie+1</imagen>
+        <descripcion>Descripción de la serie 1.</descripcion>
+        <enlace>https://example.com/serie1</enlace>
+    </serie>
+    <serie>
+        <titulo>Serie 2</titulo>
+        <imagen>https://via.placeholder.com/180x270?text=Serie+2</imagen>
+        <descripcion>Descripción de la serie 2.</descripcion>
+        <enlace>https://example.com/serie2</enlace>
+    </serie>
+  <serie>
+        <titulo>Serie 2</titulo>
+        <imagen>https://via.placeholder.com/180x270?text=Serie+2</imagen>
+        <descripcion>Descripción de la serie 2.</descripcion>
+        <enlace>https://example.com/serie2</enlace>
+    </serie>
+  <serie>
+        <titulo>Serie 2</titulo>
+        <imagen>https://via.placeholder.com/180x270?text=Serie+2</imagen>
+        <descripcion>Descripción de la serie 2.</descripcion>
+        <enlace>https://example.com/serie2</enlace>
+    </serie>
+  <serie>
+        <titulo>Serie 2</titulo>
+        <imagen>https://via.placeholder.com/180x270?text=Serie+2</imagen>
+        <descripcion>Descripción de la serie 2.</descripcion>
+        <enlace>https://example.com/serie2</enlace>
+    </serie>
+  <serie>
+        <titulo>Serie 2</titulo>
+        <imagen>https://via.placeholder.com/180x270?text=Serie+2</imagen>
+        <descripcion>Descripción de la serie 2.</descripcion>
+        <enlace>https://example.com/serie2</enlace>
+    </serie>
+  <serie>
+        <titulo>Serie 2</titulo>
+        <imagen>https://via.placeholder.com/180x270?text=Serie+2</imagen>
+        <descripcion>Descripción de la serie 2.</descripcion>
+        <enlace>https://example.com/serie2</enlace>
+    </serie>
+  <serie>
+        <titulo>Serie 2</titulo>
+        <imagen>https://via.placeholder.com/180x270?text=Serie+2</imagen>
+        <descripcion>Descripción de la serie 2.</descripcion>
+        <enlace>https://example.com/serie2</enlace>
+    </serie>
+  <serie>
+        <titulo>Serie 2</titulo>
+        <imagen>https://via.placeholder.com/180x270?text=Serie+2</imagen>
+        <descripcion>Descripción de la serie 2.</descripcion>
+        <enlace>https://example.com/serie2</enlace>
+    </serie>
+  <serie>
+        <titulo>Serie 2</titulo>
+        <imagen>https://via.placeholder.com/180x270?text=Serie+2</imagen>
+        <descripcion>Descripción de la serie 2.</descripcion>
+        <enlace>https://example.com/serie2</enlace>
+    </serie>
+  <serie>
+        <titulo>Serie 2</titulo>
+        <imagen>https://via.placeholder.com/180x270?text=Serie+2</imagen>
+        <descripcion>Descripción de la serie 2.</descripcion>
+        <enlace>https://example.com/serie2</enlace>
+    </serie>
+  <serie>
+        <titulo>Serie 2</titulo>
+        <imagen>https://via.placeholder.com/180x270?text=Serie+2</imagen>
+        <descripcion>Descripción de la serie 2.</descripcion>
+        <enlace>https://example.com/serie2</enlace>
+    </serie>
+  <serie>
+        <titulo>Serie 2</titulo>
+        <imagen>https://via.placeholder.com/180x270?text=Serie+2</imagen>
+        <descripcion>Descripción de la serie 2.</descripcion>
+        <enlace>https://example.com/serie2</enlace>
+    </serie>
+  <serie>
+        <titulo>Serie 2</titulo>
+        <imagen>https://via.placeholder.com/180x270?text=Serie+2</imagen>
+        <descripcion>Descripción de la serie 2.</descripcion>
+        <enlace>https://example.com/serie2</enlace>
+    </serie>
+  <serie>
+        <titulo>Serie 2</titulo>
+        <imagen>https://via.placeholder.com/180x270?text=Serie+2</imagen>
+        <descripcion>Descripción de la serie 2.</descripcion>
+        <enlace>https://example.com/serie2</enlace>
+    </serie>
+  <serie>
+        <titulo>Serie 2</titulo>
+        <imagen>https://via.placeholder.com/180x270?text=Serie+2</imagen>
+        <descripcion>Descripción de la serie 2.</descripcion>
+        <enlace>https://example.com/serie2</enlace>
+    </serie>
+    <!-- Nuevas series añadidas aquí -->
 </series>
