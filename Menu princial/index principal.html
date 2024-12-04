@@ -141,6 +141,14 @@
             color: #cccccc;
             margin-top: 5px;
         }
+
+        /* Línea separadora */
+        .line-separator {
+            border: none;
+            height: 2px;
+            background-color: #ffa31a;
+            margin: 20px 0;
+        }
     </style>
 </head>
 <body>
@@ -167,6 +175,9 @@
         <div class="category-container" id="peliculasContainer"></div>
     </div>
 
+    <!-- Línea separadora -->
+    <hr class="line-separator">
+
     <!-- Sección Series Destacadas -->
     <div class="section">
         <h2>Series Destacadas</h2>
@@ -176,7 +187,7 @@
 
     <script>
         async function cargarContenido() {
-            const url = "https://raw.githubusercontent.com/pelisplanet2019/PlexMania/refs/heads/main/Menu%20princial/menu%20principal.xml"; // Reemplaza con la URL raw de tu XML
+            const url = "https://raw.githubusercontent.com/pelisplanet2019/PlexMania/refs/heads/main/Menu%20princial/menu%20principal.xml";
 
             try {
                 const response = await fetch(url);
@@ -195,28 +206,6 @@
                     const imgElement = `<a href="${enlace}" target="_blank"><img src="${imagen}" alt="Carrusel"></a>`;
                     carouselContainer.innerHTML += imgElement;
                 });
-
-                // Autoplay del carrusel
-                let index = 0;
-                const images = document.querySelectorAll(".carousel-images img");
-                const updateCarousel = () => {
-                    const width = images[0].clientWidth;
-                    document.querySelector(".carousel-images").style.transform = `translateX(${-index * width}px)`;
-                };
-
-                document.getElementById("next").addEventListener("click", () => {
-                    index = (index + 1) % images.length;
-                    updateCarousel();
-                });
-
-                document.getElementById("prev").addEventListener("click", () => {
-                    index = (index - 1 + images.length) % images.length;
-                    updateCarousel();
-                });
-
-                setInterval(() => {
-                    document.getElementById("next").click();
-                }, 5000);
 
                 // Cargar películas
                 const peliculas = xmlDoc.querySelectorAll("peliculas > pelicula");
