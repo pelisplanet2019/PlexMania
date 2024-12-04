@@ -1,105 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <contenido>
     <!-- Carrusel -->
     <carrusel>
         <item>
-            <imagen>https://i.ibb.co/8jhdRPt/597849.jpg</imagen>
-            <enlace>https://example.com/estreno1</enlace>
+            <imagen>https://via.placeholder.com/800x400?text=Carrusel+1</imagen>
+            <enlace>https://example.com/carrusel1</enlace>
         </item>
         <item>
-            <imagen>https://i.ibb.co/hLBD64S/Cartel-Blacklist-1.jpg</imagen>
-            <enlace>https://example.com/estreno2</enlace>
+            <imagen>https://via.placeholder.com/800x400?text=Carrusel+2</imagen>
+            <enlace>https://example.com/carrusel2</enlace>
         </item>
         <item>
-            <imagen>https://i.ibb.co/8jhdRPt/597849.jpg</imagen>
-            <enlace>https://example.com/estreno1</enlace>
+            <imagen>https://via.placeholder.com/800x400?text=Carrusel+3</imagen>
+            <enlace>https://example.com/carrusel3</enlace>
         </item>
         <item>
-            <imagen>https://i.ibb.co/hLBD64S/Cartel-Blacklist-1.jpg</imagen>
-            <enlace>https://example.com/estreno2</enlace>
+            <imagen>https://via.placeholder.com/800x400?text=Carrusel+4</imagen>
+            <enlace>https://example.com/carrusel4</enlace>
         </item>
         <item>
-            <imagen>https://i.ibb.co/hLBD64S/Cartel-Blacklist-1.jpg</imagen>
-            <enlace>https://example.com/estreno2</enlace>
+            <imagen>https://via.placeholder.com/800x400?text=Carrusel+5</imagen>
+            <enlace>https://example.com/carrusel5</enlace>
+        </item>
+        <item>
+            <imagen>https://via.placeholder.com/800x400?text=Carrusel+6</imagen>
+            <enlace>https://example.com/carrusel6</enlace>
         </item>
     </carrusel>
 
-    <!-- Películas Destacadas -->
+    <!-- Películas -->
     <peliculas>
         <pelicula>
-            <titulo>Inception</titulo>
-            <descripcion>Un ladrón que roba secretos a través de sueños.</descripcion>
-            <imagen>https://via.placeholder.com/180x270?text=Inception</imagen>
-            <enlace>https://example.com/inception</enlace>
+            <titulo>Película 1</titulo>
+            <imagen>https://via.placeholder.com/180x270?text=Película+1</imagen>
+            <descripcion>Descripción de la película 1.</descripcion>
+            <enlace>https://example.com/pelicula1</enlace>
         </pelicula>
         <pelicula>
-            <titulo>The Dark Knight</titulo>
-            <descripcion>Batman enfrenta al Joker en una lucha épica.</descripcion>
-            <imagen>https://via.placeholder.com/180x270?text=The+Dark+Knight</imagen>
-            <enlace>https://example.com/darkknight</enlace>
+            <titulo>Película 2</titulo>
+            <imagen>https://via.placeholder.com/180x270?text=Película+2</imagen>
+            <descripcion>Descripción de la película 2.</descripcion>
+            <enlace>https://example.com/pelicula2</enlace>
         </pelicula>
         <pelicula>
-            <titulo>A todo Gas 10</titulo>
-            <descripcion>Batman enfrenta al Joker en una lucha épica.</descripcion>
-            <imagen>https://via.placeholder.com/180x270?text=The+Dark+Knight</imagen>
-            <enlace>https://example.com/darkknight</enlace>
+            <titulo>Película 3</titulo>
+            <imagen>https://via.placeholder.com/180x270?text=Película+3</imagen>
+            <descripcion>Descripción de la película 3.</descripcion>
+            <enlace>https://example.com/pelicula3</enlace>
         </pelicula>
         <pelicula>
-            <titulo>Inception</titulo>
-            <descripcion>Un ladrón que roba secretos a través de sueños.</descripcion>
-            <imagen>https://via.placeholder.com/180x270?text=Inception</imagen>
-            <enlace>https://example.com/inception</enlace>
+            <titulo>Película 4</titulo>
+            <imagen>https://via.placeholder.com/180x270?text=Película+4</imagen>
+            <descripcion>Descripción de la película 4.</descripcion>
+            <enlace>https://example.com/pelicula4</enlace>
         </pelicula>
         <pelicula>
-            <titulo>The Dark Knight</titulo>
-            <descripcion>Batman enfrenta al Joker en una lucha épica.</descripcion>
-            <imagen>https://via.placeholder.com/180x270?text=The+Dark+Knight</imagen>
-            <enlace>https://example.com/darkknight</enlace>
+            <titulo>Película 5</titulo>
+            <imagen>https://via.placeholder.com/180x270?text=Película+5</imagen>
+            <descripcion>Descripción de la película 5.</descripcion>
+            <enlace>https://example.com/pelicula5</enlace>
         </pelicula>
         <pelicula>
-            <titulo>A todo Gas 10</titulo>
-            <descripcion>Batman enfrenta al Joker en una lucha épica.</descripcion>
-            <imagen>https://via.placeholder.com/180x270?text=The+Dark+Knight</imagen>
-            <enlace>https://example.com/darkknight</enlace>
+            <titulo>Película 6</titulo>
+            <imagen>https://via.placeholder.com/180x270?text=Película+6</imagen>
+            <descripcion>Descripción de la película 6.</descripcion>
+            <enlace>https://example.com/pelicula6</enlace>
+        </pelicula>
+        <pelicula>
+            <titulo>Película 7</titulo>
+            <imagen>https://via.placeholder.com/180x270?text=Película+7</imagen>
+            <descripcion>Descripción de la película 7.</descripcion>
+            <enlace>https://example.com/pelicula7</enlace>
         </pelicula>
     </peliculas>
 
-    <!-- Series Destacadas -->
+    <!-- Series -->
     <series>
         <serie>
-            <titulo>Breaking Bad</titulo>
-            <descripcion>Un profesor de química convertido en narcotraficante.</descripcion>
-            <imagen>https://via.placeholder.com/180x270?text=Breaking+Bad</imagen>
-            <enlace>https://example.com/breakingbad</enlace>
+            <titulo>Serie 1</titulo>
+            <imagen>https://via.placeholder.com/180x270?text=Serie+1</imagen>
+            <descripcion>Descripción de la serie 1.</descripcion>
+            <enlace>https://example.com/serie1</enlace>
         </serie>
         <serie>
-            <titulo>Game of Thrones</titulo>
-            <descripcion>Una lucha por el trono en un reino dividido.</descripcion>
-            <imagen>https://via.placeholder.com/180x270?text=Game+of+Thrones</imagen>
-            <enlace>https://example.com/gameofthrones</enlace>
+            <titulo>Serie 2</titulo>
+            <imagen>https://via.placeholder.com/180x270?text=Serie+2</imagen>
+            <descripcion>Descripción de la serie 2.</descripcion>
+            <enlace>https://example.com/serie2</enlace>
         </serie>
         <serie>
-            <titulo>Grimm</titulo>
-            <descripcion>Una lucha por el trono en un reino dividido.</descripcion>
-            <imagen>https://via.placeholder.com/180x270?text=Game+of+Thrones</imagen>
-            <enlace>https://example.com/gameofthrones</enlace>
+            <titulo>Serie 3</titulo>
+            <imagen>https://via.placeholder.com/180x270?text=Serie+3</imagen>
+            <descripcion>Descripción de la serie 3.</descripcion>
+            <enlace>https://example.com/serie3</enlace>
         </serie>
         <serie>
-            <titulo>Breaking Bad</titulo>
-            <descripcion>Un profesor de química convertido en narcotraficante.</descripcion>
-            <imagen>https://via.placeholder.com/180x270?text=Breaking+Bad</imagen>
-            <enlace>https://example.com/breakingbad</enlace>
+            <titulo>Serie 4</titulo>
+            <imagen>https://via.placeholder.com/180x270?text=Serie+4</imagen>
+            <descripcion>Descripción de la serie 4.</descripcion>
+            <enlace>https://example.com/serie4</enlace>
         </serie>
         <serie>
-            <titulo>Game of Thrones</titulo>
-            <descripcion>Una lucha por el trono en un reino dividido.</descripcion>
-            <imagen>https://via.placeholder.com/180x270?text=Game+of+Thrones</imagen>
-            <enlace>https://example.com/gameofthrones</enlace>
+            <titulo>Serie 5</titulo>
+            <imagen>https://via.placeholder.com/180x270?text=Serie+5</imagen>
+            <descripcion>Descripción de la serie 5.</descripcion>
+            <enlace>https://example.com/serie5</enlace>
         </serie>
         <serie>
-            <titulo>Grimm</titulo>
-            <descripcion>Una lucha por el trono en un reino dividido.</descripcion>
-            <imagen>https://via.placeholder.com/180x270?text=Game+of+Thrones</imagen>
-            <enlace>https://example.com/gameofthrones</enlace>
+            <titulo>Serie 6</titulo>
+            <imagen>https://via.placeholder.com/180x270?text=Serie+6</imagen>
+            <descripcion>Descripción de la serie 6.</descripcion>
+            <enlace>https://example.com/serie6</enlace>
+        </serie>
+        <serie>
+            <titulo>Serie 7</titulo>
+            <imagen>https://via.placeholder.com/180x270?text=Serie+7</imagen>
+            <descripcion>Descripción de la serie 7.</descripcion>
+            <enlace>https://example.com/serie7</enlace>
         </serie>
     </series>
 </contenido>
