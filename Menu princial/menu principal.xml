@@ -17,6 +17,10 @@
             <imagen>https://i.ibb.co/hLBD64S/Cartel-Blacklist-1.jpg</imagen>
             <enlace>https://example.com/estreno2</enlace>
         </item>
+        <item>
+            <imagen>https://i.ibb.co/hLBD64S/Cartel-Blacklist-1.jpg</imagen>
+            <enlace>https://example.com/estreno2</enlace>
+        </item>
     </carrusel>
 
     <!-- Películas Destacadas -->
@@ -39,10 +43,46 @@
             <imagen>https://via.placeholder.com/180x270?text=The+Dark+Knight</imagen>
             <enlace>https://example.com/darkknight</enlace>
         </pelicula>
+        <pelicula>
+            <titulo>Inception</titulo>
+            <descripcion>Un ladrón que roba secretos a través de sueños.</descripcion>
+            <imagen>https://via.placeholder.com/180x270?text=Inception</imagen>
+            <enlace>https://example.com/inception</enlace>
+        </pelicula>
+        <pelicula>
+            <titulo>The Dark Knight</titulo>
+            <descripcion>Batman enfrenta al Joker en una lucha épica.</descripcion>
+            <imagen>https://via.placeholder.com/180x270?text=The+Dark+Knight</imagen>
+            <enlace>https://example.com/darkknight</enlace>
+        </pelicula>
+        <pelicula>
+            <titulo>A todo Gas 10</titulo>
+            <descripcion>Batman enfrenta al Joker en una lucha épica.</descripcion>
+            <imagen>https://via.placeholder.com/180x270?text=The+Dark+Knight</imagen>
+            <enlace>https://example.com/darkknight</enlace>
+        </pelicula>
     </peliculas>
 
     <!-- Series Destacadas -->
     <series>
+        <serie>
+            <titulo>Breaking Bad</titulo>
+            <descripcion>Un profesor de química convertido en narcotraficante.</descripcion>
+            <imagen>https://via.placeholder.com/180x270?text=Breaking+Bad</imagen>
+            <enlace>https://example.com/breakingbad</enlace>
+        </serie>
+        <serie>
+            <titulo>Game of Thrones</titulo>
+            <descripcion>Una lucha por el trono en un reino dividido.</descripcion>
+            <imagen>https://via.placeholder.com/180x270?text=Game+of+Thrones</imagen>
+            <enlace>https://example.com/gameofthrones</enlace>
+        </serie>
+        <serie>
+            <titulo>Grimm</titulo>
+            <descripcion>Una lucha por el trono en un reino dividido.</descripcion>
+            <imagen>https://via.placeholder.com/180x270?text=Game+of+Thrones</imagen>
+            <enlace>https://example.com/gameofthrones</enlace>
+        </serie>
         <serie>
             <titulo>Breaking Bad</titulo>
             <descripcion>Un profesor de química convertido en narcotraficante.</descripcion>
