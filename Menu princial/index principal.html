@@ -1,269 +1,197 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Principal</title>
+    <title>Películas y Series</title>
     <style>
-        /* General */
         body {
             font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
             margin: 0;
             padding: 0;
-            background-color: #1a1a1a;
-            color: #f5f5f5;
         }
-
-        /* Menú superior */
-        .menu {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            background-color: #333333;
-            padding: 10px 0;
+        header {
+            background-color: #333;
+            color: #ffa500;
+            padding: 15px;
+            text-align: center;
+            font-size: 18px;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
-
-        .menu a {
+        header a {
+            color: #ffa500;
             text-decoration: none;
-            color: #ffa31a;
-            font-size: 18px;
-            font-weight: bold;
-            padding: 8px 16px;
-            transition: background-color 0.3s;
+            margin: 0 15px;
         }
-
-        .menu a:hover {
-            background-color: #444444;
-            border-radius: 5px;
-        }
-
-        /* Carrusel */
         .carousel {
             position: relative;
-            max-width: 1000px;
-            margin: 40px auto;
+            margin: 20px auto;
+            max-width: 80%;
             overflow: hidden;
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            border: 5px solid #ffa31a;
-        }
-
-        .carousel-images {
-            display: flex;
-            gap: 10px;
-            transition: transform 0.5s ease-in-out;
-        }
-
-        .carousel-images img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
+            background-color: #fff;
+            border: 2px solid #333;
             border-radius: 10px;
         }
-
-        .carousel-buttons {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
+        .carousel img {
             width: 100%;
-            display: flex;
-            justify-content: space-between;
-            padding: 0 10px;
+            display: block;
+            height: auto;
         }
-
-        .carousel-button {
-            background-color: rgba(0, 0, 0, 0.5);
-            border: none;
-            color: #fff;
-            font-size: 24px;
-            padding: 10px;
-            cursor: pointer;
-            border-radius: 50%;
-            transition: background-color 0.3s;
-        }
-
-        .carousel-button:hover {
-            background-color: #ffa31a;
-        }
-
-        /* Sección general */
         .section {
-            margin: 20px;
+            margin: 20px auto;
+            max-width: 90%;
+            background-color: #1a1a1a;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            color: #ffa500;
         }
-
         .section h2 {
             text-align: center;
-            color: #ffa31a;
             margin-bottom: 10px;
         }
-
         .section-description {
             text-align: center;
             font-size: 14px;
             color: #cccccc;
             margin-bottom: 20px;
         }
-
         .category-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .category-container .item {
+            background-color: #333;
             padding: 10px;
+            border-radius: 5px;
+            width: 150px;
+            text-align: center;
+            color: #fff;
         }
-
-        .movie-card {
-            background-color: #333333;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
-        }
-
-        .movie-card img {
+        .category-container .item img {
             width: 100%;
-            height: 270px;
-            object-fit: cover;
+            height: auto;
+            border-radius: 5px;
         }
-
-        .movie-title {
-            text-align: center;
+        .category-container .item a {
+            color: #fff;
+            text-decoration: none;
+        }
+        .category-container .item h3 {
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        .category-container .item .description {
             font-size: 14px;
-            color: #ffa31a;
-            padding: 8px;
+            color: #ccc;
+            margin-top: 10px;
         }
-
-        .movie-description {
-            text-align: center;
-            font-size: 12px;
-            color: #cccccc;
-            margin-top: 5px;
+        .line-separator {
+            border: none;
+            height: 2px;
+            background-color: #ffa500;
+            margin: 30px auto;
+            max-width: 90%;
         }
     </style>
 </head>
 <body>
-    <!-- Menú superior -->
-    <div class="menu">
+    <header>
         <a href="#">Películas</a>
         <a href="#">Series</a>
         <a href="#">Anime</a>
-    </div>
+    </header>
 
     <!-- Carrusel -->
     <div class="carousel">
-        <div class="carousel-images" id="carouselContainer"></div>
-        <div class="carousel-buttons">
-            <button class="carousel-button" id="prev">&lt;</button>
-            <button class="carousel-button" id="next">&gt;</button>
-        </div>
+        <img src="https://via.placeholder.com/800x400" alt="Carrusel">
+        <div class="carousel-description">Descripción del carrusel</div>
     </div>
 
     <!-- Sección Últimas Películas -->
     <div class="section">
         <h2>Últimas Películas</h2>
-        <p class="section-description">Descubre nuestras películas más recientes y populares.</p>
-        <div class="category-container" id="peliculasContainer"></div>
+        <p class="section-description">Disfruta de nuestras películas más recientes y populares.</p>
+        <div class="category-container" id="peliculasContainer">
+            <!-- Contenido dinámico cargado desde XML -->
+        </div>
     </div>
+
+    <!-- Línea divisoria -->
+    <div class="line-separator"></div>
 
     <!-- Sección Series Destacadas -->
     <div class="section">
         <h2>Series Destacadas</h2>
-        <p class="section-description">Explora las series más destacadas con historias fascinantes.</p>
-        <div class="category-container" id="seriesContainer"></div>
+        <p class="section-description">Explora las mejores series con historias fascinantes.</p>
+        <div class="category-container" id="seriesContainer">
+            <!-- Contenido dinámico cargado desde XML -->
+        </div>
     </div>
 
     <script>
-        async function cargarContenido() {
-            const url = "https://raw.githubusercontent.com/pelisplanet2019/PlexMania/refs/heads/main/Menu%20princial/menu%20principal.xml";
+        function loadXML(callback) {
+            const xhr = new XMLHttpRequest();
+            xhr.overrideMimeType("application/xml");
+            xhr.open("GET", "https://raw.githubusercontent.com/pelisplanet2019/PlexMania/refs/heads/main/Menu%20princial/menu%20principal.xml", true); // Reemplaza con tu URL raw del XML
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    callback(xhr.responseXML);
+                }
+            };
+            xhr.send();
+        }
 
-            try {
-                const response = await fetch(url);
-                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        function populateContent(xml) {
+            // Cargar Películas
+            const peliculasContainer = document.getElementById("peliculasContainer");
+            const peliculasItems = xml.getElementsByTagName("peliculas_item");
+            for (let item of peliculasItems) {
+                const title = item.getElementsByTagName("title")[0].textContent;
+                const image = item.getElementsByTagName("thumbnail")[0].textContent;
+                const description = item.getElementsByTagName("description")[0].textContent;
+                const link = item.getElementsByTagName("link")[0].textContent;
 
-                const xmlText = await response.text();
-                const parser = new DOMParser();
-                const xmlDoc = parser.parseFromString(xmlText, "application/xml");
+                const movieItem = document.createElement("div");
+                movieItem.className = "item";
+                movieItem.innerHTML = `
+                    <a href="${link}" target="_blank">
+                        <img src="${image}" alt="${title}">
+                        <h3>${title}</h3>
+                    </a>
+                    <p class="description">${description}</p>
+                `;
+                peliculasContainer.appendChild(movieItem);
+            }
 
-                // Cargar carrusel
-                const carruselItems = xmlDoc.querySelectorAll("carrusel > item");
-                const carouselContainer = document.getElementById("carouselContainer");
-                carruselItems.forEach(item => {
-                    const imagen = item.querySelector("imagen").textContent;
-                    const enlace = item.querySelector("enlace").textContent;
-                    const imgElement = `<a href="${enlace}" target="_blank"><img src="${imagen}" alt="Carrusel"></a>`;
-                    carouselContainer.innerHTML += imgElement;
-                });
+            // Cargar Series
+            const seriesContainer = document.getElementById("seriesContainer");
+            const seriesItems = xml.getElementsByTagName("series_item");
+            for (let item of seriesItems) {
+                const title = item.getElementsByTagName("title")[0].textContent;
+                const image = item.getElementsByTagName("thumbnail")[0].textContent;
+                const description = item.getElementsByTagName("description")[0].textContent;
+                const link = item.getElementsByTagName("link")[0].textContent;
 
-                // Autoplay del carrusel
-                let index = 0;
-                const images = document.querySelectorAll(".carousel-images img");
-                const updateCarousel = () => {
-                    const width = images[0].clientWidth;
-                    document.querySelector(".carousel-images").style.transform = `translateX(${-index * width}px)`;
-                };
-
-                document.getElementById("next").addEventListener("click", () => {
-                    index = (index + 1) % images.length;
-                    updateCarousel();
-                });
-
-                document.getElementById("prev").addEventListener("click", () => {
-                    index = (index - 1 + images.length) % images.length;
-                    updateCarousel();
-                });
-
-                setInterval(() => {
-                    document.getElementById("next").click();
-                }, 5000);
-
-                // Cargar películas
-                const peliculas = xmlDoc.querySelectorAll("peliculas > pelicula");
-                const peliculasContainer = document.getElementById("peliculasContainer");
-                peliculas.forEach(pelicula => {
-                    const titulo = pelicula.querySelector("titulo").textContent;
-                    const descripcion = pelicula.querySelector("descripcion").textContent;
-                    const imagen = pelicula.querySelector("imagen").textContent;
-                    const enlace = pelicula.querySelector("enlace").textContent;
-
-                    const card = `
-                        <div class="movie-card">
-                            <a href="${enlace}" target="_blank">
-                                <img src="${imagen}" alt="${titulo}">
-                            </a>
-                            <div class="movie-title">${titulo}</div>
-                            <div class="movie-description">${descripcion}</div>
-                        </div>`;
-                    peliculasContainer.innerHTML += card;
-                });
-
-                // Cargar series
-                const series = xmlDoc.querySelectorAll("series > serie");
-                const seriesContainer = document.getElementById("seriesContainer");
-                series.forEach(serie => {
-                    const titulo = serie.querySelector("titulo").textContent;
-                    const descripcion = serie.querySelector("descripcion").textContent;
-                    const imagen = serie.querySelector("imagen").textContent;
-                    const enlace = serie.querySelector("enlace").textContent;
-
-                    const card = `
-                        <div class="movie-card">
-                            <a href="${enlace}" target="_blank">
-                                <img src="${imagen}" alt="${titulo}">
-                            </a>
-                            <div class="movie-title">${titulo}</div>
-                            <div class="movie-description">${descripcion}</div>
-                        </div>`;
-                    seriesContainer.innerHTML += card;
-                });
-
-            } catch (error) {
-                console.error("Error al cargar el contenido:", error);
+                const seriesItem = document.createElement("div");
+                seriesItem.className = "item";
+                seriesItem.innerHTML = `
+                    <a href="${link}" target="_blank">
+                        <img src="${image}" alt="${title}">
+                        <h3>${title}</h3>
+                    </a>
+                    <p class="description">${description}</p>
+                `;
+                seriesContainer.appendChild(seriesItem);
             }
         }
 
-        document.addEventListener("DOMContentLoaded", cargarContenido);
+        loadXML(populateContent);
     </script>
 </body>
 </html>
