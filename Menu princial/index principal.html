@@ -44,12 +44,11 @@
         /* Carrusel */
         .carousel {
             position: relative;
-            max-width: 1200px; /* Aumentamos el tamaño del carrusel */
+            max-width: 100%; /* Ocupa todo el ancho */
             margin: 40px auto;
             overflow: hidden;
             border-radius: 15px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            border: 5px solid #ffa31a;
         }
 
         .carousel-images {
@@ -59,8 +58,9 @@
         }
 
         .carousel-images img {
-            width: 100%;
-            height: 400px; /* Ajustamos la altura */
+            width: 100%;  /* Asegura que las imágenes se adapten al ancho */
+            max-width: 250px; /* Cada imagen tiene un ancho máximo */
+            height: 400px; /* Altura ajustada */
             object-fit: cover;
             border-radius: 10px;
         }
@@ -204,27 +204,25 @@
                     carouselContainer.innerHTML += imgElement;
                 });
 
-                // Autoplay del carrusel
-                let index = 0;
+                // Variables para carrusel
                 const images = document.querySelectorAll(".carousel-images img");
+                let index = 0;
+
+                // Función para actualizar la posición del carrusel
                 const updateCarousel = () => {
                     const width = images[0].clientWidth;
                     document.querySelector(".carousel-images").style.transform = `translateX(${-index * width}px)`;
                 };
 
                 document.getElementById("next").addEventListener("click", () => {
-                    index = (index + 1) % images.length;
+                    index = (index + 1) % images.length;  // Se reinicia después de la última imagen
                     updateCarousel();
                 });
 
                 document.getElementById("prev").addEventListener("click", () => {
-                    index = (index - 1 + images.length) % images.length;
+                    index = (index - 1 + images.length) % images.length;  // Permite retroceder
                     updateCarousel();
                 });
-
-                setInterval(() => {
-                    document.getElementById("next").click();
-                }, 5000);
 
                 // Cargar películas
                 const peliculas = xmlDoc.querySelectorAll("peliculas > pelicula");
