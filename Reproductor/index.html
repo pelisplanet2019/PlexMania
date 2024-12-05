@@ -5,42 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reproductor Multimedia</title>
     <style>
+        /* Estilo general */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #1a1a1a;
-            color: #f5f5f5;
+            background-color: #0d1117;
+            color: #f0f6fc;
         }
 
         header {
-            background-color: #333;
+            background-color: #161b22;
             padding: 20px;
             text-align: center;
-            color: #ffa500;
+            color: #58a6ff;
         }
 
         main {
             padding: 20px;
         }
 
+        /* Reproductor */
         .player {
             text-align: center;
             margin-bottom: 30px;
         }
 
-        .player video {
+        .player iframe, .player video {
             width: 100%;
             max-width: 800px;
             height: 450px;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            border: none;
         }
 
         .video-info {
-            margin-top: 10px;
+            margin-top: 15px;
         }
 
+        .video-info h2 {
+            font-size: 22px;
+            color: #58a6ff;
+            margin-bottom: 5px;
+        }
+
+        .video-info p {
+            font-size: 14px;
+            color: #c9d1d9;
+        }
+
+        /* Lista de videos */
         .video-list {
             display: flex;
             flex-wrap: wrap;
@@ -49,82 +64,52 @@
         }
 
         .video-item {
-            background-color: #333;
-            padding: 10px;
+            background-color: #21262d;
+            padding: 15px;
             border-radius: 8px;
             cursor: pointer;
             text-align: center;
-            width: 180px;
-            transition: transform 0.3s ease;
+            width: 200px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
 
         .video-item:hover {
-            transform: scale(1.05);
-            background-color: #444;
+            transform: translateY(-5px);
+            background-color: #30363d;
         }
 
         .video-item h3 {
-            color: #ffa500;
+            color: #58a6ff;
+            font-size: 16px;
             margin: 10px 0;
         }
 
         .video-item p {
-            font-size: 14px;
-            color: #ccc;
-        }
-
-        .manual-input {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .manual-input input[type="text"] {
-            width: 60%;
-            padding: 10px;
-            font-size: 16px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            margin-right: 10px;
-        }
-
-        .manual-input button {
-            padding: 10px 20px;
-            font-size: 16px;
-            border-radius: 5px;
-            border: none;
-            background-color: #ffa500;
-            color: #333;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .manual-input button:hover {
-            background-color: #ffcc66;
+            font-size: 13px;
+            color: #8b949e;
         }
     </style>
 </head>
 <body>
     <header>
         <h1>Reproductor Multimedia</h1>
+        <p>Selecciona un video de la lista para reproducirlo</p>
     </header>
 
     <main>
         <!-- Reproductor -->
         <div class="player">
-            <video id="videoPlayer" controls>
+            <!-- Se usará iframe para los embeds y video para otros formatos -->
+            <iframe id="videoFrame" src="" frameborder="0" allowfullscreen hidden></iframe>
+            <video id="videoPlayer" controls hidden>
                 <source src="" type="video/mp4">
                 Tu navegador no soporta la reproducción de video.
             </video>
             <div class="video-info">
-                <h2 id="videoTitle">Selecciona o ingresa un enlace</h2>
-                <p id="videoDescription">Haz clic en un video de la lista o ingresa un enlace para reproducirlo.</p>
+                <h2 id="videoTitle">Selecciona un video</h2>
+                <p id="videoDescription">Haz clic en un video de la lista para reproducirlo.</p>
             </div>
-        </div>
-
-        <!-- Campo para ingresar enlaces manualmente -->
-        <div class="manual-input">
-            <input type="text" id="manualLink" placeholder="Ingresa un enlace de video (.mp4, .mkv, etc.)">
-            <button onclick="reproducirEnlaceManual()">Reproducir</button>
         </div>
 
         <!-- Lista de Videos -->
@@ -135,7 +120,7 @@
 
     <script>
         async function cargarContenido() {
-            const url = "https://raw.githubusercontent.com/pelisplanet2019/PlexMania/refs/heads/main/Reproductor/Media.xml"; // Cambia la URL por el enlace raw de tu XML
+            const url = "https://raw.githubusercontent.com/pelisplanet2019/PlexMania/refs/heads/main/Reproductor/Media.xml"; // Cambia esta URL por la de tu archivo XML
 
             try {
                 const response = await fetch(url);
@@ -171,22 +156,24 @@
 
         function reproducirVideo(title, description, url) {
             const videoPlayer = document.getElementById("videoPlayer");
+            const videoFrame = document.getElementById("videoFrame");
             const videoTitle = document.getElementById("videoTitle");
             const videoDescription = document.getElementById("videoDescription");
 
-            videoPlayer.src = url;
-            videoPlayer.play();
-
+            // Actualizar título y descripción
             videoTitle.textContent = title;
             videoDescription.textContent = description;
-        }
 
-        function reproducirEnlaceManual() {
-            const enlace = document.getElementById("manualLink").value;
-            if (enlace) {
-                reproducirVideo("Enlace Manual", "Reproduciendo desde un enlace ingresado manualmente.", enlace);
+            // Detectar si es un enlace embed o directo
+            if (url.includes("embed") || url.includes("streamtape")) {
+                videoPlayer.hidden = true;
+                videoFrame.hidden = false;
+                videoFrame.src = url;
             } else {
-                alert("Por favor, ingresa un enlace válido.");
+                videoFrame.hidden = true;
+                videoPlayer.hidden = false;
+                videoPlayer.src = url;
+                videoPlayer.play();
             }
         }
 
