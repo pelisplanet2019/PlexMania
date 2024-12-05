@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<media>
+    <video>
+        <title>Video 1</title>
+        <description>Este es el primer video de prueba.</description>
+        <url>https://www.w3schools.com/html/mov_bbb.mp4</url>
+    </video>
+    <video>
+        <title>Video 2</title>
+        <description>Este es el segundo video de prueba.</description>
+        <url>https://www.w3schools.com/html/movie.mp4</url>
+    </video>
+    <!-- Más videos -->
+</media>
