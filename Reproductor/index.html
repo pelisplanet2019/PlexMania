@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reproductor Multimedia</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1a1a1a;
+            color: #f5f5f5;
+        }
+
+        header {
+            background-color: #333;
+            padding: 20px;
+            text-align: center;
+            color: #ffa500;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .player {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .player video {
+            width: 100%;
+            max-width: 800px;
+            height: 450px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .video-info {
+            margin-top: 10px;
+        }
+
+        .video-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .video-item {
+            background-color: #333;
+            padding: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
+            width: 180px;
+            transition: transform 0.3s ease;
+        }
+
+        .video-item:hover {
+            transform: scale(1.05);
+            background-color: #444;
+        }
+
+        .video-item h3 {
+            color: #ffa500;
+            margin: 10px 0;
+        }
+
+        .video-item p {
+            font-size: 14px;
+            color: #ccc;
+        }
+
+        .manual-input {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .manual-input input[type="text"] {
+            width: 60%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-right: 10px;
+        }
+
+        .manual-input button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
+            background-color: #ffa500;
+            color: #333;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .manual-input button:hover {
+            background-color: #ffcc66;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Reproductor Multimedia</h1>
+    </header>
+
+    <main>
+        <!-- Reproductor -->
+        <div class="player">
+            <video id="videoPlayer" controls>
+                <source src="" type="video/mp4">
+                Tu navegador no soporta la reproducción de video.
+            </video>
+            <div class="video-info">
+                <h2 id="videoTitle">Selecciona o ingresa un enlace</h2>
+                <p id="videoDescription">Haz clic en un video de la lista o ingresa un enlace para reproducirlo.</p>
+            </div>
+        </div>
+
+        <!-- Campo para ingresar enlaces manualmente -->
+        <div class="manual-input">
+            <input type="text" id="manualLink" placeholder="Ingresa un enlace de video (.mp4, .mkv, etc.)">
+            <button onclick="reproducirEnlaceManual()">Reproducir</button>
+        </div>
+
+        <!-- Lista de Videos -->
+        <div class="video-list" id="videoList">
+            <!-- Los videos se cargarán dinámicamente aquí -->
+        </div>
+    </main>
+
+    <script>
+        async function cargarContenido() {
+            const url = "https://raw.githubusercontent.com/pelisplanet2019/PlexMania/refs/heads/main/Reproductor/Media.xml"; // Cambia la URL por el enlace raw de tu XML
+
+            try {
+                const response = await fetch(url);
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+
+                const xmlText = await response.text();
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(xmlText, "application/xml");
+
+                // Obtener elementos de video
+                const videos = xmlDoc.querySelectorAll("video");
+                const videoList = document.getElementById("videoList");
+
+                videos.forEach(video => {
+                    const title = video.querySelector("title").textContent;
+                    const description = video.querySelector("description").textContent;
+                    const url = video.querySelector("url").textContent;
+
+                    // Crear elemento en la lista
+                    const videoItem = document.createElement("div");
+                    videoItem.className = "video-item";
+                    videoItem.innerHTML = `
+                        <h3>${title}</h3>
+                        <p>${description}</p>
+                    `;
+                    videoItem.addEventListener("click", () => reproducirVideo(title, description, url));
+                    videoList.appendChild(videoItem);
+                });
+            } catch (error) {
+                console.error("Error al cargar el contenido:", error);
+            }
+        }
+
+        function reproducirVideo(title, description, url) {
+            const videoPlayer = document.getElementById("videoPlayer");
+            const videoTitle = document.getElementById("videoTitle");
+            const videoDescription = document.getElementById("videoDescription");
+
+            videoPlayer.src = url;
+            videoPlayer.play();
+
+            videoTitle.textContent = title;
+            videoDescription.textContent = description;
+        }
+
+        function reproducirEnlaceManual() {
+            const enlace = document.getElementById("manualLink").value;
+            if (enlace) {
+                reproducirVideo("Enlace Manual", "Reproduciendo desde un enlace ingresado manualmente.", enlace);
+            } else {
+                alert("Por favor, ingresa un enlace válido.");
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", cargarContenido);
+    </script>
+</body>
+</html>
