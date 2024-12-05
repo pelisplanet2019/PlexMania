@@ -2,13 +2,12 @@
 <media>
     <video>
         <title>Video 1</title>
-        <description>Este es el primer video de prueba.</description>
-        <url>http://fina.dyndns.tv/Series/BlackList/01x05.mkv</url>
+        <description>Este es un video de ejemplo en formato MP4.</description>
+        <url>http://fina.dyndns.tv/Series/Grimm/01x01.mkv</url>
     </video>
     <video>
         <title>Video 2</title>
-        <description>Este es el segundo video de prueba.</description>
-        <url>https://www.w3schools.com/html/movie.mp4</url>
+        <description>Este es un enlace embed de Streamtape.</description>
+        <url>https://streamtape.com/e/Vr6om34qxdTKDdY/El_Piloto_2023_%281%29.mkv.mp4</url>
     </video>
-    <!-- Más videos -->
 </media>
