@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reproductor Multimedia</title>
     <style>
+        /* Estilo general */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -24,17 +25,19 @@
             padding: 20px;
         }
 
+        /* Reproductor */
         .player {
             text-align: center;
             margin-bottom: 30px;
         }
 
-        video {
+        .player iframe, .player video {
             width: 100%;
             max-width: 800px;
-            height: auto;
+            height: 450px;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            border: none;
         }
 
         .video-info {
@@ -52,6 +55,7 @@
             color: #c9d1d9;
         }
 
+        /* Lista de videos */
         .video-list {
             display: flex;
             flex-wrap: wrap;
@@ -96,7 +100,9 @@
     <main>
         <!-- Reproductor -->
         <div class="player">
-            <video id="videoPlayer" controls>
+            <!-- Se usará iframe para los embeds y video para otros formatos -->
+            <iframe id="videoFrame" src="" frameborder="0" allowfullscreen hidden></iframe>
+            <video id="videoPlayer" controls hidden>
                 <source src="" type="video/mp4">
                 Tu navegador no soporta la reproducción de video.
             </video>
@@ -131,12 +137,7 @@
                 videos.forEach(video => {
                     const title = video.querySelector("title").textContent;
                     const description = video.querySelector("description").textContent;
-                    let url = video.querySelector("url").textContent;
-
-                    // Añadir parámetro autoplay para Streamtape
-                    if (url.includes("streamtape")) {
-                        url += "&autoplay=1";
-                    }
+                    const url = video.querySelector("url").textContent;
 
                     // Crear elemento en la lista
                     const videoItem = document.createElement("div");
@@ -155,16 +156,25 @@
 
         function reproducirVideo(title, description, url) {
             const videoPlayer = document.getElementById("videoPlayer");
+            const videoFrame = document.getElementById("videoFrame");
             const videoTitle = document.getElementById("videoTitle");
             const videoDescription = document.getElementById("videoDescription");
-
-            // Actualizar el reproductor
-            videoPlayer.src = url;
-            videoPlayer.play();
 
             // Actualizar título y descripción
             videoTitle.textContent = title;
             videoDescription.textContent = description;
+
+            // Detectar si es un enlace embed o directo
+            if (url.includes("embed") || url.includes("streamtape")) {
+                videoPlayer.hidden = true;
+                videoFrame.hidden = false;
+                videoFrame.src = url;
+            } else {
+                videoFrame.hidden = true;
+                videoPlayer.hidden = false;
+                videoPlayer.src = url;
+                videoPlayer.play();
+            }
         }
 
         document.addEventListener("DOMContentLoaded", cargarContenido);
