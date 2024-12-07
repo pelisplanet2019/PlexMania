@@ -1,9 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <series>
     <serie>
         <titulo>Grimm</titulo>
         <imagen>https://i.ibb.co/G58Fr7c/transcode-5.jpg</imagen>
-        <descripcion>El Detective Nick Burkhardt (David Guintoli) empieza a ver cosas inexplicables, hasta que llega su tía Marie (Kate Burton) y le revela que desciende de un grupo de cazadores de élite, los “ Hermanos Grimms”</descripcion>
-        <enlace>https://raw.githubusercontent.com/pelisplanet2019/PlexMania/refs/heads/main/Reproductor/Media.xml</enlace>
+        <descripcion>El Detective Nick Burkhardt (David Guintoli) empieza a ver cosas inexplicables...</descripcion>
+        <enlace>https://raw.githubusercontent.com/pelisplanet2019/PlexMania/main/Reproductor/Media.xml</enlace>
     </serie>
     <serie>
         <titulo>Serie 2</titulo>
@@ -11,89 +12,4 @@
         <descripcion>Descripción de la serie 2.</descripcion>
         <enlace>https://example.com/serie2</enlace>
     </serie>
-  <serie>
-        <titulo>Serie 2</titulo>
-        <imagen>https://via.placeholder.com/180x270?text=Serie+2</imagen>
-        <descripcion>Descripción de la serie 2.</descripcion>
-        <enlace>https://example.com/serie2</enlace>
-    </serie>
-  <serie>
-        <titulo>Serie 2</titulo>
-        <imagen>https://via.placeholder.com/180x270?text=Serie+2</imagen>
-        <descripcion>Descripción de la serie 2.</descripcion>
-        <enlace>https://example.com/serie2</enlace>
-    </serie>
-  <serie>
-        <titulo>Serie 2</titulo>
-        <imagen>https://via.placeholder.com/180x270?text=Serie+2</imagen>
-        <descripcion>Descripción de la serie 2.</descripcion>
-        <enlace>https://example.com/serie2</enlace>
-    </serie>
-  <serie>
-        <titulo>Serie 2</titulo>
-        <imagen>https://via.placeholder.com/180x270?text=Serie+2</imagen>
-        <descripcion>Descripción de la serie 2.</descripcion>
-        <enlace>https://example.com/serie2</enlace>
-    </serie>
-  <serie>
-        <titulo>Serie 2</titulo>
-        <imagen>https://via.placeholder.com/180x270?text=Serie+2</imagen>
-        <descripcion>Descripción de la serie 2.</descripcion>
-        <enlace>https://example.com/serie2</enlace>
-    </serie>
-  <serie>
-        <titulo>Serie 2</titulo>
-        <imagen>https://via.placeholder.com/180x270?text=Serie+2</imagen>
-        <descripcion>Descripción de la serie 2.</descripcion>
-        <enlace>https://example.com/serie2</enlace>
-    </serie>
-  <serie>
-        <titulo>Serie 2</titulo>
-        <imagen>https://via.placeholder.com/180x270?text=Serie+2</imagen>
-        <descripcion>Descripción de la serie 2.</descripcion>
-        <enlace>https://example.com/serie2</enlace>
-    </serie>
-  <serie>
-        <titulo>Serie 2</titulo>
-        <imagen>https://via.placeholder.com/180x270?text=Serie+2</imagen>
-        <descripcion>Descripción de la serie 2.</descripcion>
-        <enlace>https://example.com/serie2</enlace>
-    </serie>
-  <serie>
-        <titulo>Serie 2</titulo>
-        <imagen>https://via.placeholder.com/180x270?text=Serie+2</imagen>
-        <descripcion>Descripción de la serie 2.</descripcion>
-        <enlace>https://example.com/serie2</enlace>
-    </serie>
-  <serie>
-        <titulo>Serie 2</titulo>
-        <imagen>https://via.placeholder.com/180x270?text=Serie+2</imagen>
-        <descripcion>Descripción de la serie 2.</descripcion>
-        <enlace>https://example.com/serie2</enlace>
-    </serie>
-  <serie>
-        <titulo>Serie 2</titulo>
-        <imagen>https://via.placeholder.com/180x270?text=Serie+2</imagen>
-        <descripcion>Descripción de la serie 2.</descripcion>
-        <enlace>https://example.com/serie2</enlace>
-    </serie>
-  <serie>
-        <titulo>Serie 2</titulo>
-        <imagen>https://via.placeholder.com/180x270?text=Serie+2</imagen>
-        <descripcion>Descripción de la serie 2.</descripcion>
-        <enlace>https://example.com/serie2</enlace>
-    </serie>
-  <serie>
-        <titulo>Serie 2</titulo>
-        <imagen>https://via.placeholder.com/180x270?text=Serie+2</imagen>
-        <descripcion>Descripción de la serie 2.</descripcion>
-        <enlace>https://example.com/serie2</enlace>
-    </serie>
-  <serie>
-        <titulo>Serie 2</titulo>
-        <imagen>https://via.placeholder.com/180x270?text=Serie+2</imagen>
-        <descripcion>Descripción de la serie 2.</descripcion>
-        <enlace>https://example.com/serie2</enlace>
-    </serie>
-    <!-- Nuevas series añadidas aquí -->
 </series>
