@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <media>
     <video>
-        <title>Video 1</title>
+        <title>Grimm - 1x01</title>
         <description>Este es un video de ejemplo en formato MP4.</description>
-        <url>https://www.w3schools.com/html/mov_bbb.mp4</url>
+        <url>http://fina.dyndns.tv/Series/Grimm/01x01.mkv</url>
     </video>
     <video>
-        <title>Video 2</title>
+        <title>Grimm - 1x02</title>
         <description>Este es un enlace embed de Streamtape.</description>
-        <url>https://streamtape.com/e/abcdef1234</url>
+        <url>http://fina.dyndns.tv/Series/Grimm/01x02.mkv</url>
     </video>
 </media>
