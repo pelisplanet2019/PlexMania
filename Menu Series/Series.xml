@@ -1,9 +1,9 @@
 <series>
     <serie>
-        <titulo>Serie 1</titulo>
-        <imagen>https://via.placeholder.com/180x270?text=Serie+1</imagen>
-        <descripcion>Descripción de la serie 1.</descripcion>
-        <enlace>https://example.com/serie1</enlace>
+        <titulo>Grimm</titulo>
+        <imagen>https://i.ibb.co/G58Fr7c/transcode-5.jpg</imagen>
+        <descripcion>El Detective Nick Burkhardt (David Guintoli) empieza a ver cosas inexplicables, hasta que llega su tía Marie (Kate Burton) y le revela que desciende de un grupo de cazadores de élite, los “ Hermanos Grimms”</descripcion>
+        <enlace>https://raw.githubusercontent.com/pelisplanet2019/PlexMania/refs/heads/main/Reproductor/index.html</enlace>
     </serie>
     <serie>
         <titulo>Serie 2</titulo>
