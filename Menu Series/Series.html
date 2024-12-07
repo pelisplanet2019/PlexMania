@@ -5,154 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Series Destacadas</title>
     <style>
-        /* General */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #1a1a1a;
-            color: #f5f5f5;
-        }
-
-        /* Menú superior */
-        .menu {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            background-color: #333333;
-            padding: 10px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        .menu a {
-            text-decoration: none;
-            color: #ffa31a;
-            font-size: 18px;
-            font-weight: bold;
-            padding: 8px 16px;
-            transition: background-color 0.3s;
-        }
-
-        .menu a:hover {
-            background-color: #444444;
-            border-radius: 5px;
-        }
-
-        /* Sección general */
-        .section {
-            margin: 20px;
-        }
-
-        .section h2 {
-            text-align: center;
-            color: #ffa31a;
-            margin-bottom: 10px;
-        }
-
-        .section-description {
-            text-align: center;
-            font-size: 14px;
-            color: #cccccc;
-            margin-bottom: 20px;
-        }
-
-        .category-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 15px;
-            padding: 10px;
-        }
-
-        .movie-card {
-            background-color: #333333;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
-        }
-
-        .movie-card img {
-            width: 100%;
-            height: 270px;
-            object-fit: cover;
-        }
-
-        .movie-title {
-            text-align: center;
-            font-size: 14px;
-            color: #ffa31a;
-            padding: 8px;
-        }
-
-        .movie-description {
-            text-align: center;
-            font-size: 12px;
-            color: #cccccc;
-            margin-top: 5px;
-        }
-
-        /* Línea separadora */
-        .line-separator {
-            border: none;
-            height: 2px;
-            background-color: #ffa31a;
-            margin: 20px 0;
-        }
+        body { font-family: Arial, sans-serif; background-color: #1a1a1a; color: #f5f5f5; }
+        .category-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 15px; }
+        .movie-card img { width: 100%; height: 270px; object-fit: cover; }
     </style>
 </head>
 <body>
-    <!-- Menú superior -->
-    <div class="menu">
-        <a href="#">Películas</a>
-        <a href="#">Series</a>
-        <a href="#">Anime</a>
-    </div>
-
-    <!-- Sección Series Destacadas -->
-    <div class="section">
-        <h2>Series Destacadas</h2>
-        <p class="section-description">Explora las series más destacadas con historias fascinantes.</p>
-        <div class="category-container" id="seriesContainer">
-            <!-- Las series se cargarán dinámicamente aquí -->
-        </div>
-    </div>
-
+    <div id="seriesContainer"></div>
     <script>
         async function cargarContenido() {
-            const url = "https://raw.githubusercontent.com/pelisplanet2019/PlexMania/refs/heads/main/Menu%20Series/Series.xml"; // Reemplaza con la URL raw de tu XML
+            const url = "https://raw.githubusercontent.com/pelisplanet2019/PlexMania/refs/heads/main/Menu%20Series/Series.xml";
 
             try {
                 const response = await fetch(url);
-                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                if (!response.ok) throw new Error("Error al cargar el XML");
 
                 const xmlText = await response.text();
                 const parser = new DOMParser();
                 const xmlDoc = parser.parseFromString(xmlText, "application/xml");
 
-                // Cargar series
-                const seriesItems = xmlDoc.querySelectorAll("series > serie");
-                const seriesContainer = document.getElementById("seriesContainer");
+                const seriesItems = xmlDoc.querySelectorAll("serie");
+                const container = document.getElementById("seriesContainer");
+
                 seriesItems.forEach(item => {
                     const titulo = item.querySelector("titulo").textContent;
-                    const descripcion = item.querySelector("descripcion").textContent;
                     const imagen = item.querySelector("imagen").textContent;
-                    const enlace = item.querySelector("enlace").textContent;
+                    const descripcion = item.querySelector("descripcion").textContent;
 
                     const card = `
                         <div class="movie-card">
-                            <a href="${enlace}" target="_blank">
-                                <img src="${imagen}" alt="${titulo}">
-                            </a>
-                            <div class="movie-title">${titulo}</div>
-                            <div class="movie-description">${descripcion}</div>
+                            <img src="${imagen}" alt="${titulo}">
+                            <h3>${titulo}</h3>
+                            <p>${descripcion}</p>
                         </div>`;
-                    seriesContainer.innerHTML += card;
+                    container.innerHTML += card;
                 });
-
             } catch (error) {
-                console.error("Error al cargar el contenido:", error);
+                console.error("Error al cargar contenido:", error);
             }
         }
 
