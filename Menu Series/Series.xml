@@ -1,18 +1,21 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <peliculas>
-    <pelicula>
-        <titulo>Inception</titulo>
-        <imagen>https://via.placeholder.com/180x270?text=Inception</imagen>
-        <enlace>https://raw.githubusercontent.com/pelisplanet2019/PlexMania/main/Reproductor/Inception.xml</enlace>
-    </pelicula>
-    <pelicula>
-        <titulo>Matrix</titulo>
-        <imagen>https://via.placeholder.com/180x270?text=Matrix</imagen>
-        <enlace>https://raw.githubusercontent.com/pelisplanet2019/PlexMania/main/Reproductor/Matrix.xml</enlace>
-    </pelicula>
-    <pelicula>
-        <titulo>Avatar</titulo>
-        <imagen>https://via.placeholder.com/180x270?text=Avatar</imagen>
-        <enlace>https://raw.githubusercontent.com/pelisplanet2019/PlexMania/main/Reproductor/Avatar.xml</enlace>
-    </pelicula>
+  <pelicula_item>
+    <title>Inception</title>
+    <description>Un ladrón roba secretos a través de los sueños.</description>
+    <thumbnail>https://via.placeholder.com/200x300?text=Inception</thumbnail>
+    <link>https://example.com/inception.xml</link>
+  </pelicula_item>
+  <pelicula_item>
+    <title>The Dark Knight</title>
+    <description>Batman enfrenta a su mayor enemigo, el Joker.</description>
+    <thumbnail>https://via.placeholder.com/200x300?text=The+Dark+Knight</thumbnail>
+    <link>https://example.com/thedarkknight.xml</link>
+  </pelicula_item>
+  <pelicula_item>
+    <title>Interstellar</title>
+    <description>Una odisea espacial en busca de un nuevo hogar.</description>
+    <thumbnail>https://via.placeholder.com/200x300?text=Interstellar</thumbnail>
+    <link>https://example.com/interstellar.xml</link>
+  </pelicula_item>
+  <!-- Añadir más películas aquí -->
 </peliculas>
