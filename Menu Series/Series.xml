@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<series>
-    <serie>
-        <titulo>Grimm</titulo>
-        <imagen>https://i.ibb.co/G58Fr7c/transcode-5.jpg</imagen>
-        <descripcion>El Detective Nick Burkhardt (David Guintoli) empieza a ver cosas inexplicables...</descripcion>
-        <enlace>https://raw.githubusercontent.com/pelisplanet2019/PlexMania/main/Reproductor/Media.xml</enlace>
-    </serie>
-    <serie>
-        <titulo>Serie 2</titulo>
-        <imagen>https://via.placeholder.com/180x270?text=Serie+2</imagen>
-        <descripcion>Descripción de la serie 2.</descripcion>
-        <enlace>https://example.com/serie2</enlace>
-    </serie>
-</series>
+<peliculas>
+    <pelicula>
+        <titulo>Inception</titulo>
+        <imagen>https://via.placeholder.com/180x270?text=Inception</imagen>
+        <enlace>https://raw.githubusercontent.com/pelisplanet2019/PlexMania/main/Reproductor/Inception.xml</enlace>
+    </pelicula>
+    <pelicula>
+        <titulo>Matrix</titulo>
+        <imagen>https://via.placeholder.com/180x270?text=Matrix</imagen>
+        <enlace>https://raw.githubusercontent.com/pelisplanet2019/PlexMania/main/Reproductor/Matrix.xml</enlace>
+    </pelicula>
+    <pelicula>
+        <titulo>Avatar</titulo>
+        <imagen>https://via.placeholder.com/180x270?text=Avatar</imagen>
+        <enlace>https://raw.githubusercontent.com/pelisplanet2019/PlexMania/main/Reproductor/Avatar.xml</enlace>
+    </pelicula>
+</peliculas>
