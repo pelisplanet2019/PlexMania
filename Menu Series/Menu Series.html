@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Series</title>
+  <style>
+    /* Reutiliza los mismos estilos que películas */
+  </style>
+</head>
+<body>
+  <!-- Menú superior -->
+  <div class="menu">
+    <a href="../Menu Principal/index.html">Inicio</a>
+    <div>
+      <a href="../Menu Peliculas/peliculas.html">Películas</a>
+      <a href="series.html">Series</a>
+      <a href="../Menu Anime/anime.html">Anime</a>
+    </div>
+  </div>
+
+  <!-- Contenido -->
+  <div class="content-wrapper">
+    <div class="section">
+      <h2>Series Populares</h2>
+      <div class="category-container" id="seriesContainer">
+        <p>Cargando series...</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    async function cargarSeries() {
+      const url = "https://raw.githubusercontent.com/pelisplanet2019/PlexMania/refs/heads/main/Menu%20Series/Menu%20series.xml";
+
+      try {
+        const response = await fetch(url);
+
+        if (!response.ok) {
+          throw new Error(`Error al cargar el XML: ${response.status}`);
+        }
+
+        const xmlText = await response.text();
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(xmlText, "application/xml");
+
+        const series = xmlDoc.querySelectorAll("serie_item");
+        const container = document.getElementById("seriesContainer");
+        container.innerHTML = "";
+
+        series.forEach(serie => {
+          const titulo = serie.querySelector("title").textContent;
+          const imagen = serie.querySelector("thumbnail").textContent;
+          const enlace = serie.querySelector("link").textContent;
+
+          const card = `
+            <div class="movie-card">
+              <a href="${enlace}" target="_blank">
+                <img src="${imagen}" alt="${titulo}">
+              </a>
+              <div class="movie-title">${titulo}</div>
+            </div>`;
+          container.innerHTML += card;
+        });
+      } catch (error) {
+        console.error("Error al cargar las series:", error);
+        document.getElementById("seriesContainer").innerHTML = `Error: ${error.message}`;
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", cargarSeries);
+  </script>
+</body>
+</html>
