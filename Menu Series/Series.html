@@ -1,176 +1,166 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lista de Películas</title>
-  <style>
-    /* General */
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #1a1a1a;
-      color: #f5f5f5;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Series Destacadas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1a1a1a;
+            color: #f5f5f5;
+        }
 
-    /* Menú superior */
-    .menu {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: #333333;
-      padding: 10px 20px;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
+        /* Menú superior */
+        .menu {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            background-color: #333333;
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
 
-    .menu img {
-      height: 60px;
-    }
+        .menu a {
+            text-decoration: none;
+            color: #ffa31a;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 8px 16px;
+            transition: background-color 0.3s;
+        }
 
-    .menu a {
-      text-decoration: none;
-      color: #ffa31a;
-      font-size: 18px;
-      font-weight: bold;
-      padding: 8px 16px;
-      transition: background-color 0.3s;
-    }
+        .menu a:hover {
+            background-color: #444444;
+            border-radius: 5px;
+        }
 
-    .menu a:hover {
-      background-color: #444444;
-      border-radius: 5px;
-    }
+        .section {
+            margin: 20px;
+        }
 
-    /* Título */
-    .section h2 {
-      text-align: center;
-      color: #ffa31a;
-      margin: 20px 0;
-    }
+        .section h2 {
+            text-align: center;
+            color: #ffa31a;
+            margin-bottom: 10px;
+        }
 
-    .section h2 img {
-      height: 50px;
-      vertical-align: middle;
-    }
+        .section-description {
+            text-align: center;
+            font-size: 14px;
+            color: #cccccc;
+            margin-bottom: 20px;
+        }
 
-    /* Contenedor principal */
-    .content-wrapper {
-      margin: 20px 50px;
-      border: 4px solid #ffa31a;
-      border-radius: 10px;
-      padding: 20px;
-    }
+        .category-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 15px;
+            padding: 10px;
+        }
 
-    /* Cuadrícula de películas */
-    .category-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 15px;
-    }
+        .movie-card {
+            background-color: #333333;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+        }
 
-    .movie-card {
-      background-color: #333333;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
-      transition: transform 0.3s ease, border 0.3s ease;
-      border: 4px solid transparent;
-    }
+        .movie-card img {
+            width: 100%;
+            height: 270px;
+            object-fit: cover;
+        }
 
-    .movie-card:hover {
-      transform: scale(1.05);
-      border: 4px solid #ffa31a;
-    }
+        .movie-title {
+            text-align: center;
+            font-size: 14px;
+            color: #ffa31a;
+            padding: 8px;
+        }
 
-    .movie-card img {
-      width: 100%;
-      height: 300px;
-      object-fit: cover;
-    }
+        .movie-description {
+            text-align: center;
+            font-size: 12px;
+            color: #cccccc;
+            margin-top: 5px;
+        }
 
-    .movie-title {
-      text-align: center;
-      font-size: 14px;
-      color: #ffa31a;
-      padding: 8px;
-    }
-  </style>
+        .line-separator {
+            border: none;
+            height: 2px;
+            background-color: #ffa31a;
+            margin: 20px 0;
+        }
+    </style>
 </head>
 <body>
-  <!-- Menú superior -->
-  <div class="menu">
-    <a href="#"><img src="https://i.ibb.co/k9rbDQQ/logo1.png" alt="logo1"></a>
-    <div>
-      <a href="peliculas.html">Películas</a>
-      <a href="series.html">Series</a>
-      <a href="anime.html">Anime</a>
+    <div class="menu">
+        <a href="#">Películas</a>
+        <a href="#">Series</a>
+        <a href="#">Anime</a>
     </div>
-  </div>
 
-  <!-- Contenido -->
-  <div class="content-wrapper">
     <div class="section">
-      <h2>Películas Populares <img src="https://i.ibb.co/X2GzTm3/Movie2-37185.png" alt="Movie2"></h2>
-      <div class="category-container" id="peliculasContainer">
-        <p>Cargando películas...</p>
-      </div>
+        <h2>Series Destacadas</h2>
+        <p class="section-description">Explora las series más destacadas con historias fascinantes.</p>
+        <div class="category-container" id="seriesContainer">
+            <!-- Aquí se cargarán las series -->
+        </div>
     </div>
-  </div>
 
-  <script>
-    async function cargarPeliculas() {
-      const url = "https://raw.githubusercontent.com/pelisplanet2019/PlexMania/refs/heads/main/Menu%20Series/Series.xml";
+    <script>
+        async function cargarContenido() {
+            const url = "https://raw.githubusercontent.com/pelisplanet2019/PlexMania/refs/heads/main/Menu%20Series/Series.xml"; // Cambia la URL por el raw de tu archivo XML
 
-      try {
-        const response = await fetch(url);
+            try {
+                const response = await fetch(url);
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
-        if (!response.ok) {
-          throw new Error(`No se pudo cargar el archivo XML. Código: ${response.status}`);
+                const xmlText = await response.text();
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(xmlText, "application/xml");
+
+                // Verificar si se obtuvo el XML correctamente
+                console.log(xmlDoc);
+
+                // Cargar las series
+                const seriesItems = xmlDoc.querySelectorAll("series > serie");
+                const seriesContainer = document.getElementById("seriesContainer");
+
+                if (seriesItems.length === 0) {
+                    seriesContainer.innerHTML = "<p>No se encontraron series disponibles.</p>";
+                }
+
+                seriesItems.forEach(item => {
+                    const titulo = item.querySelector("titulo").textContent;
+                    const descripcion = item.querySelector("descripcion").textContent;
+                    const imagen = item.querySelector("imagen").textContent;
+                    const enlace = item.querySelector("enlace").textContent;
+
+                    const card = `
+                        <div class="movie-card">
+                            <a href="${enlace}" target="_blank">
+                                <img src="${imagen}" alt="${titulo}">
+                            </a>
+                            <div class="movie-title">${titulo}</div>
+                            <div class="movie-description">${descripcion}</div>
+                        </div>`;
+
+                    seriesContainer.innerHTML += card;
+                });
+
+            } catch (error) {
+                console.error("Error al cargar el contenido:", error);
+            }
         }
 
-        const xml = await response.text();
-        const parser = new DOMParser();
-        const xmlDoc = parser.parseFromString(xml, "application/xml");
-
-        const movies = xmlDoc.getElementsByTagName("pelicula_item");
-        const container = document.getElementById("peliculasContainer");
-        container.innerHTML = "";
-
-        if (movies.length === 0) {
-          container.innerHTML = "No se encontraron películas en el archivo XML.";
-          return;
-        }
-
-        for (let i = 0; i < movies.length; i++) {
-          const movie = movies[i];
-          const title = movie.getElementsByTagName("title")[0]?.textContent || "Sin título";
-          const description = movie.getElementsByTagName("description")[0]?.textContent || "Sin descripción";
-          const thumbnail = movie.getElementsByTagName("thumbnail")[0]?.textContent || "https://via.placeholder.com/200x300?text=Sin+imagen";
-          const link = movie.getElementsByTagName("link")[0]?.textContent || "#";
-
-          const card = document.createElement("div");
-          card.classList.add("movie-card");
-
-          card.innerHTML = `
-            <a href="${link}" target="_blank">
-              <img src="${thumbnail}" alt="${title}">
-            </a>
-            <div class="movie-title">${title}</div>
-          `;
-
-          container.appendChild(card);
-        }
-      } catch (error) {
-        console.error("Error al cargar el XML:", error);
-        document.getElementById("peliculasContainer").innerHTML = `Error: ${error.message}`;
-      }
-    }
-
-    document.addEventListener("DOMContentLoaded", cargarPeliculas);
-  </script>
+        document.addEventListener("DOMContentLoaded", cargarContenido);
+    </script>
 </body>
 </html>
