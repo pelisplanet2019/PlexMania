@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lista de Series</title>
+  <title>Lista de Películas</title>
   <style>
     /* General */
     body {
@@ -65,7 +65,7 @@
       padding: 20px;
     }
 
-    /* Cuadrícula de series */
+    /* Cuadrícula de películas */
     .category-container {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -105,24 +105,24 @@
   <div class="menu">
     <a href="#"><img src="https://i.ibb.co/k9rbDQQ/logo1.png" alt="logo1"></a>
     <div>
-      <a href="../Menu Peliculas/peliculas.html">Películas</a>
+      <a href="peliculas.html">Películas</a>
       <a href="series.html">Series</a>
-      <a href="../Menu Anime/anime.html">Anime</a>
+      <a href="anime.html">Anime</a>
     </div>
   </div>
 
   <!-- Contenido -->
   <div class="content-wrapper">
     <div class="section">
-      <h2>Series Populares <img src="https://i.ibb.co/X2GzTm3/Movie2-37185.png" alt="Movie2"></h2>
-      <div class="category-container" id="seriesContainer">
-        <p>Cargando series...</p>
+      <h2>Películas Populares <img src="https://i.ibb.co/X2GzTm3/Movie2-37185.png" alt="Movie2"></h2>
+      <div class="category-container" id="peliculasContainer">
+        <p>Cargando películas...</p>
       </div>
     </div>
   </div>
 
   <script>
-    async function cargarSeries() {
+    async function cargarPeliculas() {
       const url = "https://raw.githubusercontent.com/pelisplanet2019/PlexMania/refs/heads/main/Menu%20Series/Series.xml";
 
       try {
@@ -136,21 +136,21 @@
         const parser = new DOMParser();
         const xmlDoc = parser.parseFromString(xml, "application/xml");
 
-        const series = xmlDoc.getElementsByTagName("serie_item");
-        const container = document.getElementById("seriesContainer");
+        const movies = xmlDoc.getElementsByTagName("pelicula_item");
+        const container = document.getElementById("peliculasContainer");
         container.innerHTML = "";
 
-        if (series.length === 0) {
-          container.innerHTML = "No se encontraron series en el archivo XML.";
+        if (movies.length === 0) {
+          container.innerHTML = "No se encontraron películas en el archivo XML.";
           return;
         }
 
-        for (let i = 0; i < series.length; i++) {
-          const serie = series[i];
-          const title = serie.getElementsByTagName("title")[0]?.textContent || "Sin título";
-          const description = serie.getElementsByTagName("description")[0]?.textContent || "Sin descripción";
-          const thumbnail = serie.getElementsByTagName("thumbnail")[0]?.textContent || "https://via.placeholder.com/200x300?text=Sin+imagen";
-          const link = serie.getElementsByTagName("link")[0]?.textContent || "#";
+        for (let i = 0; i < movies.length; i++) {
+          const movie = movies[i];
+          const title = movie.getElementsByTagName("title")[0]?.textContent || "Sin título";
+          const description = movie.getElementsByTagName("description")[0]?.textContent || "Sin descripción";
+          const thumbnail = movie.getElementsByTagName("thumbnail")[0]?.textContent || "https://via.placeholder.com/200x300?text=Sin+imagen";
+          const link = movie.getElementsByTagName("link")[0]?.textContent || "#";
 
           const card = document.createElement("div");
           card.classList.add("movie-card");
@@ -166,11 +166,11 @@
         }
       } catch (error) {
         console.error("Error al cargar el XML:", error);
-        document.getElementById("seriesContainer").innerHTML = `Error: ${error.message}`;
+        document.getElementById("peliculasContainer").innerHTML = `Error: ${error.message}`;
       }
     }
 
-    document.addEventListener("DOMContentLoaded", cargarSeries);
+    document.addEventListener("DOMContentLoaded", cargarPeliculas);
   </script>
 </body>
 </html>
