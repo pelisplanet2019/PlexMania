@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lista de Películas</title>
+  <title>Películas</title>
   <style>
     /* General */
     body {
@@ -45,19 +45,7 @@
       border-radius: 5px;
     }
 
-    /* Título */
-    .section h2 {
-      text-align: center;
-      color: #ffa31a;
-      margin: 20px 0;
-    }
-
-    .section h2 img {
-      height: 50px;
-      vertical-align: middle;
-    }
-
-    /* Contenedor principal */
+    /* Contenido */
     .content-wrapper {
       margin: 20px 50px;
       border: 4px solid #ffa31a;
@@ -65,7 +53,13 @@
       padding: 20px;
     }
 
-    /* Cuadrícula de películas */
+    .section h2 {
+      text-align: center;
+      color: #ffa31a;
+      margin: 20px 0;
+    }
+
+    /* Grid de películas */
     .category-container {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -103,18 +97,18 @@
 <body>
   <!-- Menú superior -->
   <div class="menu">
-    <a href="#"><img src="https://i.ibb.co/k9rbDQQ/logo1.png" alt="logo1"></a>
+    <a href="../Menu Principal/index.html">Inicio</a>
     <div>
       <a href="peliculas.html">Películas</a>
-      <a href="series.html">Series</a>
-      <a href="anime.html">Anime</a>
+      <a href="../Menu Series/series.html">Series</a>
+      <a href="../Menu Anime/anime.html">Anime</a>
     </div>
   </div>
 
   <!-- Contenido -->
   <div class="content-wrapper">
     <div class="section">
-      <h2>Películas Populares <img src="https://i.ibb.co/X2GzTm3/Movie2-37185.png" alt="Movie2"></h2>
+      <h2>Películas Populares</h2>
       <div class="category-container" id="peliculasContainer">
         <p>Cargando películas...</p>
       </div>
@@ -129,43 +123,33 @@
         const response = await fetch(url);
 
         if (!response.ok) {
-          throw new Error(`No se pudo cargar el archivo XML. Código: ${response.status}`);
+          throw new Error(`Error al cargar el XML: ${response.status}`);
         }
 
-        const xml = await response.text();
+        const xmlText = await response.text();
         const parser = new DOMParser();
-        const xmlDoc = parser.parseFromString(xml, "application/xml");
+        const xmlDoc = parser.parseFromString(xmlText, "application/xml");
 
-        const movies = xmlDoc.getElementsByTagName("pelicula_item");
+        const peliculas = xmlDoc.querySelectorAll("pelicula_item");
         const container = document.getElementById("peliculasContainer");
         container.innerHTML = "";
 
-        if (movies.length === 0) {
-          container.innerHTML = "No se encontraron películas en el archivo XML.";
-          return;
-        }
+        peliculas.forEach(pelicula => {
+          const titulo = pelicula.querySelector("title").textContent;
+          const imagen = pelicula.querySelector("thumbnail").textContent;
+          const enlace = pelicula.querySelector("link").textContent;
 
-        for (let i = 0; i < movies.length; i++) {
-          const movie = movies[i];
-          const title = movie.getElementsByTagName("title")[0]?.textContent || "Sin título";
-          const description = movie.getElementsByTagName("description")[0]?.textContent || "Sin descripción";
-          const thumbnail = movie.getElementsByTagName("thumbnail")[0]?.textContent || "https://via.placeholder.com/200x300?text=Sin+imagen";
-          const link = movie.getElementsByTagName("link")[0]?.textContent || "#";
-
-          const card = document.createElement("div");
-          card.classList.add("movie-card");
-
-          card.innerHTML = `
-            <a href="${link}" target="_blank">
-              <img src="${thumbnail}" alt="${title}">
-            </a>
-            <div class="movie-title">${title}</div>
-          `;
-
-          container.appendChild(card);
-        }
+          const card = `
+            <div class="movie-card">
+              <a href="${enlace}" target="_blank">
+                <img src="${imagen}" alt="${titulo}">
+              </a>
+              <div class="movie-title">${titulo}</div>
+            </div>`;
+          container.innerHTML += card;
+        });
       } catch (error) {
-        console.error("Error al cargar el XML:", error);
+        console.error("Error al cargar las películas:", error);
         document.getElementById("peliculasContainer").innerHTML = `Error: ${error.message}`;
       }
     }
