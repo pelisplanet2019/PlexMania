@@ -1,21 +1,9 @@
-<peliculas>
-  <pelicula_item>
-    <title>Inception</title>
-    <description>Un ladrón roba secretos a través de los sueños.</description>
-    <thumbnail>https://via.placeholder.com/200x300?text=Inception</thumbnail>
-    <link>https://example.com/inception.xml</link>
-  </pelicula_item>
-  <pelicula_item>
-    <title>The Dark Knight</title>
-    <description>Batman enfrenta a su mayor enemigo, el Joker.</description>
-    <thumbnail>https://via.placeholder.com/200x300?text=The+Dark+Knight</thumbnail>
-    <link>https://example.com/thedarkknight.xml</link>
-  </pelicula_item>
-  <pelicula_item>
-    <title>Interstellar</title>
-    <description>Una odisea espacial en busca de un nuevo hogar.</description>
-    <thumbnail>https://via.placeholder.com/200x300?text=Interstellar</thumbnail>
-    <link>https://example.com/interstellar.xml</link>
-  </pelicula_item>
-  <!-- Añadir más películas aquí -->
-</peliculas>
+<series>
+    <serie>
+        <titulo>Serie 1</titulo>
+        <imagen>https://via.placeholder.com/180x270?text=Serie+1</imagen>
+        <descripcion>Descripción de la serie 1.</descripcion>
+        <enlace>https://example.com/serie1</enlace>
+    </serie>
+    <!-- Más series -->
+</series>
