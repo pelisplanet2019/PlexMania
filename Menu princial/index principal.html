@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Principal</title>
+    <title>Menú Principal</title>
     <style>
-        /* General */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -14,7 +13,6 @@
             color: #f5f5f5;
         }
 
-        /* Menú superior */
         .menu {
             display: flex;
             justify-content: center;
@@ -41,28 +39,24 @@
             border-radius: 5px;
         }
 
-        /* Carrusel */
         .carousel {
             position: relative;
-            max-width: 100%; /* Ocupa todo el ancho */
-            margin: 40px auto;
+            max-width: 100%;
+            margin: 20px auto;
             overflow: hidden;
             border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
 
         .carousel-images {
             display: flex;
-            gap: 10px;
             transition: transform 0.5s ease-in-out;
         }
 
         .carousel-images img {
-            width: 100%;  /* Asegura que las imágenes se adapten al ancho */
-            max-width: 250px; /* Cada imagen tiene un ancho máximo */
-            height: 400px; /* Altura ajustada */
+            width: 100%;
+            height: 400px;
             object-fit: cover;
-            border-radius: 10px;
         }
 
         .carousel-buttons {
@@ -90,7 +84,6 @@
             background-color: #ffa31a;
         }
 
-        /* Sección general */
         .section {
             margin: 20px;
         }
@@ -144,7 +137,7 @@
     </style>
 </head>
 <body>
-    <!-- Menú superior -->
+    <!-- Menú Superior -->
     <div class="menu">
         <a href="../Menu Peliculas/peliculas.html">Películas</a>
         <a href="../Menu Series/series.html">Series</a>
@@ -180,13 +173,62 @@
 
             try {
                 const response = await fetch(url);
-                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                if (!response.ok) throw new Error(`Error al cargar el XML: ${response.status}`);
 
                 const xmlText = await response.text();
                 const parser = new DOMParser();
                 const xmlDoc = parser.parseFromString(xmlText, "application/xml");
 
-                // Resto igual
+                // Cargar imágenes del carrusel
+                const carruselItems = xmlDoc.querySelectorAll("carrusel > item");
+                const carouselContainer = document.getElementById("carouselContainer");
+                carruselItems.forEach(item => {
+                    const imagen = item.querySelector("imagen").textContent;
+                    const enlace = item.querySelector("enlace").textContent;
+
+                    const imgElement = `<a href="${enlace}" target="_blank"><img src="${imagen}" alt="Carrusel"></a>`;
+                    carouselContainer.innerHTML += imgElement;
+                });
+
+                // Cargar películas destacadas
+                const peliculas = xmlDoc.querySelectorAll("peliculas > pelicula");
+                const peliculasContainer = document.getElementById("peliculasContainer");
+                peliculas.forEach(pelicula => {
+                    const titulo = pelicula.querySelector("titulo").textContent;
+                    const descripcion = pelicula.querySelector("descripcion").textContent;
+                    const imagen = pelicula.querySelector("imagen").textContent;
+                    const enlace = pelicula.querySelector("enlace").textContent;
+
+                    const card = `
+                        <div class="movie-card">
+                            <a href="${enlace}" target="_blank">
+                                <img src="${imagen}" alt="${titulo}">
+                            </a>
+                            <div class="movie-title">${titulo}</div>
+                            <div class="movie-description">${descripcion}</div>
+                        </div>`;
+                    peliculasContainer.innerHTML += card;
+                });
+
+                // Cargar series destacadas
+                const series = xmlDoc.querySelectorAll("series > serie");
+                const seriesContainer = document.getElementById("seriesContainer");
+                series.forEach(serie => {
+                    const titulo = serie.querySelector("titulo").textContent;
+                    const descripcion = serie.querySelector("descripcion").textContent;
+                    const imagen = serie.querySelector("imagen").textContent;
+                    const enlace = serie.querySelector("enlace").textContent;
+
+                    const card = `
+                        <div class="movie-card">
+                            <a href="${enlace}" target="_blank">
+                                <img src="${imagen}" alt="${titulo}">
+                            </a>
+                            <div class="movie-title">${titulo}</div>
+                            <div class="movie-description">${descripcion}</div>
+                        </div>`;
+                    seriesContainer.innerHTML += card;
+                });
             } catch (error) {
                 console.error("Error al cargar el contenido:", error);
             }
