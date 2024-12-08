@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<series>
+    <serie_item>
+        <title>Breaking Bad</title>
+        <thumbnail>https://via.placeholder.com/200x300?text=Breaking+Bad</thumbnail>
+        <link>https://example.com/breaking-bad</link>
+    </serie_item>
+    <serie_item>
+        <title>Stranger Things</title>
+        <thumbnail>https://via.placeholder.com/200x300?text=Stranger+Things</thumbnail>
+        <link>https://example.com/stranger-things</link>
+    </serie_item>
+    <serie_item>
+        <title>The Witcher</title>
+        <thumbnail>https://via.placeholder.com/200x300?text=The+Witcher</thumbnail>
+        <link>https://example.com/the-witcher</link>
+    </serie_item>
+</series>
