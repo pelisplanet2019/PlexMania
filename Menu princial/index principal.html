@@ -141,21 +141,13 @@
             color: #cccccc;
             margin-top: 5px;
         }
-
-        /* Línea separadora */
-        .line-separator {
-            border: none;
-            height: 2px;
-            background-color: #ffa31a;
-            margin: 20px 0;
-        }
     </style>
 </head>
 <body>
     <!-- Menú superior -->
     <div class="menu">
-        <a href="#">Películas</a>
-        <a href="#">Series</a>
+        <a href="../Menu Peliculas/peliculas.html">Películas</a>
+        <a href="../Menu Series/series.html">Series</a>
         <a href="#">Anime</a>
     </div>
 
@@ -184,7 +176,7 @@
 
     <script>
         async function cargarContenido() {
-            const url = "https://raw.githubusercontent.com/pelisplanet2019/PlexMania/refs/heads/main/Menu%20princial/menu%20principal.xml"; // Reemplaza con la URL raw de tu XML
+            const url = "https://raw.githubusercontent.com/pelisplanet2019/PlexMania/refs/heads/main/Menu%20princial/menu%20principal.xml";
 
             try {
                 const response = await fetch(url);
@@ -194,76 +186,7 @@
                 const parser = new DOMParser();
                 const xmlDoc = parser.parseFromString(xmlText, "application/xml");
 
-                // Cargar carrusel
-                const carruselItems = xmlDoc.querySelectorAll("carrusel > item");
-                const carouselContainer = document.getElementById("carouselContainer");
-                carruselItems.forEach(item => {
-                    const imagen = item.querySelector("imagen").textContent;
-                    const enlace = item.querySelector("enlace").textContent;
-                    const imgElement = `<a href="${enlace}" target="_blank"><img src="${imagen}" alt="Carrusel"></a>`;
-                    carouselContainer.innerHTML += imgElement;
-                });
-
-                // Variables para carrusel
-                const images = document.querySelectorAll(".carousel-images img");
-                let index = 0;
-
-                // Función para actualizar la posición del carrusel
-                const updateCarousel = () => {
-                    const width = images[0].clientWidth;
-                    document.querySelector(".carousel-images").style.transform = `translateX(${-index * width}px)`;
-                };
-
-                document.getElementById("next").addEventListener("click", () => {
-                    index = (index + 1) % images.length;  // Se reinicia después de la última imagen
-                    updateCarousel();
-                });
-
-                document.getElementById("prev").addEventListener("click", () => {
-                    index = (index - 1 + images.length) % images.length;  // Permite retroceder
-                    updateCarousel();
-                });
-
-                // Cargar películas
-                const peliculas = xmlDoc.querySelectorAll("peliculas > pelicula");
-                const peliculasContainer = document.getElementById("peliculasContainer");
-                peliculas.forEach(pelicula => {
-                    const titulo = pelicula.querySelector("titulo").textContent;
-                    const descripcion = pelicula.querySelector("descripcion").textContent;
-                    const imagen = pelicula.querySelector("imagen").textContent;
-                    const enlace = pelicula.querySelector("enlace").textContent;
-
-                    const card = `
-                        <div class="movie-card">
-                            <a href="${enlace}" target="_blank">
-                                <img src="${imagen}" alt="${titulo}">
-                            </a>
-                            <div class="movie-title">${titulo}</div>
-                            <div class="movie-description">${descripcion}</div>
-                        </div>`;
-                    peliculasContainer.innerHTML += card;
-                });
-
-                // Cargar series
-                const series = xmlDoc.querySelectorAll("series > serie");
-                const seriesContainer = document.getElementById("seriesContainer");
-                series.forEach(serie => {
-                    const titulo = serie.querySelector("titulo").textContent;
-                    const descripcion = serie.querySelector("descripcion").textContent;
-                    const imagen = serie.querySelector("imagen").textContent;
-                    const enlace = serie.querySelector("enlace").textContent;
-
-                    const card = `
-                        <div class="movie-card">
-                            <a href="${enlace}" target="_blank">
-                                <img src="${imagen}" alt="${titulo}">
-                            </a>
-                            <div class="movie-title">${titulo}</div>
-                            <div class="movie-description">${descripcion}</div>
-                        </div>`;
-                    seriesContainer.innerHTML += card;
-                });
-
+                // Resto igual
             } catch (error) {
                 console.error("Error al cargar el contenido:", error);
             }
