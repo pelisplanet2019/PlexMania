@@ -1,51 +1,176 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Series Destacadas</title>
-    <style>
-        body { font-family: Arial, sans-serif; background-color: #1a1a1a; color: #f5f5f5; }
-        .category-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 15px; }
-        .movie-card img { width: 100%; height: 270px; object-fit: cover; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Series</title>
+  <style>
+    /* General */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #1a1a1a;
+      color: #f5f5f5;
+    }
+
+    /* Menú superior */
+    .menu {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #333333;
+      padding: 10px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .menu img {
+      height: 60px;
+    }
+
+    .menu a {
+      text-decoration: none;
+      color: #ffa31a;
+      font-size: 18px;
+      font-weight: bold;
+      padding: 8px 16px;
+      transition: background-color 0.3s;
+    }
+
+    .menu a:hover {
+      background-color: #444444;
+      border-radius: 5px;
+    }
+
+    /* Título */
+    .section h2 {
+      text-align: center;
+      color: #ffa31a;
+      margin: 20px 0;
+    }
+
+    .section h2 img {
+      height: 50px;
+      vertical-align: middle;
+    }
+
+    /* Contenedor principal */
+    .content-wrapper {
+      margin: 20px 50px;
+      border: 4px solid #ffa31a;
+      border-radius: 10px;
+      padding: 20px;
+    }
+
+    /* Cuadrícula de series */
+    .category-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 15px;
+    }
+
+    .movie-card {
+      background-color: #333333;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease, border 0.3s ease;
+      border: 4px solid transparent;
+    }
+
+    .movie-card:hover {
+      transform: scale(1.05);
+      border: 4px solid #ffa31a;
+    }
+
+    .movie-card img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+    }
+
+    .movie-title {
+      text-align: center;
+      font-size: 14px;
+      color: #ffa31a;
+      padding: 8px;
+    }
+  </style>
 </head>
 <body>
-    <div id="seriesContainer"></div>
-    <script>
-        async function cargarContenido() {
-            const url = "https://raw.githubusercontent.com/pelisplanet2019/PlexMania/refs/heads/main/Menu%20Series/Series.xml";
+  <!-- Menú superior -->
+  <div class="menu">
+    <a href="#"><img src="https://i.ibb.co/k9rbDQQ/logo1.png" alt="logo1"></a>
+    <div>
+      <a href="../Menu Peliculas/peliculas.html">Películas</a>
+      <a href="series.html">Series</a>
+      <a href="../Menu Anime/anime.html">Anime</a>
+    </div>
+  </div>
 
-            try {
-                const response = await fetch(url);
-                if (!response.ok) throw new Error("Error al cargar el XML");
+  <!-- Contenido -->
+  <div class="content-wrapper">
+    <div class="section">
+      <h2>Series Populares <img src="https://i.ibb.co/X2GzTm3/Movie2-37185.png" alt="Movie2"></h2>
+      <div class="category-container" id="seriesContainer">
+        <p>Cargando series...</p>
+      </div>
+    </div>
+  </div>
 
-                const xmlText = await response.text();
-                const parser = new DOMParser();
-                const xmlDoc = parser.parseFromString(xmlText, "application/xml");
+  <script>
+    async function cargarSeries() {
+      const url = "https://raw.githubusercontent.com/pelisplanet2019/PlexMania/refs/heads/main/Menu%20series/Series.xml";
 
-                const seriesItems = xmlDoc.querySelectorAll("serie");
-                const container = document.getElementById("seriesContainer");
+      try {
+        const response = await fetch(url);
 
-                seriesItems.forEach(item => {
-                    const titulo = item.querySelector("titulo").textContent;
-                    const imagen = item.querySelector("imagen").textContent;
-                    const descripcion = item.querySelector("descripcion").textContent;
-
-                    const card = `
-                        <div class="movie-card">
-                            <img src="${imagen}" alt="${titulo}">
-                            <h3>${titulo}</h3>
-                            <p>${descripcion}</p>
-                        </div>`;
-                    container.innerHTML += card;
-                });
-            } catch (error) {
-                console.error("Error al cargar contenido:", error);
-            }
+        if (!response.ok) {
+          throw new Error(`No se pudo cargar el archivo XML. Código: ${response.status}`);
         }
 
-        document.addEventListener("DOMContentLoaded", cargarContenido);
-    </script>
+        const xml = await response.text();
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(xml, "application/xml");
+
+        const series = xmlDoc.getElementsByTagName("serie_item");
+        const container = document.getElementById("seriesContainer");
+        container.innerHTML = "";
+
+        if (series.length === 0) {
+          container.innerHTML = "No se encontraron series en el archivo XML.";
+          return;
+        }
+
+        for (let i = 0; i < series.length; i++) {
+          const serie = series[i];
+          const title = serie.getElementsByTagName("title")[0]?.textContent || "Sin título";
+          const description = serie.getElementsByTagName("description")[0]?.textContent || "Sin descripción";
+          const thumbnail = serie.getElementsByTagName("thumbnail")[0]?.textContent || "https://via.placeholder.com/200x300?text=Sin+imagen";
+          const link = serie.getElementsByTagName("link")[0]?.textContent || "#";
+
+          const card = document.createElement("div");
+          card.classList.add("movie-card");
+
+          card.innerHTML = `
+            <a href="${link}" target="_blank">
+              <img src="${thumbnail}" alt="${title}">
+            </a>
+            <div class="movie-title">${title}</div>
+          `;
+
+          container.appendChild(card);
+        }
+      } catch (error) {
+        console.error("Error al cargar el XML:", error);
+        document.getElementById("seriesContainer").innerHTML = `Error: ${error.message}`;
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", cargarSeries);
+  </script>
 </body>
 </html>
