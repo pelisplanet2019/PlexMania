@@ -1,9 +1,0 @@
-<series>
-    <serie>
-        <titulo>Serie 1</titulo>
-        <imagen>https://via.placeholder.com/180x270?text=Serie+1</imagen>
-        <descripcion>Descripción de la serie 1.</descripcion>
-        <enlace>https://example.com/serie1</enlace>
-    </serie>
-    <!-- Más series -->
-</series>
