@@ -50,35 +50,24 @@
       border-radius: 5px;
     }
 
-    /* Contenedor general */
-    .content-wrapper {
-      margin: 20px;
-    }
-
-    /* Imagen y descripción */
-    .series-header {
+    /* Reproductor */
+    .player {
       display: flex;
       gap: 20px;
+      margin-top: 30px;
       margin-bottom: 30px;
     }
 
-    .series-header img {
-      width: 250px;
-      height: auto;
+    .player iframe, .player video {
+      width: 100%;
+      max-width: 800px;
+      height: 450px;
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     }
 
-    .series-description {
+    .video-info {
       flex: 1;
-    }
-
-    .series-description h1 {
-      color: #ffa31a;
-    }
-
-    .series-description p {
-      color: #cccccc;
     }
 
     /* Temporadas */
@@ -119,23 +108,30 @@
       margin: 10px 0;
     }
 
-    /* Reproductor */
-    .player {
+    /* Imagen y descripción */
+    .series-header {
       display: flex;
       gap: 20px;
-      margin-top: 30px;
+      margin-bottom: 30px;
     }
 
-    .player iframe, .player video {
-      width: 100%;
-      max-width: 800px;
-      height: 450px;
+    .series-header img {
+      width: 250px;
+      height: auto;
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     }
 
-    .video-info {
+    .series-description {
       flex: 1;
+    }
+
+    .series-description h1 {
+      color: #ffa31a;
+    }
+
+    .series-description p {
+      color: #cccccc;
     }
   </style>
 </head>
@@ -151,9 +147,22 @@
     </div>
   </div>
 
+  <!-- Reproductor (Aparece justo debajo del menú y encima de las temporadas) -->
+  <div class="player" id="playerSection" style="display: none;">
+    <iframe id="videoFrame" src="" frameborder="0" allowfullscreen hidden></iframe>
+    <video id="videoPlayer" controls hidden>
+      <source src="" type="video/mp4">
+      Tu navegador no soporta la reproducción de video.
+    </video>
+    <div class="video-info">
+      <h2 id="videoTitle">Selecciona un video</h2>
+      <p id="videoDescription">Haz clic en un episodio para reproducirlo.</p>
+    </div>
+  </div>
+
   <!-- Contenedor principal -->
   <div class="content-wrapper">
-    <!-- Imagen y descripción -->
+    <!-- Imagen y descripción de la serie -->
     <div class="series-header">
       <img src="https://via.placeholder.com/250x350?text=Grimm" alt="Grimm">
       <div class="series-description">
@@ -179,42 +188,29 @@
 
     <div class="season">
       <h2>Temporada 3</h2>
-      <div class="episodes-container" id="season2">
+      <div class="episodes-container" id="season3">
         <!-- Los episodios se cargarán aquí dinámicamente -->
       </div>
     </div>
 
     <div class="season">
       <h2>Temporada 4</h2>
-      <div class="episodes-container" id="season2">
+      <div class="episodes-container" id="season4">
         <!-- Los episodios se cargarán aquí dinámicamente -->
       </div>
     </div>
 
     <div class="season">
       <h2>Temporada 5</h2>
-      <div class="episodes-container" id="season2">
+      <div class="episodes-container" id="season5">
         <!-- Los episodios se cargarán aquí dinámicamente -->
       </div>
     </div>
 
     <div class="season">
       <h2>Temporada 6</h2>
-      <div class="episodes-container" id="season2">
+      <div class="episodes-container" id="season6">
         <!-- Los episodios se cargarán aquí dinámicamente -->
-      </div>
-    </div>
-
-    <!-- Reproductor -->
-    <div class="player" id="playerSection" style="display: none;">
-      <iframe id="videoFrame" src="" frameborder="0" allowfullscreen hidden></iframe>
-      <video id="videoPlayer" controls hidden>
-        <source src="" type="video/mp4">
-        Tu navegador no soporta la reproducción de video.
-      </video>
-      <div class="video-info">
-        <h2 id="videoTitle">Selecciona un video</h2>
-        <p id="videoDescription">Haz clic en un episodio para reproducirlo.</p>
       </div>
     </div>
   </div>
