@@ -1,13 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<media>
-    <video>
-        <title>Grimm - 1x01</title>
-        <description>Este es un video de ejemplo en formato MP4.</description>
-        <url>http://fina.dyndns.tv/Series/Grimm/01x01.mkv</url>
-    </video>
-    <video>
-        <title>Grimm - 1x02</title>
-        <description>Este es un enlace embed de Streamtape.</description>
-        <url>http://fina.dyndns.tv/Series/Grimm/01x02.mkv</url>
-    </video>
-</media>
+<series>
+  <serie>
+    <titulo>Grimm</titulo>
+    <descripcion>
+      El Detective Nick Burkhardt empieza a ver cosas inexplicables, hasta que llega su tía Marie y le revela que desciende de un grupo de cazadores de élite, los “Hermanos Grimms”.
+    </descripcion>
+    <imagen>https://via.placeholder.com/250x350?text=Grimm</imagen>
+    <temporadas>
+      <temporada numero="1">
+        <episodio>
+          <titulo>Episodio 1</titulo>
+          <url>http://fina.dyndns.tv/Series/Grimm/01x01.mkv</url>
+        </episodio>
+        <episodio>
+          <titulo>Episodio 2</titulo>
+          <url>http://fina.dyndns.tv/Series/Grimm/01x02.mkv</url>
+        </episodio>
+      </temporada>
+      <temporada numero="2">
+        <episodio>
+          <titulo>Episodio 1</titulo>
+          <url>http://fina.dyndns.tv/Series/Grimm/02x01.mkv</url>
+        </episodio>
+        <episodio>
+          <titulo>Episodio 2</titulo>
+          <url>http://fina.dyndns.tv/Series/Grimm/02x02.mkv</url>
+        </episodio>
+      </temporada>
+    </temporadas>
+  </serie>
+</series>
