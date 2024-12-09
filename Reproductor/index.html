@@ -139,7 +139,7 @@
       <img src="https://via.placeholder.com/250x350?text=Grimm" alt="Grimm">
       <div class="series-description">
         <h1>Grimm</h1>
-        <p>El Detective Nick Burkhardt (David Guintoli) empieza a ver cosas inexplicables, hasta que llega su tía Marie y le revela que desciende de un grupo de cazadores de élite, los “Hermanos Grimms”.</p>
+        <p>El Detective Nick Burkhardt empieza a ver cosas inexplicables, hasta que llega su tía Marie y le revela que desciende de un grupo de cazadores de élite, los “Hermanos Grimms”.</p>
       </div>
     </div>
 
@@ -173,22 +173,29 @@
         const parser = new DOMParser();
         const xmlDoc = parser.parseFromString(xmlText, "application/xml");
 
-        const videos = xmlDoc.querySelectorAll("video");
-        const season1 = document.getElementById("season1");
+        const temporadas = xmlDoc.querySelectorAll("temporada");
 
-        videos.forEach(video => {
-          const title = video.querySelector("title").textContent;
-          const thumbnail = "https://via.placeholder.com/200x120?text=Episodio";
-          const url = `../Reproductor/reproductor.html?url=${video.querySelector("url").textContent}&title=${encodeURIComponent(title)}`;
+        temporadas.forEach(temporada => {
+          const numero = temporada.getAttribute("numero");
+          const contenedorTemporada = document.getElementById(`season${numero}`);
 
-          const card = `
-            <div class="episode-card">
-              <a href="${url}">
-                <img src="${thumbnail}" alt="${title}">
-              </a>
-              <h3>${title}</h3>
-            </div>`;
-          season1.innerHTML += card;
+          if (contenedorTemporada) {
+            const episodios = temporada.querySelectorAll("episodio");
+            episodios.forEach(episodio => {
+              const titulo = episodio.querySelector("titulo").textContent;
+              const imagen = episodio.querySelector("imagen").textContent;
+              const url = `../Reproductor/reproductor.html?url=${encodeURIComponent(episodio.querySelector("url").textContent)}&title=${encodeURIComponent(titulo)}`;
+
+              const card = `
+                <div class="episode-card">
+                  <a href="${url}">
+                    <img src="${imagen}" alt="${titulo}">
+                  </a>
+                  <h3>${titulo}</h3>
+                </div>`;
+              contenedorTemporada.innerHTML += card;
+            });
+          }
         });
       } catch (error) {
         console.error("Error al cargar las temporadas:", error);
