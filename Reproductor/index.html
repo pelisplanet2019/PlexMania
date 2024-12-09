@@ -184,11 +184,11 @@
             episodios.forEach(episodio => {
               const titulo = episodio.querySelector("titulo").textContent;
               const imagen = episodio.querySelector("imagen").textContent;
-              const url = `../Reproductor/reproductor.html?url=${encodeURIComponent(episodio.querySelector("url").textContent)}&title=${encodeURIComponent(titulo)}`;
+              const url = episodio.querySelector("url").textContent;
 
               const card = `
                 <div class="episode-card">
-                  <a href="${url}">
+                  <a href="../Reproductor/reproductor.html?url=${encodeURIComponent(url)}&title=${encodeURIComponent(titulo)}">
                     <img src="${imagen}" alt="${titulo}">
                   </a>
                   <h3>${titulo}</h3>
