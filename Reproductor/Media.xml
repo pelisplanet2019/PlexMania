@@ -10,20 +10,24 @@
       <temporada numero="1">
         <episodio>
           <titulo>Episodio 1</titulo>
+          <imagen>https://via.placeholder.com/200x120?text=Ep+1</imagen>
           <url>http://fina.dyndns.tv/Series/Grimm/01x01.mkv</url>
         </episodio>
         <episodio>
           <titulo>Episodio 2</titulo>
+          <imagen>https://via.placeholder.com/200x120?text=Ep+2</imagen>
           <url>http://fina.dyndns.tv/Series/Grimm/01x02.mkv</url>
         </episodio>
       </temporada>
       <temporada numero="2">
         <episodio>
           <titulo>Episodio 1</titulo>
+          <imagen>https://via.placeholder.com/200x120?text=Ep+1</imagen>
           <url>http://fina.dyndns.tv/Series/Grimm/02x01.mkv</url>
         </episodio>
         <episodio>
           <titulo>Episodio 2</titulo>
+          <imagen>https://via.placeholder.com/200x120?text=Ep+2</imagen>
           <url>http://fina.dyndns.tv/Series/Grimm/02x02.mkv</url>
         </episodio>
       </temporada>
