@@ -60,6 +60,7 @@
       display: flex;
       gap: 20px;
       margin-bottom: 30px;
+      align-items: flex-start;
     }
 
     .series-header img {
@@ -67,6 +68,7 @@
       height: auto;
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      flex-shrink: 0;
     }
 
     .series-description {
@@ -167,10 +169,10 @@
   <div class="content-wrapper">
     <!-- Imagen, descripción y reproductor -->
     <div class="series-header">
-      <img src="https://via.placeholder.com/250x350?text=Grimm" alt="Grimm">
+      <img src="https://via.placeholder.com/250x350?text=Grimm" alt="Grimm" id="seriesImage">
       <div class="series-description">
-        <h1>Grimm</h1>
-        <p>El Detective Nick Burkhardt empieza a ver cosas inexplicables, hasta que llega su tía Marie y le revela que desciende de un grupo de cazadores de élite, los “Hermanos Grimms”.</p>
+        <h1 id="seriesTitle">Grimm</h1>
+        <p id="seriesDescription">El Detective Nick Burkhardt empieza a ver cosas inexplicables, hasta que llega su tía Marie y le revela que desciende de un grupo de cazadores de élite, los “Hermanos Grimms”.</p>
         <div class="player" id="playerSection" style="display: none;">
           <button class="close-button" onclick="cerrarReproductor()">Cerrar</button>
           <iframe id="videoFrame" src="" allowfullscreen hidden></iframe>
