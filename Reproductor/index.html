@@ -50,7 +50,7 @@
       border-radius: 5px;
     }
 
-    /* Contenedor general */
+    /* Contenedor principal */
     .content-wrapper {
       margin: 20px;
     }
@@ -88,7 +88,8 @@
     .player {
       width: 100%;
       max-width: 800px;
-      margin: 0 auto;
+      margin: 20px 0;
+      position: relative;
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     }
@@ -98,6 +99,23 @@
       height: 450px;
       border-radius: 10px;
       border: none;
+    }
+
+    .close-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: #333;
+      color: #ffa31a;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    .close-button:hover {
+      background-color: #444;
     }
 
     /* Temporadas */
@@ -112,31 +130,25 @@
 
     .episodes-container {
       display: flex;
-      gap: 15px;
-      overflow-x: auto;
-      padding-bottom: 10px;
+      gap: 10px;
+      flex-wrap: wrap;
     }
 
-    .episode-card {
+    .episode-button {
       background-color: #333333;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
-      flex: 0 0 200px;
-    }
-
-    .episode-card img {
-      width: 100%;
-      height: 120px;
-      object-fit: cover;
-    }
-
-    .episode-card h3 {
       color: #ffa31a;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
       font-size: 14px;
-      text-align: center;
-      margin: 10px 0;
+      transition: background-color 0.3s;
     }
+
+    .episode-button:hover {
+      background-color: #444444;
+    }
+
   </style>
 </head>
 <body>
@@ -155,11 +167,12 @@
   <div class="content-wrapper">
     <!-- Imagen, descripción y reproductor -->
     <div class="series-header">
-      <img src="https://i.ibb.co/TbkVGsW/grimm-2.jpg" alt="Grimm">
+      <img src="https://via.placeholder.com/250x350?text=Grimm" alt="Grimm">
       <div class="series-description">
         <h1>Grimm</h1>
         <p>El Detective Nick Burkhardt empieza a ver cosas inexplicables, hasta que llega su tía Marie y le revela que desciende de un grupo de cazadores de élite, los “Hermanos Grimms”.</p>
         <div class="player" id="playerSection" style="display: none;">
+          <button class="close-button" onclick="cerrarReproductor()">Cerrar</button>
           <iframe id="videoFrame" src="" allowfullscreen hidden></iframe>
           <video id="videoPlayer" controls hidden>
             <source src="" type="video/mp4">
@@ -171,19 +184,7 @@
     </div>
 
     <!-- Temporadas -->
-    <div class="season">
-      <h2>Temporada 1</h2>
-      <div class="episodes-container" id="season1">
-        <!-- Los episodios se cargarán aquí dinámicamente -->
-      </div>
-    </div>
-
-    <div class="season">
-      <h2>Temporada 2</h2>
-      <div class="episodes-container" id="season2">
-        <!-- Los episodios se cargarán aquí dinámicamente -->
-      </div>
-    </div>
+    <div id="temporadasContainer"></div>
   </div>
 
   <script>
@@ -201,26 +202,30 @@
         const xmlDoc = parser.parseFromString(xmlText, "application/xml");
 
         const temporadas = xmlDoc.querySelectorAll("temporada");
+        const temporadasContainer = document.getElementById("temporadasContainer");
 
         temporadas.forEach(temporada => {
           const numero = temporada.getAttribute("numero");
-          const contenedorTemporada = document.getElementById(`season${numero}`);
+          const seasonDiv = document.createElement("div");
+          seasonDiv.classList.add("season");
 
-          if (contenedorTemporada) {
-            const episodios = temporada.querySelectorAll("episodio");
-            episodios.forEach(episodio => {
-              const titulo = episodio.querySelector("titulo").textContent;
-              const imagen = episodio.querySelector("imagen").textContent;
-              const url = episodio.querySelector("url").textContent;
+          seasonDiv.innerHTML = `<h2>Temporada ${numero}</h2><div class="episodes-container" id="season${numero}"></div>`;
+          temporadasContainer.appendChild(seasonDiv);
 
-              const card = `
-                <div class="episode-card" onclick="reproducirEpisodio('${url}', '${titulo}')">
-                  <img src="${imagen}" alt="${titulo}">
-                  <h3>${titulo}</h3>
-                </div>`;
-              contenedorTemporada.innerHTML += card;
-            });
-          }
+          const contenedorTemporada = seasonDiv.querySelector(`#season${numero}`);
+          const episodios = temporada.querySelectorAll("episodio");
+
+          episodios.forEach(episodio => {
+            const titulo = episodio.querySelector("titulo").textContent;
+            const url = episodio.querySelector("url").textContent;
+
+            const button = document.createElement("button");
+            button.classList.add("episode-button");
+            button.textContent = titulo;
+            button.onclick = () => reproducirEpisodio(url, titulo);
+
+            contenedorTemporada.appendChild(button);
+          });
         });
       } catch (error) {
         console.error("Error al cargar las temporadas:", error);
@@ -249,6 +254,15 @@
         videoPlayer.src = url;
         videoPlayer.play();
       }
+    }
+
+    function cerrarReproductor() {
+      const videoPlayer = document.getElementById("videoPlayer");
+      const videoFrame = document.getElementById("videoFrame");
+
+      document.getElementById("playerSection").style.display = "none";
+      videoPlayer.src = "";
+      videoFrame.src = "";
     }
 
     document.addEventListener("DOMContentLoaded", cargarTemporadas);
