@@ -261,11 +261,15 @@
     function cerrarReproductor() {
       const videoPlayer = document.getElementById("videoPlayer");
       const videoFrame = document.getElementById("videoFrame");
+      const playerSection = document.getElementById("playerSection");
 
-      document.getElementById("playerSection").style.display = "none";
-      videoPlayer.hidden = true;
-      videoFrame.hidden = true;
+      // Ocultar el reproductor
+      playerSection.style.display = "none";
+
+      // Detener reproducción
+      videoPlayer.pause();
       videoPlayer.src = "";
+
       videoFrame.src = "";
     }
 
