@@ -245,4 +245,30 @@
       // Actualizar la descripción
       videoDescription.textContent = `Reproduciendo: ${titulo}`;
 
-      // Detectar si es un enlace embed o
+      // Detectar si es un enlace embed o directo
+      if (url.includes("embed") || url.includes("streamtape")) {
+        videoPlayer.hidden = true;
+        videoFrame.hidden = false;
+        videoFrame.src = url;
+      } else {
+        videoFrame.hidden = true;
+        videoPlayer.hidden = false;
+        videoPlayer.src = url;
+        videoPlayer.play();
+      }
+    }
+
+    function cerrarReproductor() {
+      const videoPlayer = document.getElementById("videoPlayer");
+      const videoFrame = document.getElementById("videoFrame");
+
+      document.getElementById("playerSection").style.display = "none";
+      videoPlayer.pause();
+      videoPlayer.src = "";
+      videoFrame.src = "";
+    }
+
+    document.addEventListener("DOMContentLoaded", cargarTemporadas);
+  </script>
+</body>
+</html>
