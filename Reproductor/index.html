@@ -107,17 +107,17 @@
       position: absolute;
       top: 10px;
       right: 10px;
-      background-color: #333;
+      background-color: transparent;
       color: #ffa31a;
+      font-size: 20px;
+      font-weight: bold;
       border: none;
-      padding: 5px 10px;
       cursor: pointer;
-      border-radius: 5px;
-      font-size: 14px;
+      z-index: 1000;
     }
 
     .close-button:hover {
-      background-color: #444;
+      color: #ff5555;
     }
 
     /* Temporadas */
@@ -174,7 +174,7 @@
         <h1 id="seriesTitle">Grimm</h1>
         <p id="seriesDescription">El Detective Nick Burkhardt empieza a ver cosas inexplicables, hasta que llega su tía Marie y le revela que desciende de un grupo de cazadores de élite, los “Hermanos Grimms”.</p>
         <div class="player" id="playerSection" style="display: none;">
-          <button class="close-button" onclick="cerrarReproductor()">Cerrar</button>
+          <button class="close-button" onclick="cerrarReproductor()">✖</button>
           <iframe id="videoFrame" src="" allowfullscreen hidden></iframe>
           <video id="videoPlayer" controls hidden>
             <source src="" type="video/mp4">
