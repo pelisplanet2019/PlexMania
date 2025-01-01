@@ -1,50 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <contenido>
-  <!-- Carrusel -->
   <carrusel>
     <item>
-      <imagen>https://via.placeholder.com/800x400?text=Carrusel+1</imagen>
-      <url>http://fina.dyndns.tv/Peliculas/X-Men%20Dias%20del%20Futuro%20Pasado.mkv</url>
-    </item>
-    <item>
-      <imagen>https://via.placeholder.com/800x400?text=Carrusel+2</imagen>
-      <url>https://example.com/carrusel2</url>
-    </item>
-    <item>
-      <imagen>https://via.placeholder.com/800x400?text=Carrusel+3</imagen>
-      <url>https://example.com/carrusel3</url>
+      <imagen>https://via.placeholder.com/800x400?text=Carrusel1</imagen>
+      <url>https://example.com/video1</url>
     </item>
   </carrusel>
-
-  <!-- Películas -->
   <peliculas>
     <pelicula>
       <titulo>Película 1</titulo>
       <imagen>https://via.placeholder.com/180x270?text=Película+1</imagen>
-      <descripcion>Descripción de la película 1.</descripcion>
-      <url>http://fina.dyndns.tv/Peliculas/Furia%20de%20titanes.mkv</url>
-    </pelicula>
-    <pelicula>
-      <titulo>Película 2</titulo>
-      <imagen>https://via.placeholder.com/180x270?text=Película+2</imagen>
-      <descripcion>Descripción de la película 2.</descripcion>
-      <url>https://example.com/pelicula2</url>
+      <descripcion>Descripción Película 1</descripcion>
+      <url>https://example.com/video2</url>
     </pelicula>
   </peliculas>
-
-  <!-- Series -->
   <series>
     <serie>
       <titulo>Serie 1</titulo>
       <imagen>https://via.placeholder.com/180x270?text=Serie+1</imagen>
-      <descripcion>Descripción de la serie 1.</descripcion>
-      <url>https://example.com/serie1</url>
-    </serie>
-    <serie>
-      <titulo>Serie 2</titulo>
-      <imagen>https://via.placeholder.com/180x270?text=Serie+2</imagen>
-      <descripcion>Descripción de la serie 2.</descripcion>
-      <url>https://example.com/serie2</url>
+      <descripcion>Descripción Serie 1</descripcion>
+      <url>https://example.com/video3</url>
     </serie>
   </series>
 </contenido>
