@@ -3,36 +3,164 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Página Principal</title>
+  <title>Menú Principal</title>
   <style>
+    /* General */
     body {
       font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
       background-color: #1a1a1a;
       color: #f5f5f5;
     }
-    .carousel img {
+
+    /* Menú superior */
+    .menu {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #333333;
+      padding: 10px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .menu img {
+      height: 60px;
+    }
+
+    .menu-links {
+      display: flex;
+      gap: 15px;
+    }
+
+    .menu a {
+      text-decoration: none;
+      color: #ffa31a;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    /* Carrusel */
+    .carousel {
+      position: relative;
+      max-width: 1000px;
+      margin: 20px auto;
+      overflow: hidden;
+      border-radius: 15px;
+    }
+
+    .carousel-images {
+      display: flex;
+      gap: 10px;
+    }
+
+    .carousel-images img {
       width: 300px;
       height: 200px;
-      margin: 10px;
+      object-fit: cover;
+      cursor: pointer;
+      border-radius: 10px;
+    }
+
+    /* Secciones */
+    .section {
+      margin: 20px;
+    }
+
+    .section h2 {
+      color: #ffa31a;
+      text-align: center;
+    }
+
+    .category-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 15px;
+    }
+
+    .movie-card img {
+      width: 100%;
+      border-radius: 10px;
       cursor: pointer;
     }
-    .section img {
-      width: 180px;
-      height: 270px;
-      margin: 10px;
+
+    /* Reproductor */
+    .reproductor {
+      display: none;
+      position: fixed;
+      top: 10%;
+      left: 50%;
+      transform: translate(-50%, 0);
+      background-color: #333333;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      z-index: 2000;
+    }
+
+    .reproductor iframe {
+      width: 600px;
+      height: 400px;
+      border-radius: 10px;
+      border: none;
+    }
+
+    .reproductor .close-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: #ffa31a;
+      color: #333333;
+      border: none;
+      padding: 5px 10px;
       cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .reproductor .close-button:hover {
+      background-color: #ffcc66;
     }
   </style>
 </head>
 <body>
-  <h1>Página Principal</h1>
-  <div class="carousel" id="carouselContainer"></div>
-  <div class="section" id="peliculasContainer"></div>
-  <div class="section" id="seriesContainer"></div>
+  <!-- Menú superior -->
+  <div class="menu">
+    <img src="https://i.ibb.co/k9rbDQQ/logo1.png" alt="Logo">
+    <div class="menu-links">
+      <a href="#">Inicio</a>
+      <a href="peliculas.html">Películas</a>
+      <a href="series.html">Series</a>
+    </div>
+  </div>
+
+  <!-- Carrusel -->
+  <div class="carousel">
+    <div class="carousel-images" id="carouselContainer"></div>
+  </div>
+
+  <!-- Sección de Películas -->
+  <div class="section">
+    <h2>Películas Destacadas</h2>
+    <div class="category-container" id="peliculasContainer"></div>
+  </div>
+
+  <!-- Sección de Series -->
+  <div class="section">
+    <h2>Series Destacadas</h2>
+    <div class="category-container" id="seriesContainer"></div>
+  </div>
+
+  <!-- Reproductor -->
+  <div class="reproductor" id="reproductor">
+    <button class="close-button" onclick="cerrarReproductor()">Cerrar</button>
+    <iframe id="iframeReproductor" src=""></iframe>
+  </div>
 
   <script>
     async function cargarContenido() {
-      const url = "https://raw.githubusercontent.com/pelisplanet2019/PlexMania/refs/heads/main/Menu%20princial/menu%20principal.xml"; // URL local del XML
+      const url = "https://raw.githubusercontent.com/pelisplanet2019/PlexMania/refs/heads/main/Menu%20princial/menu%20principal.xml";
 
       try {
         const response = await fetch(url);
@@ -42,38 +170,64 @@
         const parser = new DOMParser();
         const xmlDoc = parser.parseFromString(xmlText, "application/xml");
 
-        // Cargar carrusel
+        // Cargar Carrusel
         const carruselItems = xmlDoc.querySelectorAll("carrusel > item");
         const carouselContainer = document.getElementById("carouselContainer");
         carruselItems.forEach(item => {
           const imagen = item.querySelector("imagen").textContent;
+          const url = item.querySelector("url").textContent;
+
           const img = document.createElement("img");
           img.src = imagen;
+          img.onclick = () => abrirReproductor(url);
           carouselContainer.appendChild(img);
         });
 
-        // Cargar películas
+        // Cargar Películas
         const peliculas = xmlDoc.querySelectorAll("peliculas > pelicula");
         const peliculasContainer = document.getElementById("peliculasContainer");
         peliculas.forEach(pelicula => {
           const imagen = pelicula.querySelector("imagen").textContent;
+          const url = pelicula.querySelector("url").textContent;
+
           const img = document.createElement("img");
           img.src = imagen;
+          img.onclick = () => abrirReproductor(url);
           peliculasContainer.appendChild(img);
         });
 
-        // Cargar series
+        // Cargar Series
         const series = xmlDoc.querySelectorAll("series > serie");
         const seriesContainer = document.getElementById("seriesContainer");
         series.forEach(serie => {
           const imagen = serie.querySelector("imagen").textContent;
+          const url = serie.querySelector("url").textContent;
+
           const img = document.createElement("img");
           img.src = imagen;
+          img.onclick = () => abrirReproductor(url);
           seriesContainer.appendChild(img);
         });
+
       } catch (error) {
         console.error("Error al cargar el contenido:", error);
       }
+    }
+
+    function abrirReproductor(url) {
+      const reproductor = document.getElementById("reproductor");
+      const iframeReproductor = document.getElementById("iframeReproductor");
+
+      iframeReproductor.src = url;
+      reproductor.style.display = "block";
+    }
+
+    function cerrarReproductor() {
+      const reproductor = document.getElementById("reproductor");
+      const iframeReproductor = document.getElementById("iframeReproductor");
+
+      iframeReproductor.src = "";
+      reproductor.style.display = "none";
     }
 
     document.addEventListener("DOMContentLoaded", cargarContenido);
