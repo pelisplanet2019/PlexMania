@@ -1,25 +1,122 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <contenido>
+  <!-- Carrusel -->
   <carrusel>
     <item>
-      <imagen>https://via.placeholder.com/800x400?text=Carrusel1</imagen>
-      <url>https://example.com/video1</url>
+      <imagen>https://via.placeholder.com/800x400?text=Carrusel+1</imagen>
+      <url>http://fina.dyndns.tv/Peliculas/X-Men%20Dias%20del%20Futuro%20Pasado.mkv</url>
+    </item>
+    <item>
+      <imagen>https://via.placeholder.com/800x400?text=Carrusel+2</imagen>
+      <url>https://example.com/carrusel2</url>
+    </item>
+    <item>
+      <imagen>https://via.placeholder.com/800x400?text=Carrusel+3</imagen>
+      <url>https://example.com/carrusel3</url>
+    </item>
+    <item>
+      <imagen>https://via.placeholder.com/800x400?text=Carrusel+4</imagen>
+      <url>https://example.com/carrusel4</url>
+    </item>
+    <item>
+      <imagen>https://via.placeholder.com/800x400?text=Carrusel+5</imagen>
+      <url>https://example.com/carrusel5</url>
+    </item>
+    <item>
+      <imagen>https://via.placeholder.com/800x400?text=Carrusel+6</imagen>
+      <url>https://example.com/carrusel6</url>
     </item>
   </carrusel>
+
+  <!-- Películas -->
   <peliculas>
     <pelicula>
       <titulo>Película 1</titulo>
       <imagen>https://via.placeholder.com/180x270?text=Película+1</imagen>
-      <descripcion>Descripción Película 1</descripcion>
-      <url>https://example.com/video2</url>
+      <descripcion>Descripción de la película 1.</descripcion>
+      <url>http://fina.dyndns.tv/Peliculas/Furia%20de%20titanes.mkv</url>
+    </pelicula>
+    <pelicula>
+      <titulo>Película 2</titulo>
+      <imagen>https://via.placeholder.com/180x270?text=Película+2</imagen>
+      <descripcion>Descripción de la película 2.</descripcion>
+      <url>https://example.com/pelicula2</url>
+    </pelicula>
+    <pelicula>
+      <titulo>Película 3</titulo>
+      <imagen>https://via.placeholder.com/180x270?text=Película+3</imagen>
+      <descripcion>Descripción de la película 3.</descripcion>
+      <url>https://example.com/pelicula3</url>
+    </pelicula>
+    <pelicula>
+      <titulo>Película 4</titulo>
+      <imagen>https://via.placeholder.com/180x270?text=Película+4</imagen>
+      <descripcion>Descripción de la película 4.</descripcion>
+      <url>https://example.com/pelicula4</url>
+    </pelicula>
+    <pelicula>
+      <titulo>Película 5</titulo>
+      <imagen>https://via.placeholder.com/180x270?text=Película+5</imagen>
+      <descripcion>Descripción de la película 5.</descripcion>
+      <url>https://example.com/pelicula5</url>
+    </pelicula>
+    <pelicula>
+      <titulo>Película 6</titulo>
+      <imagen>https://via.placeholder.com/180x270?text=Película+6</imagen>
+      <descripcion>Descripción de la película 6.</descripcion>
+      <url>https://example.com/pelicula6</url>
+    </pelicula>
+    <pelicula>
+      <titulo>Película 7</titulo>
+      <imagen>https://via.placeholder.com/180x270?text=Película+7</imagen>
+      <descripcion>Descripción de la película 7.</descripcion>
+      <url>https://example.com/pelicula7</url>
     </pelicula>
   </peliculas>
+
+  <!-- Series -->
   <series>
     <serie>
       <titulo>Serie 1</titulo>
       <imagen>https://via.placeholder.com/180x270?text=Serie+1</imagen>
-      <descripcion>Descripción Serie 1</descripcion>
-      <url>https://example.com/video3</url>
+      <descripcion>Descripción de la serie 1.</descripcion>
+      <url>https://example.com/serie1</url>
+    </serie>
+    <serie>
+      <titulo>Serie 2</titulo>
+      <imagen>https://via.placeholder.com/180x270?text=Serie+2</imagen>
+      <descripcion>Descripción de la serie 2.</descripcion>
+      <url>https://example.com/serie2</url>
+    </serie>
+    <serie>
+      <titulo>Serie 3</titulo>
+      <imagen>https://via.placeholder.com/180x270?text=Serie+3</imagen>
+      <descripcion>Descripción de la serie 3.</descripcion>
+      <url>https://example.com/serie3</url>
+    </serie>
+    <serie>
+      <titulo>Serie 4</titulo>
+      <imagen>https://via.placeholder.com/180x270?text=Serie+4</imagen>
+      <descripcion>Descripción de la serie 4.</descripcion>
+      <url>https://example.com/serie4</url>
+    </serie>
+    <serie>
+      <titulo>Serie 5</titulo>
+      <imagen>https://via.placeholder.com/180x270?text=Serie+5</imagen>
+      <descripcion>Descripción de la serie 5.</descripcion>
+      <url>https://example.com/serie5</url>
+    </serie>
+    <serie>
+      <titulo>Serie 6</titulo>
+      <imagen>https://via.placeholder.com/180x270?text=Serie+6</imagen>
+      <descripcion>Descripción de la serie 6.</descripcion>
+      <url>https://example.com/serie6</url>
+    </serie>
+    <serie>
+      <titulo>Serie 7</titulo>
+      <imagen>https://via.placeholder.com/180x270?text=Serie+7</imagen>
+      <descripcion>Descripción de la serie 7.</descripcion>
+      <url>https://example.com/serie7</url>
     </serie>
   </series>
 </contenido>
