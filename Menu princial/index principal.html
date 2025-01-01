@@ -188,7 +188,7 @@
         const parser = new DOMParser();
         const xmlDoc = parser.parseFromString(xmlText, "application/xml");
 
-        // Carrusel
+        // Cargar Carrusel
         const carruselItems = xmlDoc.querySelectorAll("carrusel > item");
         const carouselContainer = document.getElementById("carouselContainer");
         carruselItems.forEach(item => {
