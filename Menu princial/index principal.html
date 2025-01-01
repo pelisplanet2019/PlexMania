@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Menú Principal</title>
   <style>
-    /* General */
     body {
       font-family: Arial, sans-serif;
       margin: 0;
@@ -103,15 +102,27 @@
     }
 
     /* Reproductor */
-    .reproductor-container {
+    .reproductor-overlay {
       display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .reproductor-container {
+      background-color: #1a1a1a;
       padding: 20px;
-      position: relative;
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-      background-color: #1a1a1a;
-      z-index: 2000;
-      margin-top: 20px;
+      text-align: center;
+      max-width: 800px;
+      width: 90%;
     }
 
     .reproductor-container video, .reproductor-container iframe {
@@ -133,6 +144,7 @@
     .reproductor-container .close-button:hover {
       background-color: #ffcc66;
     }
+
   </style>
 </head>
 <body>
@@ -156,10 +168,12 @@
   </div>
 
   <!-- Reproductor -->
-  <div class="reproductor-container" id="reproductor">
-    <video id="videoPlayer" controls hidden></video>
-    <iframe id="iframePlayer" src="" hidden></iframe>
-    <button class="close-button" onclick="cerrarReproductor()">Cerrar</button>
+  <div class="reproductor-overlay" id="reproductor">
+    <div class="reproductor-container">
+      <video id="videoPlayer" controls hidden></video>
+      <iframe id="iframePlayer" src="" hidden></iframe>
+      <button class="close-button" onclick="cerrarReproductor()">Cerrar</button>
+    </div>
   </div>
 
   <!-- Sección de Películas -->
@@ -249,9 +263,11 @@
     });
 
     function abrirReproductor(url) {
-      const reproductorContainer = document.getElementById("reproductor");
+      const reproductorOverlay = document.getElementById("reproductor");
       const videoPlayer = document.getElementById("videoPlayer");
       const iframePlayer = document.getElementById("iframePlayer");
+
+      reproductorOverlay.style.display = "flex";
 
       if (url.endsWith(".mp4") || url.endsWith(".mkv")) {
         iframePlayer.hidden = true;
@@ -262,22 +278,16 @@
         iframePlayer.hidden = false;
         iframePlayer.src = url;
       }
-
-      reproductorContainer.style.display = "block";
-      document.body.style.marginTop = `${reproductorContainer.offsetHeight}px`; // Desplazar contenido
     }
 
     function cerrarReproductor() {
-      const reproductorContainer = document.getElementById("reproductor");
+      const reproductorOverlay = document.getElementById("reproductor");
       const videoPlayer = document.getElementById("videoPlayer");
       const iframePlayer = document.getElementById("iframePlayer");
 
-      videoPlayer.hidden = true;
-      iframePlayer.hidden = true;
+      reproductorOverlay.style.display = "none";
       videoPlayer.src = "";
       iframePlayer.src = "";
-      reproductorContainer.style.display = "none";
-      document.body.style.marginTop = "0"; // Restaurar margen
     }
 
     document.addEventListener("DOMContentLoaded", cargarContenido);
