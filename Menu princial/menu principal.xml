@@ -4,7 +4,7 @@
     <carrusel>
         <item>
             <imagen>https://via.placeholder.com/800x400?text=Carrusel+1</imagen>
-            <enlace>https://example.com/carrusel1</enlace>
+            <enlace>http://fina.dyndns.tv/Peliculas/X-Men%20Dias%20del%20Futuro%20Pasado.mkv</enlace>
         </item>
         <item>
             <imagen>https://via.placeholder.com/800x400?text=Carrusel+2</imagen>
@@ -34,7 +34,7 @@
             <titulo>Película 1</titulo>
             <imagen>https://via.placeholder.com/180x270?text=Película+1</imagen>
             <descripcion>Descripción de la película 1.</descripcion>
-            <enlace>https://example.com/pelicula1</enlace>
+            <enlace>http://fina.dyndns.tv/Peliculas/Furia%20de%20titanes.mkv</enlace>
         </pelicula>
         <pelicula>
             <titulo>Película 2</titulo>
