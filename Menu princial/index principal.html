@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Menú Principal</title>
+  <title>Página Principal</title>
   <style>
     /* General */
     body {
@@ -53,24 +53,25 @@
     /* Carrusel */
     .carousel {
       position: relative;
-      max-width: 90%; /* Espaciado desde los bordes de la pantalla */
-      margin: 20px auto;
+      max-width: 1000px;
+      margin: 40px auto;
       overflow: hidden;
       border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
 
     .carousel-images {
       display: flex;
-      gap: 10px; /* Espaciado entre imágenes */
+      gap: 10px;
       transition: transform 0.5s ease-in-out;
     }
 
     .carousel-images img {
-      max-width: 250px;
-      height: 350px;
+      width: 300px;
+      height: 400px;
       object-fit: cover;
       border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
     }
 
     .carousel-buttons {
@@ -100,20 +101,13 @@
 
     /* Secciones */
     .section {
-      margin: 30px 50px;
+      margin: 20px;
     }
 
     .section h2 {
       text-align: center;
       color: #ffa31a;
       margin-bottom: 10px;
-    }
-
-    .section-description {
-      text-align: center;
-      font-size: 14px;
-      color: #cccccc;
-      margin-bottom: 20px;
     }
 
     .category-container {
@@ -128,6 +122,11 @@
       overflow: hidden;
       box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
       transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .movie-card:hover {
+      transform: scale(1.05);
     }
 
     .movie-card img {
@@ -149,40 +148,32 @@
   <div class="menu">
     <a href="#"><img src="https://i.ibb.co/k9rbDQQ/logo1.png" alt="Logo"></a>
     <div class="menu-links">
-      <a href="index.html">Inicio</a>
-      <a href="../Menu Peliculas/peliculas.html">Películas</a>
-      <a href="../Menu Series/series.html">Series</a>
-      <a href="../Menu Anime/anime.html">Anime</a>
+      <a href="#">Inicio</a>
+      <a href="peliculas.html">Películas</a>
+      <a href="series.html">Series</a>
+      <a href="anime.html">Anime</a>
     </div>
   </div>
 
   <!-- Carrusel -->
   <div class="carousel">
-    <div class="carousel-images" id="carouselContainer">
-      <!-- Imágenes del carrusel se cargarán aquí dinámicamente -->
-    </div>
+    <div class="carousel-images" id="carouselContainer"></div>
     <div class="carousel-buttons">
       <button class="carousel-button" id="prev">&lt;</button>
       <button class="carousel-button" id="next">&gt;</button>
     </div>
   </div>
 
-  <!-- Sección Películas Destacadas -->
+  <!-- Sección Películas -->
   <div class="section">
     <h2>Películas Destacadas</h2>
-    <p class="section-description">Explora nuestras películas más populares y recientes.</p>
-    <div class="category-container" id="peliculasContainer">
-      <p>Cargando películas...</p>
-    </div>
+    <div class="category-container" id="peliculasContainer"></div>
   </div>
 
-  <!-- Sección Series Destacadas -->
+  <!-- Sección Series -->
   <div class="section">
     <h2>Series Destacadas</h2>
-    <p class="section-description">Descubre las series más vistas por nuestros usuarios.</p>
-    <div class="category-container" id="seriesContainer">
-      <p>Cargando series...</p>
-    </div>
+    <div class="category-container" id="seriesContainer"></div>
   </div>
 
   <script>
@@ -191,97 +182,67 @@
 
       try {
         const response = await fetch(url);
-        if (!response.ok) {
-          throw new Error(`Error al cargar el XML: ${response.status}`);
-        }
+        if (!response.ok) throw new Error(`Error al cargar XML: ${response.status}`);
 
         const xmlText = await response.text();
         const parser = new DOMParser();
         const xmlDoc = parser.parseFromString(xmlText, "application/xml");
 
-        // Cargar Carrusel
-        const items = xmlDoc.querySelectorAll("carrusel > item");
+        // Carrusel
+        const carruselItems = xmlDoc.querySelectorAll("carrusel > item");
         const carouselContainer = document.getElementById("carouselContainer");
-        carouselContainer.innerHTML = "";
-
-        items.forEach(item => {
+        carruselItems.forEach(item => {
           const imagen = item.querySelector("imagen").textContent;
-          const enlace = item.querySelector("enlace").textContent;
+          const urlVideo = item.querySelector("url").textContent;
 
-          const imgElement = `
-            <a href="${enlace}" target="_blank">
-              <img src="${imagen}" alt="Carrusel">
-            </a>`;
-          carouselContainer.innerHTML += imgElement;
+          const img = document.createElement("img");
+          img.src = imagen;
+          img.alt = "Carrusel Item";
+          img.onclick = () => abrirReproductor(urlVideo, "Título del Video");
+          carouselContainer.appendChild(img);
         });
 
-        iniciarCarrusel();
-
-        // Cargar Películas
+        // Películas
         const peliculas = xmlDoc.querySelectorAll("peliculas > pelicula");
         const peliculasContainer = document.getElementById("peliculasContainer");
-        peliculasContainer.innerHTML = "";
-
         peliculas.forEach(pelicula => {
           const titulo = pelicula.querySelector("titulo").textContent;
           const imagen = pelicula.querySelector("imagen").textContent;
-          const enlace = pelicula.querySelector("enlace").textContent;
+          const urlVideo = pelicula.querySelector("url").textContent;
 
-          const card = `
-            <div class="movie-card">
-              <a href="${enlace}" target="_blank">
-                <img src="${imagen}" alt="${titulo}">
-              </a>
-              <div class="movie-title">${titulo}</div>
-            </div>`;
-          peliculasContainer.innerHTML += card;
+          const card = document.createElement("div");
+          card.classList.add("movie-card");
+          card.innerHTML = `
+            <img src="${imagen}" alt="${titulo}" onclick="abrirReproductor('${urlVideo}', '${titulo}')">
+            <div class="movie-title">${titulo}</div>
+          `;
+          peliculasContainer.appendChild(card);
         });
 
-        // Cargar Series
+        // Series
         const series = xmlDoc.querySelectorAll("series > serie");
         const seriesContainer = document.getElementById("seriesContainer");
-        seriesContainer.innerHTML = "";
-
         series.forEach(serie => {
           const titulo = serie.querySelector("titulo").textContent;
           const imagen = serie.querySelector("imagen").textContent;
-          const enlace = serie.querySelector("enlace").textContent;
+          const urlVideo = serie.querySelector("url").textContent;
 
-          const card = `
-            <div class="movie-card">
-              <a href="${enlace}" target="_blank">
-                <img src="${imagen}" alt="${titulo}">
-              </a>
-              <div class="movie-title">${titulo}</div>
-            </div>`;
-          seriesContainer.innerHTML += card;
+          const card = document.createElement("div");
+          card.classList.add("movie-card");
+          card.innerHTML = `
+            <img src="${imagen}" alt="${titulo}" onclick="abrirReproductor('${urlVideo}', '${titulo}')">
+            <div class="movie-title">${titulo}</div>
+          `;
+          seriesContainer.appendChild(card);
         });
+
       } catch (error) {
-        console.error("Error al cargar el contenido:", error);
+        console.error("Error al cargar contenido:", error);
       }
     }
 
-    function iniciarCarrusel() {
-      const images = document.querySelectorAll(".carousel-images img");
-      const container = document.querySelector(".carousel-images");
-      const prevButton = document.getElementById("prev");
-      const nextButton = document.getElementById("next");
-      let index = 0;
-
-      const updateCarousel = () => {
-        const width = images[0].clientWidth + 10; // Incluye el gap
-        container.style.transform = `translateX(${-index * width}px)`;
-      };
-
-      nextButton.addEventListener("click", () => {
-        index = (index + 1) % images.length; // Circular
-        updateCarousel();
-      });
-
-      prevButton.addEventListener("click", () => {
-        index = (index - 1 + images.length) % images.length; // Circular
-        updateCarousel();
-      });
+    function abrirReproductor(url, titulo) {
+      window.location.href = `../Reproductor/reproductor.html?url=${encodeURIComponent(url)}&title=${encodeURIComponent(titulo)}`;
     }
 
     document.addEventListener("DOMContentLoaded", cargarContenido);
