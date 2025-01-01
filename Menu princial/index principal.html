@@ -244,24 +244,6 @@
       }
     }
 
-    let currentIndex = 0;
-    function updateCarousel() {
-      const images = document.querySelectorAll(".carousel-images img");
-      const width = images[0].clientWidth + 10; // Image width + gap
-      const container = document.querySelector(".carousel-images");
-      container.style.transform = `translateX(${-currentIndex * width}px)`;
-    }
-
-    document.getElementById("next").addEventListener("click", () => {
-      currentIndex = (currentIndex + 1) % 6; // Replace 6 with dynamic item count if needed
-      updateCarousel();
-    });
-
-    document.getElementById("prev").addEventListener("click", () => {
-      currentIndex = (currentIndex - 1 + 6) % 6;
-      updateCarousel();
-    });
-
     function abrirReproductor(url) {
       const reproductorOverlay = document.getElementById("reproductor");
       const videoPlayer = document.getElementById("videoPlayer");
