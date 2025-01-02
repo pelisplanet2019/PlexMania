@@ -54,7 +54,7 @@
     }
 
     .carousel-images img {
-      width: 300px;
+      width: 320px;
       height: 200px;
       object-fit: cover;
       cursor: pointer;
@@ -90,13 +90,13 @@
 
     .category-container {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
       gap: 15px;
     }
 
     .movie-card img {
       width: 100%;
-      height: 270px;
+      height: 300px;
       object-fit: cover;
       cursor: pointer;
     }
@@ -119,10 +119,11 @@
       background-color: #1a1a1a;
       padding: 20px;
       border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      border: 5px solid #ffa31a;
       text-align: center;
       max-width: 800px;
       width: 90%;
+      position: relative;
     }
 
     .reproductor-container video, .reproductor-container iframe {
@@ -132,12 +133,16 @@
     }
 
     .reproductor-container .close-button {
-      margin-top: 10px;
-      padding: 10px;
+      position: absolute;
+      top: -15px;
+      right: -15px;
       background-color: #ffa31a;
       color: #333333;
       border: none;
-      border-radius: 5px;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      font-size: 16px;
       cursor: pointer;
     }
 
@@ -154,7 +159,7 @@
     <div class="menu-links">
       <a href="#">Inicio</a>
       <a href="peliculas.html">Películas</a>
-      <a href="series.html">Series</a>
+      <a href="https://raw.githubusercontent.com/pelisplanet2019/PlexMania/refs/heads/main/Menu%20Series/Menu%20Series.html">Series</a>
     </div>
   </div>
 
@@ -172,7 +177,7 @@
     <div class="reproductor-container">
       <video id="videoPlayer" controls hidden></video>
       <iframe id="iframePlayer" src="" hidden></iframe>
-      <button class="close-button" onclick="cerrarReproductor()">Cerrar</button>
+      <button class="close-button" onclick="cerrarReproductor()">✕</button>
     </div>
   </div>
 
@@ -243,6 +248,24 @@
         console.error("Error al cargar el contenido:", error);
       }
     }
+
+    let currentIndex = 0;
+    function updateCarousel() {
+      const images = document.querySelectorAll(".carousel-images img");
+      const width = images[0].clientWidth + 10; // Image width + gap
+      const container = document.querySelector(".carousel-images");
+      container.style.transform = `translateX(${-currentIndex * width}px)`;
+    }
+
+    document.getElementById("next").addEventListener("click", () => {
+      currentIndex = (currentIndex + 1) % 6; // Replace 6 with dynamic item count if needed
+      updateCarousel();
+    });
+
+    document.getElementById("prev").addEventListener("click", () => {
+      currentIndex = (currentIndex - 1 + 6) % 6;
+      updateCarousel();
+    });
 
     function abrirReproductor(url) {
       const reproductorOverlay = document.getElementById("reproductor");
