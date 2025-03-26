@@ -24,7 +24,6 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
 
     .menu img {
@@ -41,13 +40,6 @@
       color: #ffa31a;
       font-size: 18px;
       font-weight: bold;
-      padding: 8px 16px;
-      transition: background-color 0.3s;
-    }
-
-    .menu a:hover {
-      background-color: #444444;
-      border-radius: 5px;
     }
 
     /* Contenedor principal */
@@ -60,7 +52,6 @@
       display: flex;
       gap: 20px;
       margin-bottom: 30px;
-      align-items: flex-start;
     }
 
     .series-header img {
@@ -68,7 +59,6 @@
       height: auto;
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-      flex-shrink: 0;
     }
 
     .series-description {
@@ -90,13 +80,11 @@
     .player {
       width: 100%;
       max-width: 800px;
-      margin: 20px auto;
+      margin: 20px 0;
       position: relative;
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-      border: 4px solid #ffa31a;
-      padding: 10px;
-      background-color: #1a1a1a;
+      display: none;
     }
 
     iframe, video {
@@ -110,23 +98,18 @@
       position: absolute;
       top: -15px;
       right: -15px;
-      background-color: #1a1a1a;
-      color: #ffa31a;
-      font-size: 24px;
-      font-weight: bold;
-      border: 4px solid #ffa31a;
+      background-color: #ffa31a;
+      color: #333333;
+      border: none;
       border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      font-size: 16px;
       cursor: pointer;
-      width: 40px;
-      height: 40px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
     }
 
     .close-button:hover {
-      color: #ff5555;
-      background-color: #333333;
+      background-color: #ffcc66;
     }
 
     /* Temporadas */
@@ -145,19 +128,22 @@
       flex-wrap: wrap;
     }
 
-    .episode-button {
-      background-color: #333333;
-      color: #ffa31a;
-      border: none;
-      padding: 10px 15px;
-      border-radius: 5px;
+    .episode-card {
+      width: 120px;
+      text-align: center;
       cursor: pointer;
-      font-size: 14px;
-      transition: background-color 0.3s;
     }
 
-    .episode-button:hover {
-      background-color: #444444;
+    .episode-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .episode-card:hover img {
+      transform: scale(1.1);
     }
 
   </style>
@@ -178,12 +164,12 @@
   <div class="content-wrapper">
     <!-- Imagen, descripción y reproductor -->
     <div class="series-header">
-      <img src="https://pics.filmaffinity.com/Grimm_Serie_de_TV-109715380-large.jpg" alt="Grimm" id="seriesImage">
+      <img src="https://via.placeholder.com/250x350?text=Grimm" alt="Grimm">
       <div class="series-description">
-        <h1 id="seriesTitle">Grimm</h1>
-        <p id="seriesDescription">El Detective Nick Burkhardt empieza a ver cosas inexplicables, hasta que llega su tía Marie y le revela que desciende de un grupo de cazadores de élite, los “Hermanos Grimms”.</p>
-        <div class="player" id="playerSection" style="display: none;">
-          <button class="close-button" onclick="cerrarReproductor()">✖</button>
+        <h1>Grimm</h1>
+        <p>El Detective Nick Burkhardt empieza a ver cosas inexplicables, hasta que llega su tía Marie y le revela que desciende de un grupo de cazadores de élite, los “Hermanos Grimms”.</p>
+        <div class="player" id="playerSection">
+          <button class="close-button" onclick="cerrarReproductor()">✕</button>
           <iframe id="videoFrame" src="" allowfullscreen hidden></iframe>
           <video id="videoPlayer" controls hidden>
             <source src="" type="video/mp4">
@@ -200,7 +186,7 @@
 
   <script>
     async function cargarTemporadas() {
-      const url = "https://raw.githubusercontent.com/pelisplanet2019/PlexMania/refs/heads/main/Reproductor/Grimm.xml";
+      const url = "https://pelisplanet2019.github.io/PlexMania/Reproductor/Grimm.xml";
 
       try {
         const response = await fetch(url);
@@ -228,14 +214,19 @@
 
           episodios.forEach(episodio => {
             const titulo = episodio.querySelector("titulo").textContent;
+            const imagen = episodio.querySelector("imagen").textContent;
             const url = episodio.querySelector("url").textContent;
 
-            const button = document.createElement("button");
-            button.classList.add("episode-button");
-            button.textContent = titulo;
-            button.onclick = () => reproducirEpisodio(url, titulo);
+            const episodeDiv = document.createElement("div");
+            episodeDiv.classList.add("episode-card");
 
-            contenedorTemporada.appendChild(button);
+            episodeDiv.innerHTML = `
+                <img src="${imagen}" alt="${titulo}">
+                <p>${titulo}</p>
+            `;
+            episodeDiv.onclick = () => reproducirEpisodio(url, titulo);
+
+            contenedorTemporada.appendChild(episodeDiv);
           });
         });
       } catch (error) {
@@ -244,37 +235,25 @@
     }
 
     function reproducirEpisodio(url, titulo) {
-      const videoPlayer = document.getElementById("videoPlayer");
-      const videoFrame = document.getElementById("videoFrame");
-      const videoDescription = document.getElementById("videoDescription");
-
-      // Mostrar el reproductor
       document.getElementById("playerSection").style.display = "block";
+      document.getElementById("videoDescription").textContent = `Reproduciendo: ${titulo}`;
 
-      // Actualizar la descripción
-      videoDescription.textContent = `Reproduciendo: ${titulo}`;
-
-      // Detectar si es un enlace embed o directo
       if (url.includes("embed") || url.includes("streamtape")) {
-        videoPlayer.hidden = true;
-        videoFrame.hidden = false;
-        videoFrame.src = url;
+        document.getElementById("videoPlayer").hidden = true;
+        document.getElementById("videoFrame").hidden = false;
+        document.getElementById("videoFrame").src = url;
       } else {
-        videoFrame.hidden = true;
-        videoPlayer.hidden = false;
-        videoPlayer.src = url;
-        videoPlayer.play();
+        document.getElementById("videoFrame").hidden = true;
+        document.getElementById("videoPlayer").hidden = false;
+        document.getElementById("videoPlayer").src = url;
+        document.getElementById("videoPlayer").play();
       }
     }
 
     function cerrarReproductor() {
-      const videoPlayer = document.getElementById("videoPlayer");
-      const videoFrame = document.getElementById("videoFrame");
-
       document.getElementById("playerSection").style.display = "none";
-      videoPlayer.pause();
-      videoPlayer.src = "";
-      videoFrame.src = "";
+      document.getElementById("videoFrame").src = "";
+      document.getElementById("videoPlayer").src = "";
     }
 
     document.addEventListener("DOMContentLoaded", cargarTemporadas);
