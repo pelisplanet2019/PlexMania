@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Series - Grimm</title>
+  <title>Grimm - Temporadas</title>
   <style>
     /* General */
     body {
@@ -19,20 +19,12 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background-color: #333333;
+      background-color: #333;
       padding: 10px 20px;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
     }
 
     .menu img {
       height: 60px;
-    }
-
-    .menu-links {
-      display: flex;
-      gap: 15px;
     }
 
     .menu a {
@@ -40,6 +32,7 @@
       color: #ffa31a;
       font-size: 18px;
       font-weight: bold;
+      margin-right: 15px;
     }
 
     /* Contenedor principal */
@@ -47,7 +40,7 @@
       margin: 20px;
     }
 
-    /* Imagen, descripción y reproductor */
+    /* Imagen y descripción */
     .series-header {
       display: flex;
       gap: 20px;
@@ -58,9 +51,48 @@
       width: 250px;
       height: auto;
       border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     }
 
+    .series-description h1 {
+      color: #ffa31a;
+    }
+
+    /* Temporadas */
+    .season {
+      margin-bottom: 30px;
+    }
+
+    .season h2 {
+      color: #ffa31a;
+      font-size: 22px;
+    }
+
+    .episodes-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .episode-card {
+      background-color: #333;
+      padding: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .episode-card img {
+      width: 120px;
+      border-radius: 8px;
+    }
+
+    .episode-card p {
+      color: #ffa31a;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+
+    /* Reproductor */
     .player {
       width: 100%;
       max-width: 800px;
@@ -70,7 +102,6 @@
       border: 5px solid #ffa31a;
       padding: 10px;
       background-color: #333;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
       display: none;
     }
 
@@ -78,24 +109,6 @@
       width: 100%;
       height: 450px;
       border-radius: 10px;
-      border: none;
-    }
-
-    /* Temporadas */
-    .season {
-      margin-bottom: 30px;
-    }
-
-    .episodes-container {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .episode-card img {
-      width: 120px;
-      border-radius: 8px;
-      cursor: pointer;
     }
 
   </style>
@@ -104,7 +117,7 @@
   <!-- Menú superior -->
   <div class="menu">
     <a href="../Menu Principal/index.html"><img src="https://i.ibb.co/k9rbDQQ/logo1.png" alt="Logo"></a>
-    <div class="menu-links">
+    <div>
       <a href="../Menu Principal/index.html">Inicio</a>
       <a href="../Menu Peliculas/peliculas.html">Películas</a>
       <a href="../Menu Series/series.html">Series</a>
@@ -115,10 +128,10 @@
   <!-- Contenedor principal -->
   <div class="content-wrapper">
     <div class="series-header">
-      <img src="https://pics.filmaffinity.com/Grimm_Serie_de_TV-109715380-large.jpg" alt="Grimm">
+      <img id="serieImagen" src="" alt="Carátula">
       <div class="series-description">
-        <h1>Grimm</h1>
-        <p>El Detective Nick Burkhardt empieza a ver cosas inexplicables...</p>
+        <h1 id="serieTitulo">Cargando...</h1>
+        <p id="serieDescripcion">Cargando...</p>
       </div>
     </div>
 
@@ -128,7 +141,7 @@
 
   <script>
     async function cargarTemporadas() {
-      const url = "https://raw.githubusercontent.com/pelisplanet2019/PlexMania/refs/heads/main/Reproductor/Grimm.xml";
+      const url = "https://pelisplanet2019.github.io/PlexMania/Reproductor/Grimm.xml";
 
       try {
         const response = await fetch(url);
@@ -138,19 +151,53 @@
         const parser = new DOMParser();
         const xmlDoc = parser.parseFromString(xmlText, "application/xml");
 
+        // Cargar datos de la serie
+        const serie = xmlDoc.querySelector("serie");
+        document.getElementById("serieTitulo").textContent = serie.querySelector("titulo").textContent;
+        document.getElementById("serieDescripcion").textContent = serie.querySelector("descripcion").textContent;
+        document.getElementById("serieImagen").src = serie.querySelector("imagen").textContent;
+
+        // Cargar temporadas y episodios
         const temporadas = xmlDoc.querySelectorAll("temporada");
         const temporadasContainer = document.getElementById("temporadasContainer");
+        temporadasContainer.innerHTML = "";
 
         temporadas.forEach(temporada => {
           const numero = temporada.getAttribute("numero");
           const seasonDiv = document.createElement("div");
-          seasonDiv.innerHTML = `<h2>Temporada ${numero}</h2><div class="episodes-container"></div>`;
+          seasonDiv.classList.add("season");
+
+          seasonDiv.innerHTML = `<h2>Temporada ${numero}</h2><div class="episodes-container" id="season${numero}"></div>`;
           temporadasContainer.appendChild(seasonDiv);
+
+          const contenedorTemporada = seasonDiv.querySelector(`#season${numero}`);
+          const episodios = temporada.querySelectorAll("episodio");
+
+          episodios.forEach(episodio => {
+            const titulo = episodio.querySelector("titulo").textContent;
+            const imagen = episodio.querySelector("imagen").textContent;
+            const url = episodio.querySelector("url").textContent;
+
+            const episodeCard = document.createElement("div");
+            episodeCard.classList.add("episode-card");
+            episodeCard.innerHTML = `
+                <img src="${imagen}" alt="${titulo}">
+                <p>${titulo}</p>
+            `;
+            episodeCard.onclick = () => reproducirEpisodio(url, titulo);
+
+            contenedorTemporada.appendChild(episodeCard);
+          });
         });
 
       } catch (error) {
-        console.error("Error:", error);
+        console.error("Error al cargar las temporadas:", error);
       }
+    }
+
+    function reproducirEpisodio(url, titulo) {
+      alert("Reproduciendo: " + titulo);
+      window.open(url, "_blank");
     }
 
     document.addEventListener("DOMContentLoaded", cargarTemporadas);
