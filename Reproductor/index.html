@@ -229,12 +229,11 @@
           episodios.forEach(episodio => {
             const titulo = episodio.querySelector("titulo").textContent;
             const url = episodio.querySelector("url").textContent;
-            const thumbnail = episodio.querySelector("thumbnail").textContent;
 
             const button = document.createElement("button");
             button.classList.add("episode-button");
             button.textContent = titulo;
-            button.onclick = () => reproducirEpisodio(url, thumbnail, titulo);
+            button.onclick = () => reproducirEpisodio(url, titulo);
 
             contenedorTemporada.appendChild(button);
           });
