@@ -61,24 +61,13 @@
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     }
 
-    .series-description {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .series-description h1 {
-      color: #ffa31a;
-    }
-
     .player {
       width: 100%;
       max-width: 800px;
       margin: 30px auto;
       position: relative;
       border-radius: 10px;
-      border: 5px solid #ffa31a; /* Marco amarillo */
+      border: 5px solid #ffa31a;
       padding: 10px;
       background-color: #333;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
@@ -92,20 +81,6 @@
       border: none;
     }
 
-    .close-button {
-      position: absolute;
-      top: -15px;
-      right: -15px;
-      background-color: #ffa31a;
-      color: #333333;
-      border: none;
-      border-radius: 50%;
-      width: 30px;
-      height: 30px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-
     /* Temporadas */
     .season {
       margin-bottom: 30px;
@@ -117,17 +92,10 @@
       flex-wrap: wrap;
     }
 
-    .episode-card {
-      width: 120px;
-      text-align: center;
-      cursor: pointer;
-    }
-
     .episode-card img {
-      width: 100%;
-      height: auto;
+      width: 120px;
       border-radius: 8px;
-      transition: transform 0.3s ease;
+      cursor: pointer;
     }
 
   </style>
@@ -147,7 +115,7 @@
   <!-- Contenedor principal -->
   <div class="content-wrapper">
     <div class="series-header">
-      <img src="https://pics.filmaffinity.com/Grimm_Serie_de_TV-109715380-large.jpg" alt="Grimm">
+      <img src="https://i.ibb.co/G58Fr7c/transcode-5.jpg" alt="Grimm">
       <div class="series-description">
         <h1>Grimm</h1>
         <p>El Detective Nick Burkhardt empieza a ver cosas inexplicables...</p>
@@ -160,7 +128,7 @@
 
   <script>
     async function cargarTemporadas() {
-      const url = "https://raw.githubusercontent.com/pelisplanet2019/PlexMania/refs/heads/main/Reproductor/Grimm.xml";
+      const url = "https://pelisplanet2019.github.io/PlexMania/Reproductor/Grimm.xml";
 
       try {
         const response = await fetch(url);
@@ -170,7 +138,15 @@
         const parser = new DOMParser();
         const xmlDoc = parser.parseFromString(xmlText, "application/xml");
 
-        // Cargar temporadas y episodios aquí...
+        const temporadas = xmlDoc.querySelectorAll("temporada");
+        const temporadasContainer = document.getElementById("temporadasContainer");
+
+        temporadas.forEach(temporada => {
+          const numero = temporada.getAttribute("numero");
+          const seasonDiv = document.createElement("div");
+          seasonDiv.innerHTML = `<h2>Temporada ${numero}</h2><div class="episodes-container"></div>`;
+          temporadasContainer.appendChild(seasonDiv);
+        });
 
       } catch (error) {
         console.error("Error:", error);
