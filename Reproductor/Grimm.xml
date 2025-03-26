@@ -1,101 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<series>
-  <serie>
-    <titulo>Grimm</titulo>
-    <descripcion>
-      El Detective Nick Burkhardt empieza a ver cosas inexplicables, hasta que llega su tía Marie y le revela que desciende de un grupo de cazadores de élite, los “Hermanos Grimms”.
-    </descripcion>
-    <imagen>https://pics.filmaffinity.com/Grimm_Serie_de_TV-109715380-large.jpg</imagen>
-    <temporadas>
-      <!-- Temporada 1 -->
-      <temporada numero="1">
-        <episodio>
-          <titulo>Episodio 1</titulo>
-          <imagen>https://image.tmdb.org/t/p/w227_and_h127_bestv2/6b1jGbz5XQbRlAeHkbbM2sf244y.jpg</imagen>
-          <url>http://fina.dyndns.tv/Series/Grimm/01x01.mkv</url>
-        </episodio>
-        <episodio>
-          <titulo>Episodio 2</titulo>
-          <imagen>https://via.placeholder.com/200x120?text=Ep+2</imagen>
-          <url>http://fina.dyndns.tv/Series/Grimm/01x02.mkv</url>
-        </episodio>
-        <!-- Continúa con los 20 episodios restantes -->
-      </temporada>
+<contenido>
+    <serie>
+        <titulo>Grimm</titulo>
+        <imagen>https://i.ibb.co/G58Fr7c/transcode-5.jpg</imagen>
+        <descripcion>El Detective Nick Burkhardt empieza a ver cosas inexplicables, hasta que llega su tía Marie y le revela que desciende de un grupo de cazadores de élite, los “Hermanos Grimms”.</descripcion>
 
-      <!-- Temporada 2 -->
-      <temporada numero="2">
-        <episodio>
-          <titulo>Episodio 1</titulo>
-          <imagen>https://via.placeholder.com/200x120?text=Ep+1</imagen>
-          <url>http://fina.dyndns.tv/Series/Grimm/02x01.mkv</url>
-        </episodio>
-        <episodio>
-          <titulo>Episodio 2</titulo>
-          <imagen>https://via.placeholder.com/200x120?text=Ep+2</imagen>
-          <url>http://fina.dyndns.tv/Series/Grimm/02x02.mkv</url>
-        </episodio>
-        <!-- Continúa con los 20 episodios restantes -->
-      </temporada>
-
-      <!-- Temporada 3 -->
-      <temporada numero="3">
-        <episodio>
-          <titulo>Episodio 1</titulo>
-          <imagen>https://via.placeholder.com/200x120?text=Ep+1</imagen>
-          <url>http://fina.dyndns.tv/Series/Grimm/03x01.mkv</url>
-        </episodio>
-        <episodio>
-          <titulo>Episodio 2</titulo>
-          <imagen>https://via.placeholder.com/200x120?text=Ep+2</imagen>
-          <url>http://fina.dyndns.tv/Series/Grimm/03x02.mkv</url>
-        </episodio>
-        <!-- Continúa con los 20 episodios restantes -->
-      </temporada>
-
-      <!-- Temporada 4 -->
-      <temporada numero="4">
-        <episodio>
-          <titulo>Episodio 1</titulo>
-          <imagen>https://via.placeholder.com/200x120?text=Ep+1</imagen>
-          <url>http://fina.dyndns.tv/Series/Grimm/04x01.mkv</url>
-        </episodio>
-        <episodio>
-          <titulo>Episodio 2</titulo>
-          <imagen>https://via.placeholder.com/200x120?text=Ep+2</imagen>
-          <url>http://fina.dyndns.tv/Series/Grimm/04x02.mkv</url>
-        </episodio>
-        <!-- Continúa con los 20 episodios restantes -->
-      </temporada>
-
-      <!-- Temporada 5 -->
-      <temporada numero="5">
-        <episodio>
-          <titulo>Episodio 1</titulo>
-          <imagen>https://via.placeholder.com/200x120?text=Ep+1</imagen>
-          <url>http://fina.dyndns.tv/Series/Grimm/05x01.mkv</url>
-        </episodio>
-        <episodio>
-          <titulo>Episodio 2</titulo>
-          <imagen>https://via.placeholder.com/200x120?text=Ep+2</imagen>
-          <url>http://fina.dyndns.tv/Series/Grimm/05x02.mkv</url>
-        </episodio>
-        <!-- Continúa con los 20 episodios restantes -->
-      </temporada>
-
-      <!-- Temporada 6 -->
-      <temporada numero="6">
-        <episodio>
-          <titulo>Episodio 1</titulo>
-          <imagen>https://via.placeholder.com/200x120?text=Ep+1</imagen>
-          <url>http://fina.dyndns.tv/Series/Grimm/06x01.mkv</url>
-        </episodio>
-        <episodio>
-          <titulo>Episodio 2</titulo>
-          <imagen>https://via.placeholder.com/200x120?text=Ep+2</imagen>
-          <url>http://fina.dyndns.tv/Series/Grimm/06x02.mkv</url>
-        </episodio>
-        <!-- Continúa con los 11 episodios restantes -->
-      </temporada>
-    </temporadas>
-  </serie>
-</series>
+        <temporadas>
+            <temporada numero="1">
+                <episodio>
+                    <titulo>Capítulo 1</titulo>
+                    <imagen>https://i.ibb.co/G58Fr7c/episodio1.jpg</imagen>
+                    <url>http://fina.dyndns.tv/Series/Grimm/01x01.mkv</url>
+                </episodio>
+                <episodio>
+                    <titulo>Capítulo 2</titulo>
+                    <imagen>https://i.ibb.co/G58Fr7c/episodio2.jpg</imagen>
+                    <url>http://fina.dyndns.tv/Series/Grimm/01x02.mkv</url>
+                </episodio>
+            </temporada>
+            <temporada numero="2">
+                <episodio>
+                    <titulo>Capítulo 1</titulo>
+                    <imagen>https://i.ibb.co/G58Fr7c/episodio3.jpg</imagen>
+                    <url>http://fina.dyndns.tv/Series/Grimm/02x01.mkv</url>
+                </episodio>
+            </temporada>
+            <temporada numero="3">
+                <episodio>
+                    <titulo>Capítulo 1</titulo>
+                    <imagen>https://i.ibb.co/G58Fr7c/episodio4.jpg</imagen>
+                    <url>http://fina.dyndns.tv/Series/Grimm/03x01.mkv</url>
+                </episodio>
+            </temporada>
+            <temporada numero="4">
+                <episodio>
+                    <titulo>Capítulo 1</titulo>
+                    <imagen>https://i.ibb.co/G58Fr7c/episodio5.jpg</imagen>
+                    <url>http://fina.dyndns.tv/Series/Grimm/04x01.mkv</url>
+                </episodio>
+            </temporada>
+            <temporada numero="5">
+                <episodio>
+                    <titulo>Capítulo 1</titulo>
+                    <imagen>https://i.ibb.co/G58Fr7c/episodio6.jpg</imagen>
+                    <url>http://fina.dyndns.tv/Series/Grimm/05x01.mkv</url>
+                </episodio>
+            </temporada>
+            <temporada numero="6">
+                <episodio>
+                    <titulo>Capítulo 1</titulo>
+                    <imagen>https://i.ibb.co/G58Fr7c/episodio7.jpg</imagen>
+                    <url>http://fina.dyndns.tv/Series/Grimm/06x01.mkv</url>
+                </episodio>
+            </temporada>
+        </temporadas>
+    </serie>
+</contenido>
