@@ -5,13 +5,13 @@
     <descripcion>
       El Detective Nick Burkhardt empieza a ver cosas inexplicables, hasta que llega su tía Marie y le revela que desciende de un grupo de cazadores de élite, los “Hermanos Grimms”.
     </descripcion>
-    <imagen>https://i.ibb.co/TbkVGsW/grimm-2.jpg</imagen>
+    <imagen>https://pics.filmaffinity.com/Grimm_Serie_de_TV-109715380-large.jpg</imagen>
     <temporadas>
       <!-- Temporada 1 -->
       <temporada numero="1">
         <episodio>
           <titulo>Episodio 1</titulo>
-          <imagen>https://via.placeholder.com/200x120?text=Ep+1</imagen>
+          <imagen>https://image.tmdb.org/t/p/w227_and_h127_bestv2/6b1jGbz5XQbRlAeHkbbM2sf244y.jpg</imagen>
           <url>http://fina.dyndns.tv/Series/Grimm/01x01.mkv</url>
         </episodio>
         <episodio>
