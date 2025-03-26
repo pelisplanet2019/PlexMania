@@ -72,17 +72,15 @@
       color: #ffa31a;
     }
 
-    .series-description p {
-      color: #cccccc;
-      margin-bottom: 20px;
-    }
-
     .player {
       width: 100%;
       max-width: 800px;
-      margin: 20px 0;
+      margin: 30px auto;
       position: relative;
       border-radius: 10px;
+      border: 5px solid #ffa31a; /* Marco amarillo */
+      padding: 10px;
+      background-color: #333;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
       display: none;
     }
@@ -108,18 +106,9 @@
       cursor: pointer;
     }
 
-    .close-button:hover {
-      background-color: #ffcc66;
-    }
-
     /* Temporadas */
     .season {
       margin-bottom: 30px;
-    }
-
-    .season h2 {
-      color: #ffa31a;
-      margin-bottom: 10px;
     }
 
     .episodes-container {
@@ -138,12 +127,7 @@
       width: 100%;
       height: auto;
       border-radius: 8px;
-      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
       transition: transform 0.3s ease;
-    }
-
-    .episode-card:hover img {
-      transform: scale(1.1);
     }
 
   </style>
@@ -162,21 +146,11 @@
 
   <!-- Contenedor principal -->
   <div class="content-wrapper">
-    <!-- Imagen, descripción y reproductor -->
     <div class="series-header">
       <img src="https://pics.filmaffinity.com/Grimm_Serie_de_TV-109715380-large.jpg" alt="Grimm">
       <div class="series-description">
         <h1>Grimm</h1>
-        <p>El Detective Nick Burkhardt empieza a ver cosas inexplicables, hasta que llega su tía Marie y le revela que desciende de un grupo de cazadores de élite, los “Hermanos Grimms”.</p>
-        <div class="player" id="playerSection">
-          <button class="close-button" onclick="cerrarReproductor()">✕</button>
-          <iframe id="videoFrame" src="" allowfullscreen hidden></iframe>
-          <video id="videoPlayer" controls hidden>
-            <source src="" type="video/mp4">
-            Tu navegador no soporta la reproducción de video.
-          </video>
-          <p id="videoDescription">Reproduciendo...</p>
-        </div>
+        <p>El Detective Nick Burkhardt empieza a ver cosas inexplicables...</p>
       </div>
     </div>
 
@@ -190,70 +164,17 @@
 
       try {
         const response = await fetch(url);
-        if (!response.ok) {
-          throw new Error(`Error al cargar el XML: ${response.status}`);
-        }
+        if (!response.ok) throw new Error(`Error al cargar el XML: ${response.status}`);
 
         const xmlText = await response.text();
         const parser = new DOMParser();
         const xmlDoc = parser.parseFromString(xmlText, "application/xml");
 
-        const temporadas = xmlDoc.querySelectorAll("temporada");
-        const temporadasContainer = document.getElementById("temporadasContainer");
+        // Cargar temporadas y episodios aquí...
 
-        temporadas.forEach(temporada => {
-          const numero = temporada.getAttribute("numero");
-          const seasonDiv = document.createElement("div");
-          seasonDiv.classList.add("season");
-
-          seasonDiv.innerHTML = `<h2>Temporada ${numero}</h2><div class="episodes-container" id="season${numero}"></div>`;
-          temporadasContainer.appendChild(seasonDiv);
-
-          const contenedorTemporada = seasonDiv.querySelector(`#season${numero}`);
-          const episodios = temporada.querySelectorAll("episodio");
-
-          episodios.forEach(episodio => {
-            const titulo = episodio.querySelector("titulo").textContent;
-            const imagen = episodio.querySelector("imagen").textContent;
-            const url = episodio.querySelector("url").textContent;
-
-            const episodeDiv = document.createElement("div");
-            episodeDiv.classList.add("episode-card");
-
-            episodeDiv.innerHTML = `
-                <img src="${imagen}" alt="${titulo}">
-                <p>${titulo}</p>
-            `;
-            episodeDiv.onclick = () => reproducirEpisodio(url, titulo);
-
-            contenedorTemporada.appendChild(episodeDiv);
-          });
-        });
       } catch (error) {
-        console.error("Error al cargar las temporadas:", error);
+        console.error("Error:", error);
       }
-    }
-
-    function reproducirEpisodio(url, titulo) {
-      document.getElementById("playerSection").style.display = "block";
-      document.getElementById("videoDescription").textContent = `Reproduciendo: ${titulo}`;
-
-      if (url.includes("embed") || url.includes("streamtape")) {
-        document.getElementById("videoPlayer").hidden = true;
-        document.getElementById("videoFrame").hidden = false;
-        document.getElementById("videoFrame").src = url;
-      } else {
-        document.getElementById("videoFrame").hidden = true;
-        document.getElementById("videoPlayer").hidden = false;
-        document.getElementById("videoPlayer").src = url;
-        document.getElementById("videoPlayer").play();
-      }
-    }
-
-    function cerrarReproductor() {
-      document.getElementById("playerSection").style.display = "none";
-      document.getElementById("videoFrame").src = "";
-      document.getElementById("videoPlayer").src = "";
     }
 
     document.addEventListener("DOMContentLoaded", cargarTemporadas);
