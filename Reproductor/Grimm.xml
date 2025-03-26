@@ -9,7 +9,7 @@
             <temporada numero="1">
                 <episodio>
                     <titulo>Capítulo 1</titulo>
-                    <imagen>https://image.tmdb.org/t/p/w227_and_h127_bestv2/6b1jGbz5XQbRlAeHkbbM2sf244y.jpg</imagen>
+                    <thumbnail>https://image.tmdb.org/t/p/w227_and_h127_bestv2/6b1jGbz5XQbRlAeHkbbM2sf244y.jpg</thumbnail>
                     <url>http://fina.dyndns.tv/Series/Grimm/01x01.mkv</url>
                 </episodio>
                 <episodio>
