@@ -149,7 +149,6 @@
     .reproductor-container .close-button:hover {
       background-color: #ffcc66;
     }
-
   </style>
 </head>
 <body>
@@ -209,11 +208,11 @@
         const carruselItems = xmlDoc.querySelectorAll("carrusel > item");
         const carouselContainer = document.getElementById("carouselContainer");
         carruselItems.forEach(item => {
-          const imagen = item.querySelector("imagen").textContent;
+          const thumbnail = item.querySelector("thumbnail").textContent;
           const url = item.querySelector("url").textContent;
 
           const img = document.createElement("img");
-          img.src = imagen;
+          img.src = thumbnail;
           img.onclick = () => abrirReproductor(url);
           carouselContainer.appendChild(img);
         });
@@ -222,11 +221,11 @@
         const peliculas = xmlDoc.querySelectorAll("peliculas > pelicula");
         const peliculasContainer = document.getElementById("peliculasContainer");
         peliculas.forEach(pelicula => {
-          const imagen = pelicula.querySelector("imagen").textContent;
+          const thumbnail = pelicula.querySelector("thumbnail").textContent;
           const url = pelicula.querySelector("url").textContent;
 
           const img = document.createElement("img");
-          img.src = imagen;
+          img.src = thumbnail;
           img.onclick = () => abrirReproductor(url);
           peliculasContainer.appendChild(img);
         });
@@ -235,11 +234,11 @@
         const series = xmlDoc.querySelectorAll("series > serie");
         const seriesContainer = document.getElementById("seriesContainer");
         series.forEach(serie => {
-          const imagen = serie.querySelector("imagen").textContent;
+          const thumbnail = serie.querySelector("thumbnail").textContent;
           const url = serie.querySelector("url").textContent;
 
           const img = document.createElement("img");
-          img.src = imagen;
+          img.src = thumbnail;
           img.onclick = () => abrirReproductor(url);
           seriesContainer.appendChild(img);
         });
@@ -249,30 +248,10 @@
       }
     }
 
-    let currentIndex = 0;
-    function updateCarousel() {
-      const images = document.querySelectorAll(".carousel-images img");
-      const width = images[0].clientWidth + 10; // Image width + gap
-      const container = document.querySelector(".carousel-images");
-      container.style.transform = `translateX(${-currentIndex * width}px)`;
-    }
-
-    document.getElementById("next").addEventListener("click", () => {
-      currentIndex = (currentIndex + 1) % 6; // Replace 6 with dynamic item count if needed
-      updateCarousel();
-    });
-
-    document.getElementById("prev").addEventListener("click", () => {
-      currentIndex = (currentIndex - 1 + 6) % 6;
-      updateCarousel();
-    });
-
     function abrirReproductor(url) {
-      const reproductorOverlay = document.getElementById("reproductor");
+      document.getElementById("reproductor").style.display = "flex";
       const videoPlayer = document.getElementById("videoPlayer");
       const iframePlayer = document.getElementById("iframePlayer");
-
-      reproductorOverlay.style.display = "flex";
 
       if (url.endsWith(".mp4") || url.endsWith(".mkv")) {
         iframePlayer.hidden = true;
@@ -286,13 +265,9 @@
     }
 
     function cerrarReproductor() {
-      const reproductorOverlay = document.getElementById("reproductor");
-      const videoPlayer = document.getElementById("videoPlayer");
-      const iframePlayer = document.getElementById("iframePlayer");
-
-      reproductorOverlay.style.display = "none";
-      videoPlayer.src = "";
-      iframePlayer.src = "";
+      document.getElementById("reproductor").style.display = "none";
+      document.getElementById("videoPlayer").src = "";
+      document.getElementById("iframePlayer").src = "";
     }
 
     document.addEventListener("DOMContentLoaded", cargarContenido);
