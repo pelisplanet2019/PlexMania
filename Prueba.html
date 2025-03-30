@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reproductor Multimedia</title>
     <script src="https://cdn.jsdelivr.net/npm/webtorrent@latest/webtorrent.min.js"></script>
-    <script src="https://www.youtube.com/iframe_api"></script> <!-- API de YouTube -->
+    <script src="https://www.youtube.com/iframe_api"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -35,13 +35,17 @@
         }
         #video-container {
             display: none;
-            position: relative;
-            margin: 20px auto;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
             max-width: 800px;
             border: 4px solid red;
             padding: 10px;
             border-radius: 10px;
             background-color: black;
+            z-index: 1000;
         }
         video, iframe {
             width: 100%;
@@ -49,8 +53,8 @@
         }
         .close-btn {
             position: absolute;
-            top: 5px;
-            right: 10px;
+            top: -15px;
+            right: -15px;
             background-color: red;
             border: none;
             color: white;
@@ -60,6 +64,17 @@
             width: 30px;
             height: 30px;
             line-height: 30px;
+            z-index: 1001;
+        }
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 999;
         }
     </style>
 </head>
@@ -77,6 +92,8 @@
         <button onclick="playVideo()">Reproducir</button>
     </div>
 
+    <div id="overlay"></div>
+
     <div id="video-container">
         <button class="close-btn" onclick="closeVideo()">X</button>
         <video id="video-player" controls></video>
@@ -92,16 +109,18 @@
             let videoContainer = document.getElementById("video-container");
             let videoPlayer = document.getElementById("video-player");
             let youtubeDiv = document.getElementById("youtube-player");
-            let quality = document.getElementById("video-quality").value;
+            let overlay = document.getElementById("overlay");
 
             if (!url) {
                 alert("Por favor, introduce un enlace válido.");
                 return;
             }
 
+            // Ocultar URL y selector de calidad después de iniciar la reproducción
             document.getElementById("video-url").style.display = "none";
             document.getElementById("video-quality").style.display = "none";
             videoContainer.style.display = "block";
+            overlay.style.display = "block"; // Mostrar fondo oscuro
             videoPlayer.style.display = "none";
             youtubeDiv.innerHTML = "";
 
@@ -167,10 +186,12 @@
         function closeVideo() {
             let videoContainer = document.getElementById("video-container");
             let videoPlayer = document.getElementById("video-player");
+            let overlay = document.getElementById("overlay");
 
             videoPlayer.pause();
             videoPlayer.src = "";
             videoContainer.style.display = "none";
+            overlay.style.display = "none"; // Ocultar el fondo oscuro
             document.getElementById("video-url").style.display = "block";
             document.getElementById("video-quality").style.display = "block";
             document.getElementById("video-url").value = "";
