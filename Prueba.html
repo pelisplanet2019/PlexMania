@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reproductor Multimedia</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #121212;
+            color: white;
+        }
+        h1 {
+            margin: 20px 0;
+        }
+        input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+            border: none;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            background: red;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        video {
+            display: block;
+            margin: 20px auto;
+            width: 80%;
+            max-width: 800px;
+            background: black;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Reproductor Multimedia</h1>
+
+    <!-- Campo para pegar el enlace -->
+    <input type="text" id="videoUrl" placeholder="Pega aquí el enlace del video">
+    <button onclick="reproducir()">Reproducir</button>
+
+    <!-- Reproductor de video -->
+    <video id="videoPlayer" controls>
+        <source id="videoSource" src="" type="video/mp4">
+        Tu navegador no soporta el reproductor de video.
+    </video>
+
+    <script>
+        function reproducir() {
+            let url = document.getElementById("videoUrl").value;
+            let videoSource = document.getElementById("videoSource");
+            let videoPlayer = document.getElementById("videoPlayer");
+
+            if (url.trim() === "") {
+                alert("Por favor, ingresa un enlace de video.");
+                return;
+            }
+
+            videoSource.src = url;
+            videoPlayer.load();
+            videoPlayer.play();
+        }
+    </script>
+
+</body>
+</html>
