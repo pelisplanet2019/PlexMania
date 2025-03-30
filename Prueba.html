@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reproductor Multimedia</title>
     <script src="https://cdn.jsdelivr.net/npm/webtorrent@latest/webtorrent.min.js"></script>
+    <script src="https://www.youtube.com/iframe_api"></script> <!-- API de YouTube -->
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -15,10 +16,10 @@
         .container {
             margin-top: 20px;
         }
-        input {
+        input, select {
             width: 80%;
             padding: 10px;
-            margin: 10px 0;
+            margin: 10px 5px;
             border: none;
             border-radius: 5px;
             font-size: 16px;
@@ -42,7 +43,7 @@
             border-radius: 10px;
             background-color: black;
         }
-        video {
+        video, iframe {
             width: 100%;
             border-radius: 5px;
         }
@@ -67,58 +68,98 @@
     <div class="container">
         <h1>Reproductor Multimedia</h1>
         <input type="text" id="video-url" placeholder="Pega el enlace aquí..." />
+        <select id="video-quality">
+            <option value="auto">Automático</option>
+            <option value="1080p">1080p</option>
+            <option value="720p">720p</option>
+            <option value="480p">480p</option>
+        </select>
         <button onclick="playVideo()">Reproducir</button>
     </div>
 
     <div id="video-container">
         <button class="close-btn" onclick="closeVideo()">X</button>
         <video id="video-player" controls></video>
+        <div id="youtube-player"></div> <!-- Contenedor para YouTube -->
     </div>
 
     <script>
         const client = new WebTorrent();
+        let youtubePlayer = null;
 
         function playVideo() {
             let url = document.getElementById("video-url").value.trim();
             let videoContainer = document.getElementById("video-container");
             let videoPlayer = document.getElementById("video-player");
+            let youtubeDiv = document.getElementById("youtube-player");
+            let quality = document.getElementById("video-quality").value;
 
             if (!url) {
                 alert("Por favor, introduce un enlace válido.");
                 return;
             }
 
-            // Oculta el input y muestra el reproductor
             document.getElementById("video-url").style.display = "none";
+            document.getElementById("video-quality").style.display = "none";
             videoContainer.style.display = "block";
+            videoPlayer.style.display = "none";
+            youtubeDiv.innerHTML = "";
 
             if (url.includes("magnet:?")) {
-                // Reproducir enlace Magnet
+                // Reproducir enlace Magnet (Torrents)
                 client.add(url, torrent => {
                     let file = torrent.files.find(file => file.name.endsWith(".mp4") || file.name.endsWith(".mkv"));
                     if (file) {
                         file.renderTo(videoPlayer);
+                        videoPlayer.style.display = "block";
                     } else {
                         alert("No se encontró un archivo de video en el torrent.");
                     }
                 });
-            } else if (url.includes("drive.google.com")) {
-                // Extraer el ID del enlace de Google Drive
-                let match = url.match(/[-\w]{25,}/);
-                if (match) {
-                    let driveID = match[0];
-                    let driveLink = `https://drive.google.com/uc?id=${driveID}&export=download`;
-                    videoPlayer.src = driveLink;
-                    videoPlayer.play();
-                } else {
-                    alert("Enlace de Google Drive no válido.");
+            } else if (url.endsWith(".torrent")) {
+                // Descargar y reproducir archivo .torrent
+                fetch(url)
+                    .then(response => response.blob())
+                    .then(blob => {
+                        let file = new File([blob], "temp.torrent", { type: "application/x-bittorrent" });
+                        client.add(file, torrent => {
+                            let videoFile = torrent.files.find(file => file.name.endsWith(".mp4") || file.name.endsWith(".mkv"));
+                            if (videoFile) {
+                                videoFile.renderTo(videoPlayer);
+                                videoPlayer.style.display = "block";
+                            } else {
+                                alert("No se encontró un archivo de video en el torrent.");
+                            }
+                        });
+                    })
+                    .catch(err => alert("Error al cargar el archivo torrent: " + err));
+            } else if (url.includes("youtube.com") || url.includes("youtu.be")) {
+                // Extraer ID de YouTube
+                let videoID = url.split("v=")[1] || url.split("youtu.be/")[1];
+                let ampersandPosition = videoID.indexOf("&");
+                if (ampersandPosition !== -1) {
+                    videoID = videoID.substring(0, ampersandPosition);
                 }
-            } else if (url.includes("mega.nz")) {
-                // Reproducir enlace de Mega (necesita un servidor intermedio)
-                alert("Mega requiere una API o un servicio externo para reproducir el video.");
+
+                youtubePlayer = new YT.Player("youtube-player", {
+                    height: "400",
+                    width: "100%",
+                    videoId: videoID,
+                    playerVars: {
+                        modestbranding: 1,
+                        rel: 0,
+                        showinfo: 0
+                    },
+                    events: {
+                        "onReady": function(event) {
+                            event.target.playVideo();
+                        }
+                    }
+                });
             } else {
-                // Cualquier otro enlace directo
+                // Enlace normal
                 videoPlayer.src = url;
+                videoPlayer.style.display = "block";
                 videoPlayer.play();
             }
         }
@@ -131,7 +172,13 @@
             videoPlayer.src = "";
             videoContainer.style.display = "none";
             document.getElementById("video-url").style.display = "block";
+            document.getElementById("video-quality").style.display = "block";
             document.getElementById("video-url").value = "";
+
+            if (youtubePlayer) {
+                youtubePlayer.destroy();
+                youtubePlayer = null;
+            }
         }
     </script>
 
