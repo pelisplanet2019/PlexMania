@@ -14,6 +14,9 @@
         h1 {
             margin: 20px 0;
         }
+        #inputContainer {
+            display: block;
+        }
         input {
             width: 80%;
             padding: 10px;
@@ -30,12 +33,30 @@
             cursor: pointer;
             border-radius: 5px;
         }
-        video {
-            display: block;
-            margin: 20px auto;
+        #videoContainer {
+            display: none;
+            position: relative;
             width: 80%;
             max-width: 800px;
+            margin: 20px auto;
+        }
+        video {
+            width: 100%;
+            border: 4px solid red;
             background: black;
+        }
+        .close-btn {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: red;
+            color: white;
+            border: none;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 50%;
         }
     </style>
 </head>
@@ -43,21 +64,28 @@
 
     <h1>Reproductor Multimedia</h1>
 
-    <!-- Campo para pegar el enlace -->
-    <input type="text" id="videoUrl" placeholder="Pega aquí el enlace del video">
-    <button onclick="reproducir()">Reproducir</button>
+    <!-- Contenedor del input y botón -->
+    <div id="inputContainer">
+        <input type="text" id="videoUrl" placeholder="Pega aquí el enlace del video">
+        <button onclick="reproducir()">Reproducir</button>
+    </div>
 
-    <!-- Reproductor de video -->
-    <video id="videoPlayer" controls>
-        <source id="videoSource" src="" type="video/mp4">
-        Tu navegador no soporta el reproductor de video.
-    </video>
+    <!-- Contenedor del reproductor de video -->
+    <div id="videoContainer">
+        <button class="close-btn" onclick="cerrarReproductor()">X</button>
+        <video id="videoPlayer" controls>
+            <source id="videoSource" src="" type="video/mp4">
+            Tu navegador no soporta el reproductor de video.
+        </video>
+    </div>
 
     <script>
         function reproducir() {
             let url = document.getElementById("videoUrl").value;
             let videoSource = document.getElementById("videoSource");
             let videoPlayer = document.getElementById("videoPlayer");
+            let inputContainer = document.getElementById("inputContainer");
+            let videoContainer = document.getElementById("videoContainer");
 
             if (url.trim() === "") {
                 alert("Por favor, ingresa un enlace de video.");
@@ -67,6 +95,23 @@
             videoSource.src = url;
             videoPlayer.load();
             videoPlayer.play();
+
+            // Ocultar el input y mostrar el reproductor
+            inputContainer.style.display = "none";
+            videoContainer.style.display = "block";
+        }
+
+        function cerrarReproductor() {
+            let videoPlayer = document.getElementById("videoPlayer");
+            let inputContainer = document.getElementById("inputContainer");
+            let videoContainer = document.getElementById("videoContainer");
+
+            videoPlayer.pause();
+            videoPlayer.src = "";
+
+            // Mostrar el input y ocultar el reproductor
+            inputContainer.style.display = "block";
+            videoContainer.style.display = "none";
         }
     </script>
 
